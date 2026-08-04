@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en" data-app="forewind">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ForeWind — Privacy Policy</title>
+<meta name="description" content="ForeWind's privacy policy. No account, no analytics and no server: the app sends your coordinates to a weather service and shows a Google-served ad banner, and nothing else leaves your device.">
+<link rel="canonical" href="https://nilbytestudio.com/forewind/privacy.html">
+
+<meta name="theme-color" content="#C2EDC4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B1622" media="(prefers-color-scheme: dark)">
+
+<link rel="icon" href="../assets/images/nilbyte-mark.svg" type="image/svg+xml">
+
+<!-- Self-hosted Inter Tight + the shared studio support skeleton. Two
+     same-origin requests and no third party, so this page does not hand a
+     visitor's IP to anyone — which is the least a privacy policy can do. -->
+<link rel="stylesheet" href="../assets/css/fonts.css">
+<link rel="stylesheet" href="../assets/css/support.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="page-header">
+  <div class="wrap">
+    <a class="page-header__studio" href="../">
+      <svg class="page-header__mark" viewBox="24 24 52 52" aria-hidden="true" focusable="false">
+        <g fill="currentColor">
+          <rect x="26" y="26" width="10" height="48" rx="2"/>
+          <rect x="64" y="26" width="10" height="48" rx="2"/>
+        </g>
+        <g fill="currentColor">
+          <rect x="32.00" y="26.00" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="36.36" y="32.07" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="40.71" y="38.14" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="45.07" y="44.21" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="49.43" y="50.29" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="53.79" y="56.36" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="58.14" y="62.43" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="62.50" y="68.50" width="5.5" height="5.5" rx="1.2"/>
+        </g>
+      </svg>
+      <span class="page-header__wordmark">
+        <span class="page-header__name">Nilbyte</span>
+        <span class="page-header__descriptor">Studio</span>
+      </span>
+    </a>
+    <h1 class="page-header__title">Privacy Policy</h1>
+    <p class="page-header__tagline">ForeWind &middot; <span class="updated">last updated 28 July 2026</span></p>
+  </div>
+</header>
+
+<main class="main wrap" id="main">
+
+  <div class="summary-box">
+    <p>The short version: ForeWind has no account, no server of mine, and nothing reporting
+      back to me.</p>
+    <p>
+      Two things do leave your phone, and both are worth understanding: your coordinates go to a
+      weather service so the app knows what the wind is doing, and — unless you have bought
+      Remove Ads — Google serves the banner at the bottom of the screen and collects data in the
+      process. Nothing else is transmitted, and I receive none of it.
+    </p>
+  </div>
+
+  <p>
+    ForeWind is a golf shot calculator made by Nilbyte Studio ("I", "me"). This policy covers the
+    Android and iOS apps published as <code>com.jnsoftware.forewind</code>. It replaces the
+    earlier generic policy, which described data collection the app has never actually performed.
+  </p>
+
+  <h2 id="what-the-app-stores-on-your-device">What the app stores on your device</h2>
+
+  <p>Everything ForeWind keeps is stored locally on your phone:</p>
+  <ul>
+    <li>
+      <strong>A weather cache</strong> — a small database of recent readings (wind, temperature,
+      pressure, elevation) with the coordinates they were fetched for, rounded to two decimal
+      places. Entries expire after 5–10 minutes and are cleaned up automatically.
+    </li>
+    <li>
+      <strong>Your preferences</strong> — distance unit, wind speed unit, theme, and a flag
+      recording whether you have bought Remove Ads.
+    </li>
+  </ul>
+
+  <p>
+    That is the complete list. There are no accounts, no shot history, no saved rounds, no notes
+    and no photos, because the app has no feature that would create them. None of this data is
+    transmitted, uploaded or synced by ForeWind, and all of it is removed when you uninstall.
+  </p>
+
+  <h2 id="what-forewind-does-not-do">What ForeWind does not do</h2>
+
+  <ul>
+    <li>No user accounts, sign-up or login</li>
+    <li>No servers or cloud storage operated by me</li>
+    <li>No analytics of mine — no usage tracking, event logging or session recording that
+        reports to me, and no analytics SDK in the app beyond what the ad library does (see
+        <a href="#advertising">Advertising</a>)</li>
+    <li>No crash reporting to me — the app ships no crash-reporting library of its own, and I
+        never receive a crash report</li>
+    <li>No background location — the permission is "while using the app" only</li>
+    <li>No access to contacts, calendar, camera, photos, microphone or files</li>
+    <li>No sale of personal information — I have never been paid for data, and never will be.
+        (Personalised advertising does count as "sharing" under California law; see
+        <a href="#california">California privacy rights</a>.)</li>
+  </ul>
+
+  <h2 id="location">Location</h2>
+
+  <p>
+    ForeWind asks for location permission because wind is local. When you request a reading, the
+    app takes your position from the operating system and sends the latitude and longitude to
+    <a href="https://api.met.no/">MET Norway</a>'s public Locationforecast service, which returns
+    the conditions for that point. Nothing else accompanies the request. There is no identifier,
+    nothing describing you or your device, and nothing that ties one request to another — the
+    only header of note is the User-Agent that MET Norway's terms require, which names the app,
+    its version and my support address, and says nothing about you.
+  </p>
+  <p>
+    To be precise about the precision: the position is requested from the operating system at
+    medium accuracy, and the coordinates are sent to the API to four decimal places — roughly
+    ten metres. ForeWind also rounds your position to about a kilometre, but that rounded value
+    is only used as a key for the on-device cache so that nearby holes reuse one reading; it is
+    not what gets transmitted. If you would rather not share a location that exact, the
+    permission is the control, and declining it is respected.
+  </p>
+  <p>
+    Weather data is provided under
+    <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>; MET Norway is a
+    Norwegian government institute and its handling of API traffic is governed by its own
+    published terms.
+  </p>
+  <p>
+    The permission is optional and revocable in your system settings at any time. Without it the
+    app cannot fetch weather, which is most of what it does — but nothing else about it changes.
+  </p>
+
+  <h2 id="compass-and-motion-sensors">Compass and motion sensors</h2>
+
+  <p>
+    ForeWind reads the magnetometer and accelerometer to work out which way you are facing and to
+    detect the figure-8 motion that calibrates the compass. These readings are used in the moment
+    to draw the compass and calculate the wind angle. They are not stored and never leave the
+    device.
+  </p>
+
+  <h2 id="advertising">Advertising</h2>
+
+  <p>
+    ForeWind is free and funded by a single banner ad served through <strong>Google
+    AdMob</strong>. This is the part of the app with real privacy consequences, so it is worth
+    stating plainly.
+  </p>
+  <p>
+    Google's Mobile Ads SDK — not me — collects information in order to select and measure the
+    ad. Google publishes what that includes in the privacy manifest shipped inside the SDK
+    itself, and the honest answer is that it is broader than just the ad:
+  </p>
+  <ul>
+    <li><strong>Advertising identifier</strong> — the one item Google flags as used for tracking</li>
+    <li><strong>Advertising data and coarse location</strong> derived from your IP address</li>
+    <li><strong>App interactions</strong> — how you use the app</li>
+    <li><strong>Crash, performance and other diagnostic data</strong></li>
+  </ul>
+  <p>
+    Google's stated purposes for these are advertising and analytics. That last bullet is worth
+    dwelling on: ForeWind contains no crash reporter of its own and I never see a crash report,
+    but the ad library does collect one. Saying "no crash reporting" without that caveat would
+    be false, so it is stated here.
+  </p>
+  <p>
+    Google's handling is governed by
+    <a href="https://policies.google.com/privacy">Google's privacy policy</a> and its description
+    of <a href="https://policies.google.com/technologies/partner-sites">how Google uses
+    information from sites or apps that use its services</a>. I see none of this data about
+    individuals; my access is limited to aggregate earnings figures in the AdMob dashboard.
+  </p>
+
+  <h3>Your controls</h3>
+  <ul>
+    <li>
+      <strong>In the EEA, the UK and Switzerland</strong>, ForeWind shows Google's consent form
+      the first time it runs. Your choices there govern whether personalised ads are served and
+      can be changed later from the same form.
+    </li>
+    <li>
+      <strong>On iOS 14 and later</strong>, the system asks for your permission before any app
+      tracks you across other companies' apps and websites. Declining is respected by the SDK;
+      you can change it in Settings &rsaquo; Privacy &amp; Security &rsaquo; Tracking.
+    </li>
+    <li>
+      <strong>On Android</strong>, you can reset or delete your advertising ID in Settings
+      &rsaquo; Google &rsaquo; Ads.
+    </li>
+    <li>
+      <strong>Buying Remove Ads</strong> stops the banner appearing at all.
+    </li>
+  </ul>
+
+  <div class="notice">
+    <p><strong>One honest caveat about Remove Ads.</strong></p>
+    <p>
+      Buying it stops the banner from being created and displayed, so no ad is requested or
+      shown. It does not currently remove Google's Mobile Ads library from the app, which is
+      still initialised at startup on both platforms, and on iOS the tracking permission prompt
+      is still shown regardless of whether you have purchased. I would rather write this down
+      than let the purchase imply more than it delivers.
+    </p>
+  </div>
+
+  <h2 id="purchases">Purchases</h2>
+
+  <p>
+    Remove Ads is a one-time in-app purchase processed entirely by Google Play or the Apple App
+    Store. They handle the payment and tell the app whether you own the product; I never see your
+    name, payment details or address. The app records only a yes/no flag on your device. Refunds
+    and receipts are handled by the store, not by me.
+  </p>
+
+  <h2 id="who-receives-data-and-why">Who receives data, and why</h2>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Service</th><th>What it receives</th><th>Why</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>MET Norway</td>
+          <td>Latitude and longitude, plus the app's User-Agent</td>
+          <td>To return the weather for that point</td>
+        </tr>
+        <tr>
+          <td>Google AdMob</td>
+          <td>Advertising ID, IP-derived coarse location, app interactions, crash and
+              performance data</td>
+          <td>To select and measure the banner ad, and Google's own analytics</td>
+        </tr>
+        <tr>
+          <td>Google Play / Apple App Store</td>
+          <td>Your purchase, handled by the store</td>
+          <td>To process and restore Remove Ads</td>
+        </tr>
+        <tr>
+          <td>Your email provider and mine</td>
+          <td>Only what you write, if you contact support</td>
+          <td>To answer you</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="muted">
+    There is no fifth row. No other network destination exists in the app.
+  </p>
+
+  <h2 id="contacting-support">Contacting support</h2>
+
+  <p>
+    The <em>Contact</em> button on the About screen opens your own mail app with a draft that
+    pre-fills the app version, your device model and your OS version, because those are what make
+    a bug report diagnosable. You can see and edit all of it before sending, and nothing is sent
+    unless you send it. If you email me, I have your address and whatever you wrote, kept only as
+    long as it takes to answer you.
+  </p>
+
+  <h2 id="responsibility">Who is responsible for your data</h2>
+
+  <p>
+    For the little data that reaches me — your email address and whatever you write, if you
+    contact support — Nilbyte Studio is the data controller:
+  </p>
+
+  <div class="address-block">
+    <p><strong>Nilbyte Studio</strong></p>
+    <p>Gödestadsvägen 19A<br>432 33 Varberg<br>Sverige</p>
+    <p><a href="mailto:support@forewind.app">support@forewind.app</a></p>
+  </div>
+
+  <p>
+    The advertising layer is different, and I would rather be precise than flattering. Google
+    determines how the data its Mobile Ads SDK collects is used, and acts as a controller in its
+    own right. Because I chose to embed that SDK, European case law treats me as a
+    <strong>joint controller with Google for the collection and transmission</strong> of that
+    data — not for what Google subsequently does with it. So the honest statement is not "I am
+    not a controller"; it is that I hold none of this data, cannot access it, and share
+    responsibility only for the fact that the app collects it at all.
+  </p>
+  <p>
+    Where the law expects joint controllers to have an arrangement between them setting out who
+    is responsible for what, that role is served by the
+    <a href="https://policies.google.com/technologies/partner-sites">Google terms</a> I accepted
+    to serve ads. In practice: Google is responsible for the data it collects, for honouring
+    your consent choices, and for answering requests about that data. I am responsible for this
+    policy being accurate, for showing you the consent form, and for the fact that ads run in
+    the app at all. If you are unsure who to approach, write to me and I will point you to the
+    right place.
+  </p>
+
+  <h2 id="legal-basis">Legal bases</h2>
+
+  <p>Under the GDPR, each purpose needs a lawful basis. These are ForeWind's:</p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Purpose</th><th>Data</th><th>Legal basis</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Fetching the forecast for your position</td>
+          <td>Coordinates</td>
+          <td>Performance of the service you asked for (Art. 6(1)(b)), enabled by the consent
+              you give through the operating system's location permission</td>
+        </tr>
+        <tr>
+          <td>Personalised advertising</td>
+          <td>Advertising ID and the data listed above</td>
+          <td>Your consent (Art. 6(1)(a)), collected through Google's consent form where it
+              applies, and withdrawable at any time</td>
+        </tr>
+        <tr>
+          <td>Non-personalised advertising</td>
+          <td>Limited ad and diagnostic data</td>
+          <td>Your consent (Art. 6(1)(a)). Serving any ad involves reading and writing
+              information on your device, which requires consent in its own right under the
+              ePrivacy rules, so consent covers both kinds of ad rather than only the
+              personalised kind</td>
+        </tr>
+        <tr>
+          <td>Preventing ad fraud and abuse</td>
+          <td>Diagnostic and delivery data</td>
+          <td>Legitimate interests (Art. 6(1)(f)) — keeping ad delivery honest, which is
+              difficult to do by consent and is expected by anyone funding an app this way</td>
+        </tr>
+        <tr>
+          <td>Answering your support email</td>
+          <td>Your address and message</td>
+          <td>Legitimate interests (Art. 6(1)(f)) — replying to someone who wrote to me</td>
+        </tr>
+        <tr>
+          <td>Remembering your settings</td>
+          <td>Units, theme, purchase flag</td>
+          <td>Strictly necessary for a function you requested; stored only on your device</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 id="transfers">International transfers</h2>
+
+  <p>
+    MET Norway is in Norway, inside the EEA, so weather requests involve no third-country
+    transfer.
+  </p>
+  <p>
+    Google processes advertising data in the United States and other countries. Those transfers
+    rely on Google's own safeguards — its certification under the EU–US Data Privacy Framework
+    and, where that does not apply, the European Commission's Standard Contractual Clauses.
+    Google publishes the current position in
+    <a href="https://policies.google.com/privacy">its privacy policy</a>. If you would rather no
+    such transfer happened, declining ad personalisation and buying Remove Ads are the levers
+    available to you.
+  </p>
+
+  <h2 id="children">Children</h2>
+
+  <p>
+    ForeWind is a general-audience golf utility, not directed at children, and I collect no
+    personal information from anyone regardless of age. Because the app shows ads, it is not
+    suitable for a child-directed audience and is not listed as such in either store.
+  </p>
+
+  <h2 id="retention-and-deletion">Retention and deletion</h2>
+
+  <p>
+    The weather cache and your preferences live on your device for as long as you keep the app.
+    Cached readings expire within minutes; uninstalling removes everything, including the record
+    of your purchase — which you can restore at any time from the store.
+  </p>
+  <p>
+    I hold no copy of anything, so there is no retention period on my side and no deletion
+    request to make to me. Data held by Google in connection with advertising is subject to
+    Google's own retention policies and is managed through the controls listed above; the same
+    applies to purchase records held by Google or Apple.
+  </p>
+
+  <h2 id="rights">Your rights</h2>
+
+  <p>
+    The GDPR gives you the right to access your personal data, to have it corrected or erased,
+    to restrict or object to its processing, and to receive it in a portable form.
+  </p>
+  <p>
+    ForeWind satisfies most of these by design rather than by process. Your settings are yours
+    to change and delete in the app; there is nothing of yours on a server of mine to export,
+    because there is no server. If you email me, that correspondence is the only personal data I
+    hold, and you can ask me to delete it at any time — write to the address above and I will.
+  </p>
+  <p>
+    For advertising data, the practical levers are the ones described under
+    <a href="#advertising">Advertising</a>: the consent form, the iOS tracking setting, the
+    Android advertising-ID controls, and Remove Ads. Access and erasure requests for data Google
+    holds are best directed to Google, which is the only party able to act on them.
+  </p>
+  <p>
+    <strong>You also have the right to complain to a data protection authority.</strong> Nilbyte
+    Studio is established in Sweden, so the lead authority is
+    <a href="https://www.imy.se/">Integritetsskyddsmyndigheten (IMY)</a>. If you live or work
+    elsewhere in the EEA or the UK, you may complain to your own country's supervisory authority
+    instead — you are not obliged to use mine, and you do not need to raise it with me first.
+    Though if something here concerns you, I would rather hear about it and fix it.
+  </p>
+
+  <h2 id="california">California privacy rights</h2>
+
+  <p>
+    Under the CCPA as amended by the CPRA, personalised advertising counts as
+    <strong>"sharing"</strong> personal information for cross-context behavioural advertising,
+    even though no money changes hands. ForeWind does that when ads are personalised, so the
+    plain answer is: <strong>yes, this app shares personal information in the CPRA sense.</strong>
+    I have never sold personal information, and receive no payment for data.
+  </p>
+  <p>The categories involved are the ones in the Advertising section: identifiers (the advertising ID), coarse geolocation, internet or application activity, and diagnostic data.</p>
+  <p>To opt out of that sharing, any of these works:</p>
+  <ul>
+    <li><strong>iOS</strong> — Settings &rsaquo; Privacy &amp; Security &rsaquo; Tracking, and turn off tracking for ForeWind</li>
+    <li><strong>Android</strong> — Settings &rsaquo; Google &rsaquo; Ads, and delete or opt out of the advertising ID</li>
+    <li><strong>Either platform</strong> — buy Remove Ads, and no ad is requested at all</li>
+  </ul>
+  <p>
+    You also have the right to know what is collected, to delete it, to correct it, and not to
+    be discriminated against for exercising any of these. Since I hold nothing about you beyond
+    support email, requests about advertising data need to go to Google; email me and I will
+    tell you what I can and point you to the right place.
+  </p>
+
+  <h2 id="changes-to-this-policy">Changes to this policy</h2>
+
+  <p>
+    If the app changes in a way that affects this policy, I will update this page and change the
+    date at the top before the change ships.
+  </p>
+
+  <h2 id="contact">Contact</h2>
+
+  <p>
+    Questions about this policy or the app:
+    <a href="mailto:support@forewind.app">support@forewind.app</a>
+  </p>
+
+  <footer class="page-footer">
+    <ul class="page-footer__links">
+      <li><a href="index.html">Support &amp; FAQ</a></li>
+      <li><a href="../">Nilbyte Studio</a></li>
+      <li><a href="mailto:support@forewind.app">Email support</a></li>
+    </ul>
+    <div class="page-footer__studio">
+      <svg class="page-footer__mark" viewBox="24 24 52 52" aria-hidden="true" focusable="false">
+        <g fill="currentColor">
+          <rect x="26" y="26" width="10" height="48" rx="2"/>
+          <rect x="64" y="26" width="10" height="48" rx="2"/>
+        </g>
+        <g fill="currentColor">
+          <rect x="32.00" y="26.00" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="36.36" y="32.07" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="40.71" y="38.14" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="45.07" y="44.21" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="49.43" y="50.29" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="53.79" y="56.36" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="58.14" y="62.43" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="62.50" y="68.50" width="5.5" height="5.5" rx="1.2"/>
+        </g>
+      </svg>
+      <p>ForeWind is made by <a href="../">Nilbyte Studio</a> in Varberg, Sweden.</p>
+    </div>
+  </footer>
+
+</main>
+
+</body>
+</html>

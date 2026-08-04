@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nilbyte Studio — logo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1C2B;
+    --slate:#5A6B7B;
+    --signal:#12A5B4;
+    --aqua:#3FD0C9;
+    --mist:#EEF3F5;
+    --line:#DBE4E9;
+    --sans:'Inter Tight', Inter, 'Segoe UI', system-ui, sans-serif;
+    --mono:'JetBrains Mono', ui-monospace, Consolas, monospace;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:#fff;color:var(--ink);font-family:var(--sans);
+    font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:980px;margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--slate);margin:0 0 20px
+  }
+  section{padding:64px 0;border-top:1px solid var(--line)}
+  h2{font-size:22px;font-weight:600;letter-spacing:-.01em;margin:0 0 8px}
+  p{margin:0 0 16px;max-width:60ch;color:#26384A}
+  .muted{color:var(--slate);font-size:14px}
+
+  /* hero */
+  .hero{background:var(--ink);color:#fff;padding:76px 0 68px;border:0}
+  .hero .eyebrow{color:#7FA0B5}
+  .hero-inner{display:flex;align-items:center;gap:48px;flex-wrap:wrap}
+  .hero svg{width:150px;height:150px;flex:none}
+  .hero h1{font-size:38px;font-weight:600;letter-spacing:-.02em;margin:0 0 6px}
+  .hero p{color:#9DB4C6;max-width:44ch;margin:0}
+
+  /* grids */
+  .grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+  .card{border:1px solid var(--line);border-radius:14px;padding:26px 22px;text-align:center}
+  .card.dark{background:var(--ink);border-color:var(--ink)}
+  .card.tint{background:var(--mist)}
+  .card svg{display:block;margin:0 auto}
+  .caption{font-family:var(--mono);font-size:11px;color:var(--slate);margin-top:18px;letter-spacing:.04em}
+  .card.dark .caption{color:#7FA0B5}
+
+  /* palette */
+  .swatches{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+  .sw{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .sw .chip{height:76px}
+  .sw .meta{padding:10px 12px;font-family:var(--mono);font-size:11px;line-height:1.7}
+  .sw .name{color:var(--ink)}
+  .sw .hex{color:var(--slate)}
+
+  /* size row */
+  .sizes{display:flex;align-items:flex-end;gap:36px;flex-wrap:wrap;padding:26px;border:1px solid var(--line);border-radius:14px}
+  .size{text-align:center}
+  .size .caption{margin-top:12px}
+
+  ul{margin:0;padding-left:18px;color:#26384A;max-width:60ch}
+  li{margin-bottom:8px}
+  li strong{font-weight:600}
+  footer{padding:40px 0 72px;color:var(--slate);font-size:13px}
+  @media(max-width:600px){
+    .hero svg{width:112px;height:112px}
+    .hero h1{font-size:30px}
+    section{padding:48px 0}
+  }
+</style>
+</head>
+<body>
+
+<!-- reusable symbols -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="byte" x1="32" y1="26" x2="68" y2="74" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#12A5B4"/><stop offset="1" stop-color="#3FD0C9"/>
+    </linearGradient>
+    <linearGradient id="tile" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#16283A"/><stop offset="1" stop-color="#0B1622"/>
+    </linearGradient>
+  </defs>
+
+  <symbol id="stems">
+    <rect x="26" y="26" width="10" height="48" rx="2"/>
+    <rect x="64" y="26" width="10" height="48" rx="2"/>
+  </symbol>
+  <symbol id="bits">
+    <rect x="32.00" y="26.00" width="5.5" height="5.5" rx="1.2"/>
+    <rect x="36.36" y="32.07" width="5.5" height="5.5" rx="1.2"/>
+    <rect x="40.71" y="38.14" width="5.5" height="5.5" rx="1.2"/>
+    <rect x="45.07" y="44.21" width="5.5" height="5.5" rx="1.2"/>
+    <rect x="49.43" y="50.29" width="5.5" height="5.5" rx="1.2"/>
+    <rect x="53.79" y="56.36" width="5.5" height="5.5" rx="1.2"/>
+    <rect x="58.14" y="62.43" width="5.5" height="5.5" rx="1.2"/>
+    <rect x="62.50" y="68.50" width="5.5" height="5.5" rx="1.2"/>
+  </symbol>
+</svg>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <svg viewBox="24 24 52 52">
+      <use href="#stems" fill="#FFFFFF"/>
+      <use href="#bits" fill="url(#byte)"/>
+    </svg>
+    <div>
+      <p class="eyebrow">Identity proposal</p>
+      <h1>Nilbyte Studio</h1>
+      <p>An N built from two solid stems and eight bits — one byte — falling across the diagonal.</p>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">The idea</p>
+    <h2>Nil holds the shape, the byte carries the data</h2>
+    <p>The two stems are fixed and quiet. The diagonal is the part that moves: eight equal squares, evenly stepped, reading top-left to bottom-right the way a byte is written. It stays an N at a glance and rewards a second look.</p>
+    <p class="muted">Geometry is on a 100-unit grid, so every element lands on a clean number and scales without drift.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Variants</p>
+    <h2>Four versions cover every placement</h2>
+    <div class="grid" style="margin-top:28px">
+
+      <div class="card">
+        <svg viewBox="24 24 52 52" width="96" height="96">
+          <use href="#stems" fill="#0E1C2B"/><use href="#bits" fill="#12A5B4"/>
+        </svg>
+        <div class="caption">PRIMARY / TWO-COLOR</div>
+      </div>
+
+      <div class="card dark">
+        <svg viewBox="24 24 52 52" width="96" height="96">
+          <use href="#stems" fill="#FFFFFF"/><use href="#bits" fill="url(#byte)"/>
+        </svg>
+        <div class="caption">REVERSED / ON INK</div>
+      </div>
+
+      <div class="card tint">
+        <svg viewBox="24 24 52 52" width="96" height="96">
+          <use href="#stems" fill="#0E1C2B"/><use href="#bits" fill="#0E1C2B"/>
+        </svg>
+        <div class="caption">MONO / ONE INK</div>
+      </div>
+
+      <div class="card">
+        <svg viewBox="0 0 100 100" width="96" height="96">
+          <rect width="100" height="100" rx="22" fill="url(#tile)"/>
+          <use href="#stems" fill="#FFFFFF"/>
+          <use href="#bits" fill="url(#byte)"/>
+        </svg>
+        <div class="caption">APP ICON TILE</div>
+      </div>
+
+    </div>
+    <p class="muted" style="margin-top:22px">The mono version is the real test: the gaps between the bits do the work, so the mark survives one-color print, embroidery, and a black-and-white invoice header.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Lockup</p>
+    <h2>Mark plus name</h2>
+    <div class="card" style="text-align:left;padding:40px 34px">
+      <svg viewBox="0 0 236 80" width="330" height="112">
+        <g transform="translate(-10,-10)">
+          <use href="#stems" fill="#0E1C2B"/><use href="#bits" fill="#12A5B4"/>
+        </g>
+        <text x="86" y="42" fill="#0E1C2B" font-family="Inter Tight, Segoe UI, system-ui, sans-serif"
+              font-size="30" font-weight="650" letter-spacing="-0.6">Nilbyte</text>
+        <text x="87.5" y="60" fill="#5A6B7B" font-family="Inter Tight, Segoe UI, system-ui, sans-serif"
+              font-size="11" font-weight="600" letter-spacing="4.4">STUDIO</text>
+      </svg>
+    </div>
+    <p class="muted" style="margin-top:18px">Type is Inter Tight — semibold for the name, a small letterspaced caps line for the descriptor. Keep clear space of one stem width on every side.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Small sizes</p>
+    <h2>Down to a favicon</h2>
+    <div class="sizes" style="margin-top:24px">
+      <div class="size">
+        <svg viewBox="24 24 52 52" width="64" height="64"><use href="#stems" fill="#0E1C2B"/><use href="#bits" fill="#12A5B4"/></svg>
+        <div class="caption">64</div>
+      </div>
+      <div class="size">
+        <svg viewBox="24 24 52 52" width="32" height="32"><use href="#stems" fill="#0E1C2B"/><use href="#bits" fill="#12A5B4"/></svg>
+        <div class="caption">32</div>
+      </div>
+      <div class="size">
+        <svg viewBox="24 24 52 52" width="16" height="16"><use href="#stems" fill="#0E1C2B"/><use href="#bits" fill="#12A5B4"/></svg>
+        <div class="caption">16</div>
+      </div>
+      <div class="size" style="margin-left:12px">
+        <svg viewBox="24 24 52 52" width="16" height="16" fill="#0E1C2B">
+          <use href="#stems"/>
+          <path d="M33 27 L67 73" stroke="#0E1C2B" stroke-width="6.5" fill="none"/>
+        </svg>
+        <div class="caption">16 COMPACT</div>
+      </div>
+    </div>
+    <p class="muted" style="margin-top:18px">Below about 24px the bits start to merge anyway, so the compact file closes the diagonal on purpose instead of letting the renderer smear it.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Palette</p>
+    <h2>Cold, quiet, one signal color</h2>
+    <div class="swatches" style="margin-top:26px">
+      <div class="sw"><div class="chip" style="background:#0E1C2B"></div>
+        <div class="meta"><div class="name">Ink</div><div class="hex">#0E1C2B</div></div></div>
+      <div class="sw"><div class="chip" style="background:#12A5B4"></div>
+        <div class="meta"><div class="name">Signal</div><div class="hex">#12A5B4</div></div></div>
+      <div class="sw"><div class="chip" style="background:#3FD0C9"></div>
+        <div class="meta"><div class="name">Aqua</div><div class="hex">#3FD0C9</div></div></div>
+      <div class="sw"><div class="chip" style="background:#5A6B7B"></div>
+        <div class="meta"><div class="name">Slate</div><div class="hex">#5A6B7B</div></div></div>
+      <div class="sw"><div class="chip" style="background:#EEF3F5"></div>
+        <div class="meta"><div class="name">Mist</div><div class="hex">#EEF3F5</div></div></div>
+    </div>
+    <p class="muted" style="margin-top:22px">Signal and Aqua only ever appear on the bits or as a thin accent. Everything else is Ink on white or white on Ink.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Rules</p>
+    <h2>Keep it boring</h2>
+    <ul>
+      <li><strong>Don't</strong> re-space the bits or change their count. Eight is the point.</li>
+      <li><strong>Don't</strong> add a shadow, outline, or bevel to the mark.</li>
+      <li><strong>Don't</strong> place the two-color version on a mid-tone background — use reversed or mono.</li>
+      <li><strong>Do</strong> use the tile version for store listings and the bare mark everywhere else.</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="wrap">Nilbyte Studio · Varberg</footer>
+
+</body>
+</html>

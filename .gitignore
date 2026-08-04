@@ -1,0 +1,16 @@
+# OS cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vs/
+.vscode/
+*.swp
+
+# Jekyll build output (GitHub Pages builds server-side; never commit this)
+_site/
+.jekyll-cache/
+
+# Local scratch
+*.log

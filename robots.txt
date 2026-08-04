@@ -1,0 +1,10 @@
+# Nilbyte Studio
+# The studio page and the app support/privacy pages are all crawlable.
+# /docs/ is internal (brand masters, design notes) and stays out of search.
+
+User-agent: *
+Allow: /
+Disallow: /docs/
+
+# TODO: confirm the domain matches the canonical tags and sitemap.
+Sitemap: https://nilbytestudio.com/sitemap.xml

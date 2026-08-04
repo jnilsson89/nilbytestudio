@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en" data-app="forewind">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ForeWind — Support</title>
+<meta name="description" content="Help and frequently asked questions for ForeWind, the golf shot calculator that adjusts your playing distance for wind.">
+<link rel="canonical" href="https://nilbytestudio.com/forewind/">
+
+<meta name="theme-color" content="#C2EDC4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B1622" media="(prefers-color-scheme: dark)">
+
+<link rel="icon" href="../assets/images/nilbyte-mark.svg" type="image/svg+xml">
+
+<!-- Self-hosted Inter + the shared studio support skeleton. Two same-origin
+     requests and no third party: this page must not hand a visitor's IP to
+     anyone, because the privacy policy it links to says it doesn't. -->
+<link rel="stylesheet" href="../assets/css/fonts.css">
+<link rel="stylesheet" href="../assets/css/support.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="page-header">
+  <div class="wrap">
+    <a class="page-header__studio" href="../">
+      <svg class="page-header__mark" viewBox="24 24 52 52" aria-hidden="true" focusable="false">
+        <g fill="currentColor">
+          <rect x="26" y="26" width="10" height="48" rx="2"/>
+          <rect x="64" y="26" width="10" height="48" rx="2"/>
+        </g>
+        <g fill="currentColor">
+          <rect x="32.00" y="26.00" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="36.36" y="32.07" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="40.71" y="38.14" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="45.07" y="44.21" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="49.43" y="50.29" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="53.79" y="56.36" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="58.14" y="62.43" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="62.50" y="68.50" width="5.5" height="5.5" rx="1.2"/>
+        </g>
+      </svg>
+      <span class="page-header__wordmark">
+        <span class="page-header__name">Nilbyte</span>
+        <span class="page-header__descriptor">Studio</span>
+      </span>
+    </a>
+    <h1 class="page-header__title">ForeWind</h1>
+    <p class="page-header__tagline">Support &amp; frequently asked questions</p>
+  </div>
+</header>
+
+<main class="main wrap" id="main">
+
+  <h2 id="get-in-touch">Get in touch</h2>
+
+  <div class="contact-card">
+    <p class="contact-card__email"><a href="mailto:support@forewind.app">support@forewind.app</a></p>
+    <p class="muted">
+      One person reads this mailbox, so please allow a couple of days for a reply. The
+      <em>Contact</em> button on the About screen writes the draft for you and fills in your
+      app version, device model and OS version — those three details are what turn a vague
+      report into a fixable one.
+    </p>
+  </div>
+
+  <p class="muted">
+    ForeWind has no account system and no server of mine, so I cannot look up your settings,
+    reset anything remotely, or see what went wrong on your device. Everything below is
+    something you can check or fix yourself.
+  </p>
+
+  <!-- Task-shaped index. Most people arrive because something is broken, so the
+       fixes are listed first and the explanations come after. -->
+  <ul class="quick-links">
+    <li><a href="#cant-get-location">It can't get my location</a></li>
+    <li><a href="#weather-stale">The weather looks out of date</a></li>
+    <li><a href="#compass-wrong">The compass is wrong</a></li>
+    <li><a href="#ads-still-there">I paid, but ads are still there</a></li>
+    <li><a href="#how-the-numbers-work">Why this number?</a></li>
+    <li><a href="privacy.html">Privacy policy</a></li>
+  </ul>
+
+  <h2 id="location-weather">Location &amp; weather</h2>
+
+  <h3 id="cant-get-location">It can't get my location</h3>
+  <p>Almost always one of these:</p>
+  <ul>
+    <li>
+      <strong>Location permission was declined.</strong> On modern Android and iOS a declined
+      prompt cannot be shown again from inside an app. Re-enable it in your system Settings
+      under ForeWind &rsaquo; Location, choosing "While Using the App".
+    </li>
+    <li>
+      <strong>Location services are off device-wide</strong>, or the phone is in a mode that
+      suspends them, such as battery saver on some Android builds.
+    </li>
+    <li>
+      <strong>No usable fix yet.</strong> ForeWind will reuse a position up to ten minutes old,
+      but a cold start indoors or in a valley can take a while. Step outside and try again.
+    </li>
+  </ul>
+
+  <h3>Why does it need my location?</h3>
+  <p>
+    To know what the wind is doing where you are standing. ForeWind sends your coordinates to
+    <a href="https://api.met.no/">MET Norway</a>'s public forecast service and gets back the wind
+    speed, direction, temperature, pressure and elevation for that point. There is no course
+    database and no manual location entry, so without the permission there is nothing to
+    calculate from.
+  </p>
+  <p>
+    The permission is "while using the app" only. ForeWind never asks for background location and
+    cannot read your position when it isn't open.
+  </p>
+
+  <h3 id="weather-stale">The weather looks out of date</h3>
+  <p>
+    Pull down on the main screen to refresh. If nothing changes, the reading you already have is
+    still considered current — ForeWind keeps each one for 5–10 minutes rather than asking the
+    API for something it already knows. Wait out that window and pull again for genuinely new
+    data.
+  </p>
+
+  <details class="detail">
+    <summary class="detail__summary">Why it holds on to a reading</summary>
+    <div class="detail__body">
+      <p>
+        ForeWind caches each reading for 5–10 minutes so a round doesn't hammer the API, and it
+        files that cache against your position rounded to about a kilometre, so nearby holes
+        reuse the same reading. On a course that is usually what you want; the wind does not
+        change meaningfully between the 4th tee and the 5th.
+      </p>
+      <p>
+        Forecasts are also only forecasts. MET Norway publishes on its own schedule, so at times
+        the freshest data available anywhere is already an hour old.
+      </p>
+    </div>
+  </details>
+
+  <h3>Does it work without a signal?</h3>
+  <p>
+    Only for as long as the cached reading is valid. Fetching new weather needs a connection.
+    Rural courses with no coverage are the awkward case: grab a reading in the car park while you
+    still have signal and it will carry you a few holes.
+  </p>
+
+  <h2 id="the-compass">The compass</h2>
+
+  <h3 id="compass-wrong">The heading is wrong or drifting</h3>
+  <p>
+    Phone magnetometers are easily confused. In order of likelihood:
+  </p>
+  <ul>
+    <li>
+      <strong>It needs calibrating.</strong> ForeWind watches for unstable readings and asks you
+      to calibrate when it sees them. Wave the phone in a figure-8 a few times, keeping it moving
+      through all three axes — that is the motion the sensor needs.
+    </li>
+    <li>
+      <strong>Something magnetic is too close.</strong> Cases with magnets or metal plates,
+      MagSafe accessories, a trolley frame, a golf cart roof, or the clubs in your bag will all
+      pull the reading. Step away from the bag and hold the phone out from your body.
+    </li>
+    <li>
+      <strong>You are holding it tilted.</strong> Heading is most reliable with the phone
+      reasonably flat.
+    </li>
+  </ul>
+  <p class="muted">
+    The reading is smoothed deliberately, so it settles over a moment rather than snapping. If it
+    lags badly after you turn, that is usually the same calibration problem.
+  </p>
+
+  <h3>How do I set my shot direction?</h3>
+  <p>
+    Hold the phone flat and point the top of it at your target. ForeWind reads the device compass
+    and uses that heading as your shot line, then compares it to the direction the wind is coming
+    from.
+  </p>
+
+  <h3>My phone has no compass</h3>
+  <p>
+    A few budget handsets ship without a magnetometer. ForeWind lists the compass as optional
+    hardware so it still installs, but shot-direction input is the one thing that will not work.
+  </p>
+
+  <h2 id="how-the-numbers-work">How the numbers work</h2>
+
+  <h3>What is ForeWind actually calculating?</h3>
+  <p>
+    You give it a target distance and point the phone down your shot line. ForeWind takes the
+    current wind at your location, works out the angle between the wind and your shot, and tells
+    you the distance the shot will <em>play</em> — longer into a headwind, shorter downwind.
+  </p>
+  <p>
+    Into the wind it adds distance. Downwind it takes some off, but less than it adds, because
+    that asymmetry is real. Across the wind it leaves the distance alone — a crosswind pushes the
+    ball sideways rather than shortening the shot, and judging that push is still your job.
+  </p>
+
+  <details class="detail">
+    <summary class="detail__summary">The exact model, if you want it</summary>
+    <div class="detail__body">
+      <p>
+        The model is cosine-interpolated rather than split into quadrants, so there is no sudden
+        jump as the wind swings from head to cross. A pure headwind adds roughly 1 % of your
+        distance per mph of wind; a pure tailwind takes off about half that, 0.5 % per mph.
+      </p>
+      <p>
+        Treating head and tail as mirror images would over-club you downwind, which is why they
+        are weighted differently. At 90° the distance adjustment falls to zero.
+      </p>
+    </div>
+  </details>
+
+  <h3>Why does the playing distance change when the wind hasn't?</h3>
+  <p>
+    Air density. Cold, heavy air makes the ball fly shorter, so the shot plays longer; warm air,
+    altitude or a low-pressure system makes it fly further, so the shot plays shorter. ForeWind
+    corrects for this quietly — there is no setting and no separate readout, it is folded into the
+    number you see. On a mild day near sea level the effect is a fraction of a metre. At altitude
+    it is not.
+  </p>
+
+  <details class="detail">
+    <summary class="detail__summary">What it uses to work that out</summary>
+    <div class="detail__body">
+      <p>
+        The temperature, the elevation at your location, and the sea-level pressure reported by
+        the weather service, compared against standard conditions — 15&nbsp;°C, 1013.25&nbsp;hPa,
+        at sea level.
+      </p>
+    </div>
+  </details>
+
+  <h3>Wind strength categories</h3>
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th scope="col">Category</th><th scope="col">Speed</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Calm</td><td>0–5 km/h</td></tr>
+        <tr><td>Light</td><td>6–15 km/h</td></tr>
+        <tr><td>Moderate</td><td>16–25 km/h</td></tr>
+        <tr><td>Strong</td><td>26–35 km/h</td></tr>
+        <tr><td>Very strong</td><td>36+ km/h</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="muted">
+    The labels describe the wind. The adjustment itself is calculated from the actual speed and
+    angle, not from the category.
+  </p>
+
+  <h3>Another app gives me a different number</h3>
+  <p>
+    Expect that. Wind apps disagree about the wind itself — different models, different grid
+    resolutions, different update times — and shot calculators disagree about what to do with
+    it. ForeWind's figure is a considered starting point for club selection, not a measurement.
+    Trees, the shape of the hole and wind higher up than your phone can feel are all still yours
+    to read.
+  </p>
+
+  <h2 id="units-appearance">Units &amp; appearance</h2>
+
+  <h3>Yards instead of metres, mph instead of m/s</h3>
+  <p>
+    Settings &rsaquo; Distance units and Wind speed units. Distance and wind are independent, so
+    yards with m/s is fine if that is how you think. The choice is remembered and applies
+    everywhere in the app.
+  </p>
+
+  <h3>Dark mode</h3>
+  <p>
+    Settings &rsaquo; Appearance: System, Light or Dark. System follows your phone, including a
+    scheduled night mode.
+  </p>
+
+  <h2 id="remove-ads">Remove Ads</h2>
+
+  <h3 id="ads-still-there">I paid, but the ads are still there</h3>
+  <p>
+    Open Settings and tap <em>Restore purchases</em>. That re-checks your Google Play or Apple
+    account and restores the unlock — it is also how you get it back after reinstalling or moving
+    to a new phone, at no extra cost. Make sure you are signed in with the same store account you
+    bought it on.
+  </p>
+  <p>
+    If the purchase was charged and never applied, email me the store receipt and I will sort it
+    out.
+  </p>
+
+  <h3>What does the purchase do?</h3>
+  <p>
+    ForeWind is free and shows a single banner at the bottom of the main screen. <strong>Remove
+    Ads</strong> is a one-time purchase that takes the banner away permanently. There is no
+    subscription, no second tier, and nothing else to buy — every calculation feature is free for
+    everyone.
+  </p>
+  <p class="muted">
+    One detail worth being straight about: removing the banner stops the ad from being shown, but
+    Google's Mobile Ads library still starts up with the app. The
+    <a href="privacy.html">privacy policy</a> explains what that does and does not mean.
+  </p>
+
+  <h3>Refunds on the purchase itself</h3>
+  <p>
+    Payment is handled entirely by Apple and Google, so refunds go through them, not me — Apple
+    via <a href="https://reportaproblem.apple.com/">reportaproblem.apple.com</a>, Google via your
+    Play order history. I never see your payment details and cannot issue a refund directly.
+  </p>
+
+  <h2 id="everything-else">Everything else</h2>
+
+  <h3>Which devices are supported?</h3>
+  <p>
+    Android 6.0 and later, and iPhone on iOS 15 and later. The layout is portrait-only and iPhone
+    only for now — it runs on iPad in compatibility mode, but there is no iPad layout yet.
+  </p>
+
+  <h3>Does it work in my language?</h3>
+  <p>
+    ForeWind formats distances, speeds and dates for your region, but the text ships in English
+    today. If you would like it in your language, email me — it is genuinely quick to add.
+  </p>
+
+  <h3>Where does the weather come from?</h3>
+  <p>
+    <a href="https://api.met.no/">MET Norway</a>'s Locationforecast 2.0 service, used under
+    <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. It is a free public
+    service with genuinely good global coverage, and it is credited on the About screen.
+  </p>
+
+  <h3>Something is wrong that isn't listed here</h3>
+  <p>
+    Email <a href="mailto:support@forewind.app">support@forewind.app</a>, ideally from the
+    <em>Contact</em> button on the About screen so the version and device details come along.
+    Bug reports with a screenshot get fixed fastest.
+  </p>
+
+  <footer class="page-footer">
+    <ul class="page-footer__links">
+      <li><a href="privacy.html">Privacy policy</a></li>
+      <li><a href="../">Nilbyte Studio</a></li>
+      <li><a href="mailto:support@forewind.app">Email support</a></li>
+    </ul>
+    <div class="page-footer__studio">
+      <svg class="page-footer__mark" viewBox="24 24 52 52" aria-hidden="true" focusable="false">
+        <g fill="currentColor">
+          <rect x="26" y="26" width="10" height="48" rx="2"/>
+          <rect x="64" y="26" width="10" height="48" rx="2"/>
+        </g>
+        <g fill="currentColor">
+          <rect x="32.00" y="26.00" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="36.36" y="32.07" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="40.71" y="38.14" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="45.07" y="44.21" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="49.43" y="50.29" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="53.79" y="56.36" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="58.14" y="62.43" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="62.50" y="68.50" width="5.5" height="5.5" rx="1.2"/>
+        </g>
+      </svg>
+      <p>ForeWind is made by <a href="../">Nilbyte Studio</a> in Varberg, Sweden.</p>
+    </div>
+  </footer>
+
+</main>
+
+</body>
+</html>

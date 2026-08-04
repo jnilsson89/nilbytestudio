@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ==========================================================================
+       SEO / social
+       TODO: replace the canonical + og:url domain once the site is deployed.
+       ========================================================================== -->
+  <title>Nilbyte Studio — Small apps for iOS and Android</title>
+  <meta name="description" content="Nilbyte Studio is a one-person app studio in Varberg, Sweden. I build the apps I wanted to exist — ForeWind and RefundHound — with no accounts, no subscriptions and no servers of my own.">
+  <link rel="canonical" href="https://nilbyte.studio/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Nilbyte Studio">
+  <meta property="og:title" content="Nilbyte Studio — Small apps for iOS and Android">
+  <meta property="og:description" content="I build the apps I wanted to exist. No accounts, no subscriptions, no servers of my own.">
+  <meta property="og:url" content="https://nilbyte.studio/">
+  <!-- TODO: create a 1200x630 PNG share image and drop it at assets/images/og-cover.png -->
+  <meta property="og:image" content="https://nilbyte.studio/assets/images/og-cover.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Theme colour follows the brand Ink; the media queries keep the browser
+       chrome in step with the user's light/dark preference. -->
+  <meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0B1622" media="(prefers-color-scheme: dark)">
+
+  <!-- Favicons: the full mark for modern browsers, the compact one-colour
+       variant for tiny sizes where the eight bits would smear together. -->
+  <link rel="icon" href="assets/images/nilbyte-mark.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/images/nilbyte-appicon.svg">
+
+  <!-- Brand typeface, self-hosted. No Google Fonts, so the site makes zero
+       third-party requests — which is the same standard the app privacy pages
+       hold themselves to.
+       The monospace accents fall back to the system mono stack; drop in a
+       JetBrains Mono woff2 and add a @font-face to fonts.css if you want it. -->
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <!-- Anti-flash: apply the stored theme before first paint so a dark-mode
+       visitor never sees a white flash. Kept inline and tiny on purpose. -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('nilbyte-theme');
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+      } catch (e) { /* private mode — fall back to the OS preference */ }
+    })();
+  </script>
+
+  <!-- Structured data helps Google render the brand card.
+       TODO: fill in the real social profile URLs in sameAs. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Nilbyte Studio",
+    "url": "https://nilbyte.studio/",
+    "logo": "https://nilbyte.studio/assets/images/nilbyte-mark.svg",
+    "founder": { "@type": "Person", "name": "Johan Nilsson" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Varberg", "addressCountry": "SE" },
+    "email": "j.nilsson89@outlook.com",
+    "sameAs": [
+      "https://github.com/jnilsson89"
+    ],
+    "makesOffer": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "MobileApplication",
+          "name": "ForeWind",
+          "applicationCategory": "SportsApplication",
+          "operatingSystem": "iOS, Android",
+          "url": "https://apps.apple.com/app/id6773070688"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "MobileApplication",
+          "name": "RefundHound",
+          "applicationCategory": "FinanceApplication",
+          "operatingSystem": "Android, iOS"
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Keyboard users land here first: one tab press jumps past the nav. -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ==========================================================================
+       SVG sprite — the logo geometry lives here once and is referenced with
+       <use> wherever the mark appears. The stems inherit `currentColor` so the
+       mark re-colours itself in dark mode for free.
+       ========================================================================== -->
+  <svg width="0" height="0" class="sprite" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="byteGradient" x1="32" y1="26" x2="68" y2="74" gradientUnits="userSpaceOnUse">
+        <stop offset="0" stop-color="#12A5B4"/>
+        <stop offset="1" stop-color="#3FD0C9"/>
+      </linearGradient>
+
+      <!-- Geometry is defined once, on the brand's 100-unit grid, and pulled
+           in with <use>. These are <g> and not <symbol> on purpose: <use> on a
+           symbol spawns a nested viewport at the user-space origin, which the
+           `viewBox="24 24 52 52"` crop would then offset. A <g> renders
+           directly in the referencing element's coordinate system. -->
+
+      <!-- The two fixed stems of the N -->
+      <g id="mark-stems">
+        <rect x="26" y="26" width="10" height="48" rx="2"/>
+        <rect x="64" y="26" width="10" height="48" rx="2"/>
+      </g>
+
+      <!-- Eight bits — one byte — stepping down the diagonal -->
+      <g id="mark-bits">
+        <rect x="32.00" y="26.00" width="5.5" height="5.5" rx="1.2"/>
+        <rect x="36.36" y="32.07" width="5.5" height="5.5" rx="1.2"/>
+        <rect x="40.71" y="38.14" width="5.5" height="5.5" rx="1.2"/>
+        <rect x="45.07" y="44.21" width="5.5" height="5.5" rx="1.2"/>
+        <rect x="49.43" y="50.29" width="5.5" height="5.5" rx="1.2"/>
+        <rect x="53.79" y="56.36" width="5.5" height="5.5" rx="1.2"/>
+        <rect x="58.14" y="62.43" width="5.5" height="5.5" rx="1.2"/>
+        <rect x="62.50" y="68.50" width="5.5" height="5.5" rx="1.2"/>
+      </g>
+    </defs>
+  </svg>
+
+  <!-- ==========================================================================
+       HEADER — sticky, collapses to a hamburger below the `md` breakpoint
+       ========================================================================== -->
+  <header class="site-header" id="top">
+    <div class="site-header__inner wrap">
+
+      <!-- Logo lockup: inline SVG mark + real text. Text instead of a baked-in
+           wordmark keeps it selectable, translatable and crisp at any DPI. -->
+      <a class="logo" href="#top" aria-label="Nilbyte Studio — home">
+        <svg class="logo__mark" viewBox="24 24 52 52" aria-hidden="true" focusable="false">
+          <use href="#mark-stems" fill="currentColor"/>
+          <use href="#mark-bits" fill="url(#byteGradient)"/>
+        </svg>
+        <span class="logo__text">
+          <span class="logo__name">Nilbyte</span>
+          <span class="logo__descriptor">Studio</span>
+        </span>
+      </a>
+
+      <!-- Primary navigation -->
+      <nav class="nav" id="primary-nav" aria-label="Primary">
+        <ul class="nav__list">
+          <li class="nav__item"><a class="nav__link" href="#work">Work</a></li>
+          <li class="nav__item"><a class="nav__link" href="#about">About</a></li>
+          <li class="nav__item"><a class="nav__link" href="#stack">Stack</a></li>
+          <li class="nav__item"><a class="nav__link" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <!-- Theme toggle. Starts hidden and is revealed by JS, so no-JS users
+             never see a control that cannot work. -->
+        <button class="icon-button" id="theme-toggle" type="button" hidden
+                aria-label="Switch colour theme" aria-pressed="false">
+          <svg class="icon icon--sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="4.2"/>
+            <path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.2 5.2l1.9 1.9M16.9 16.9l1.9 1.9M18.8 5.2l-1.9 1.9M7.1 16.9l-1.9 1.9"/>
+          </svg>
+          <svg class="icon icon--moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2z"/>
+          </svg>
+        </button>
+
+        <!-- Mobile menu button — also revealed by JS for the same reason. -->
+        <button class="icon-button nav-toggle" id="nav-toggle" type="button" hidden
+                aria-label="Open menu" aria-expanded="false" aria-controls="primary-nav">
+          <span class="nav-toggle__bars" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ========================================================================
+         HERO
+         ======================================================================== -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow">Indie app studio · Varberg, Sweden</p>
+          <h1 class="hero__title" id="hero-title">
+            The apps I<br>
+            wanted to <span class="text-gradient">exist</span>.
+          </h1>
+          <p class="hero__lede">
+            Nilbyte Studio is one person building small, fast mobile apps — each one
+            started because I hit the problem myself and everything out there wanted
+            a sign-up and a monthly fee to solve it.
+          </p>
+          <div class="hero__actions">
+            <a class="button button--primary" href="#work">See the apps</a>
+            <a class="button button--ghost" href="#contact">Say hello</a>
+          </div>
+
+          <!-- Credibility strip. Every number here has to survive someone checking
+               it against the store listings — no claims about tracking or ads,
+               because ForeWind serves AdMob banners until you buy the removal.
+               TODO: bump "Apps built" as you ship. -->
+          <dl class="stats" aria-label="Studio at a glance">
+            <div class="stats__item">
+              <dt class="stats__label">Apps built</dt>
+              <dd class="stats__value">2</dd>
+            </div>
+            <div class="stats__item">
+              <dt class="stats__label">Subscriptions</dt>
+              <dd class="stats__value">0</dd>
+            </div>
+            <div class="stats__item">
+              <dt class="stats__label">Servers I run</dt>
+              <dd class="stats__value">0</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Decorative brand panel. Purely ornamental, so it is hidden from AT. -->
+        <div class="hero__visual" aria-hidden="true">
+          <div class="hero__panel">
+            <svg class="hero__mark" viewBox="24 24 52 52" focusable="false">
+              <use href="#mark-stems" fill="#FFFFFF"/>
+              <use class="hero__bits" href="#mark-bits" fill="url(#byteGradient)"/>
+            </svg>
+            <p class="hero__panel-caption">01001110 · one byte, eight bits</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         WORK / APPS
+         One card per app. Both are real; keep the status badges honest and
+         update them as store state changes.
+         ======================================================================== -->
+    <section class="section" id="work" aria-labelledby="work-title">
+      <div class="wrap">
+        <header class="section__head">
+          <p class="eyebrow">Work</p>
+          <h2 class="section__title" id="work-title">The apps</h2>
+          <p class="section__lede">
+            Two so far. Both solve a problem I actually had, both keep your data on
+            your own device, and neither one asks you to make an account or pay
+            monthly.
+          </p>
+        </header>
+
+        <ul class="card-grid card-grid--wide" role="list">
+
+          <!-- ---------- ForeWind ---------- -->
+          <li class="card">
+            <article class="card__body">
+              <div class="card__top">
+                <span class="badge badge--live">Live</span>
+                <span class="card__platform">iOS · Android</span>
+              </div>
+              <h3 class="card__title">
+                <a class="card__link" href="https://apps.apple.com/app/id6773070688" rel="noopener">ForeWind</a>
+              </h3>
+              <p class="card__text">
+                A golf shot calculator that tells you how far the ball will actually
+                go. Point the phone down your target line, and it combines the live
+                wind from your exact position with the shot direction to give you a
+                real playing distance instead of a guess.
+              </p>
+              <ul class="feature-list" role="list">
+                <li class="feature-list__item">Live weather from MET Norway, cached so it works on a patchy course signal</li>
+                <li class="feature-list__item">Cosine-interpolated wind model — no crude headwind/tailwind buckets</li>
+                <li class="feature-list__item">Built-in compass with calibration; metres or yards, m/s or mph</li>
+                <li class="feature-list__item">Free with a banner ad; one-time purchase removes it for good</li>
+              </ul>
+              <ul class="tags" role="list">
+                <li class="tag">.NET MAUI</li>
+                <li class="tag">C#</li>
+                <li class="tag">EF&nbsp;Core</li>
+                <li class="tag">SQLite</li>
+                <li class="tag">xUnit&nbsp;v3</li>
+              </ul>
+            </article>
+            <footer class="card__footer">
+              <a class="link-arrow" href="https://apps.apple.com/app/id6773070688" rel="noopener">App&nbsp;Store</a>
+              <a class="link-arrow" href="https://play.google.com/store/apps/details?id=com.jnsoftware.forewind" rel="noopener">Google&nbsp;Play</a>
+              <a class="link-arrow" href="forewind/">Support</a>
+            </footer>
+          </li>
+
+          <!-- ---------- RefundHound ----------
+               TODO: when the App Store review clears and the Play testing period
+               ends, change the badge to `badge--live` + "Live" and swap the two
+               placeholder footer links for the real store URLs. -->
+          <li class="card">
+            <article class="card__body">
+              <div class="card__top">
+                <span class="badge badge--wip">Coming soon</span>
+                <span class="card__platform">Android · iOS</span>
+              </div>
+              <h3 class="card__title">RefundHound</h3>
+              <p class="card__text">
+                Track the refunds you are owed, and get nagged until the money
+                actually lands. Merchants promise "5–10 business days" and count on
+                you forgetting. Log a refund in fifteen seconds and the app remembers
+                for you.
+              </p>
+              <ul class="feature-list" role="list">
+                <li class="feature-list__item">Asks "did it arrive?" on the day it was due, then escalates: check account → contact support → dispute</li>
+                <li class="feature-list__item">No account, no email access, no bank connection — everything stays on the phone</li>
+                <li class="feature-list__item">Free for three refunds at a time; one-time unlock for unlimited, stats and CSV export</li>
+              </ul>
+              <ul class="tags" role="list">
+                <li class="tag">.NET MAUI</li>
+                <li class="tag">C#</li>
+                <li class="tag">EF&nbsp;Core</li>
+                <li class="tag">SQLite</li>
+                <li class="tag">xUnit&nbsp;v3</li>
+              </ul>
+            </article>
+            <footer class="card__footer">
+              <span class="card__status">In App&nbsp;Store review · finishing Google&nbsp;Play testing</span>
+            </footer>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         ABOUT
+         ======================================================================== -->
+    <section class="section section--tint" id="about" aria-labelledby="about-title">
+      <div class="wrap about">
+        <div class="about__copy">
+          <p class="eyebrow">About</p>
+          <h2 class="section__title" id="about-title">I build what I want to use</h2>
+          <p>
+            <!-- TODO: rewrite in your own voice — this is the section people
+                 actually read before they email you. -->
+            I'm Johan, a software developer on the Swedish west coast. Nilbyte Studio
+            is where I ship my own apps. Every one starts the same way: I run into
+            something annoying, look for an app that fixes it, and find only things
+            that want an account, a subscription and an analytics SDK first.
+          </p>
+          <p>
+            So the subject matter can be anything — wind on a golf course, refunds
+            that never arrive, whatever comes next. The common thread isn't a market
+            or an industry, it's that I wanted the thing to exist and was willing to
+            build it properly.
+          </p>
+          <p>
+            <strong>I don't take client work.</strong> No agency services, no
+            contracting, no "let's build your idea". That keeps the roadmap short and
+            means I only answer to the people using the apps.
+          </p>
+          <p>
+            I do everything myself: design, code, store releases and the unglamorous
+            maintenance afterwards. Both apps keep what you put into them on your own
+            device — I run no server and have no copy of your data.
+          </p>
+          <p>
+            Being straight about the money: ForeWind is free and shows a banner ad,
+            with a one-time purchase to remove it. RefundHound is free for three
+            refunds, with a one-time unlock for the rest. Those ads come from Google's
+            SDK and it does its own tracking, which is exactly why buying the removal
+            takes it out of the app entirely. Neither app has a subscription, and I
+            add no analytics of my own.
+          </p>
+          <a class="link-arrow link-arrow--lg" href="#work">See what I've built</a>
+        </div>
+
+        <!-- Principles — cheap to scan, does a lot of positioning work. -->
+        <ul class="principles" role="list">
+          <li class="principle">
+            <h3 class="principle__title">Be the first user</h3>
+            <p class="principle__text">If I wouldn't open it daily, it doesn't get built.</p>
+          </li>
+          <li class="principle">
+            <h3 class="principle__title">Your phone, your data</h3>
+            <p class="principle__text">Your shots, refunds and settings stay on the device. No account, no server of mine to leak.</p>
+          </li>
+          <li class="principle">
+            <h3 class="principle__title">Pay once, or not at all</h3>
+            <p class="principle__text">One-time purchases only. No subscriptions, no upsell treadmill.</p>
+          </li>
+          <li class="principle">
+            <h3 class="principle__title">Built to still work</h3>
+            <p class="principle__text">Few dependencies, real tests, code I can pick up in five years.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         STACK / CAPABILITIES
+         ======================================================================== -->
+    <section class="section" id="stack" aria-labelledby="stack-title">
+      <div class="wrap">
+        <header class="section__head">
+          <p class="eyebrow">Stack</p>
+          <h2 class="section__title" id="stack-title">What the apps are made of</h2>
+          <p class="section__lede">
+            Not a logo wall — this is the actual stack behind ForeWind and
+            RefundHound. One toolchain, both platforms, no backend to run.
+          </p>
+        </header>
+
+        <div class="stack">
+          <section class="stack__group" aria-labelledby="stack-app">
+            <h3 class="stack__title" id="stack-app">App</h3>
+            <ul class="tags tags--lg" role="list">
+              <li class="tag">.NET 10</li>
+              <li class="tag">.NET MAUI</li>
+              <li class="tag">C# 14</li>
+              <li class="tag">XAML</li>
+              <li class="tag">MVVM Toolkit</li>
+            </ul>
+          </section>
+
+          <section class="stack__group" aria-labelledby="stack-data">
+            <h3 class="stack__title" id="stack-data">On-device data</h3>
+            <ul class="tags tags--lg" role="list">
+              <li class="tag">EF Core</li>
+              <li class="tag">SQLite</li>
+              <li class="tag">Local notifications</li>
+              <li class="tag">In-app billing</li>
+            </ul>
+          </section>
+
+          <section class="stack__group" aria-labelledby="stack-quality">
+            <h3 class="stack__title" id="stack-quality">Quality</h3>
+            <ul class="tags tags--lg" role="list">
+              <li class="tag">xUnit v3</li>
+              <li class="tag">Moq</li>
+              <li class="tag">Roslyn analyzers</li>
+              <li class="tag">GitHub Actions</li>
+            </ul>
+          </section>
+
+          <section class="stack__group" aria-labelledby="stack-ship">
+            <h3 class="stack__title" id="stack-ship">Shipping</h3>
+            <ul class="tags tags--lg" role="list">
+              <li class="tag">App Store</li>
+              <li class="tag">Google Play</li>
+              <li class="tag">Localisation</li>
+              <li class="tag">Accessibility</li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CONTACT
+         ======================================================================== -->
+    <section class="section section--tint" id="contact" aria-labelledby="contact-title">
+      <div class="wrap contact">
+
+        <div class="contact__intro">
+          <p class="eyebrow">Contact</p>
+          <h2 class="section__title" id="contact-title">Say hello</h2>
+          <p>
+            Found a bug, want a feature, or have an idea for an app that should
+            exist? That's the inbox. I read everything and reply within two working
+            days.
+          </p>
+          <p>
+            I'm not available for client work or contracting — but if you use one of
+            the apps and something is broken or missing, that goes straight to the
+            top of the list.
+          </p>
+
+          <ul class="contact__links" role="list">
+            <li>
+              <!-- TODO: swap for a studio address (e.g. j.nilsson89@outlook.com) once
+                   the domain has mail set up. -->
+              <a class="contact__email" href="mailto:j.nilsson89@outlook.com">j.nilsson89@outlook.com</a>
+            </li>
+            <li class="contact__socials">
+              <!-- TODO: add LinkedIn / Mastodon here if you want them public. -->
+              <a class="link-arrow" href="https://github.com/jnilsson89" rel="me noopener">GitHub</a>
+              <a class="link-arrow" href="forewind/">ForeWind support</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Contact form.
+             `action` is a plain mailto so the form works with JavaScript off.
+             With JS on, main.js posts to FORM_ENDPOINT instead (see the TODO
+             at the top of that file) and shows inline status. -->
+        <form class="form" id="contact-form" method="post"
+              action="mailto:j.nilsson89@outlook.com" enctype="text/plain" novalidate>
+
+          <div class="form__row">
+            <label class="form__label" for="name">Name</label>
+            <input class="form__input" id="name" name="name" type="text"
+                   autocomplete="name" required>
+          </div>
+
+          <div class="form__row">
+            <label class="form__label" for="email">Email</label>
+            <input class="form__input" id="email" name="email" type="email"
+                   autocomplete="email" required>
+          </div>
+
+          <div class="form__row">
+            <label class="form__label" for="message">Message</label>
+            <textarea class="form__input form__input--textarea" id="message"
+                      name="message" rows="5" required></textarea>
+          </div>
+
+          <!-- Honeypot: hidden from people, irresistible to bots. -->
+          <div class="form__honeypot" aria-hidden="true">
+            <label for="company">Company</label>
+            <input id="company" name="company" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <button class="button button--primary button--block" type="submit">Send message</button>
+
+          <!-- Live region: JS writes success/error text here so screen readers
+               are told what happened without moving focus. -->
+          <p class="form__status" id="form-status" role="status" aria-live="polite"></p>
+
+          <p class="form__note">
+            Your message is used only to reply to you. Nothing is stored or shared.
+          </p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="wrap site-footer__inner">
+      <div class="site-footer__brand">
+        <svg class="site-footer__mark" viewBox="24 24 52 52" aria-hidden="true" focusable="false">
+          <use href="#mark-stems" fill="currentColor"/>
+          <use href="#mark-bits" fill="#12A5B4"/>
+        </svg>
+        <p class="site-footer__tagline">Small apps, built properly.</p>
+      </div>
+
+      <nav class="site-footer__nav" aria-label="Footer">
+        <ul class="site-footer__list" role="list">
+          <li><a href="#work">Work</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#stack">Stack</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <!-- TODO: add privacy.html + imprint.html — both are expected in the EU -->
+          <li><a href="#contact">Privacy</a></li>
+        </ul>
+      </nav>
+
+      <p class="site-footer__legal">
+        &copy; <span id="year">2026</span> Nilbyte Studio · Varberg, Sweden
+      </p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

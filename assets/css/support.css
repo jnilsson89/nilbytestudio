@@ -1,0 +1,537 @@
+/* ==========================================================================
+   Nilbyte Studio — shared app support / privacy page styles
+   --------------------------------------------------------------------------
+   One skeleton, one accent knob.
+
+   Structure, type scale, spacing and components come from the studio design
+   language so every Nilbyte page feels like the same hand. Only the accent
+   colour changes per app, set by `data-app` on <html>.
+
+   That split is the brand rule applied literally: the brand sheet says the
+   signal colour "only ever appears as a thin accent. Everything else is Ink
+   on white or white on Ink." Each app gets its own signal; the surfaces stay
+   neutral studio ink and mist. A visitor arriving from inside the green golf
+   app sees green and knows they're in the right place, and still recognises
+   the page as ours.
+
+   To add an app: copy one `[data-app='…']` block, drop in its Primary and
+   PrimaryContainer from the app's Colors.xaml, and check the contrast note.
+
+   Sections
+     1. Accent themes (per app)
+     2. Neutral tokens + dark mode
+     3. Base elements
+     4. Layout
+     5. Components
+     6. Responsive & motion
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. Accent themes
+   --------------------------------------------------------------------------
+   `--accent` must reach 4.5:1 on --surface for body-size link text, so these
+   are the darkened variants of each app's Primary rather than Primary itself.
+   `--accent-strong` is the large-text/graphic version.
+   ========================================================================== */
+
+/* ForeWind — Material 3 palette from ForeWind/Resources/Styles/Colors.xaml.
+   Primary #3D9046 is only ~3.4:1 on white, so links use #2F7238. */
+:root[data-app='forewind'] {
+  --accent:            #2F7238;
+  --accent-strong:     #3D9046;
+  --accent-container:  #C2EDC4;
+  --on-accent-container: #00210A;
+  --accent-soft:       rgba(61, 144, 70, 0.10);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-app='forewind'] {
+    --accent:            #A7D9A9;
+    --accent-strong:     #A7D9A9;
+    --accent-container:  #1F3F23;
+    --on-accent-container: #A7D9A9;
+    --accent-soft:       rgba(167, 217, 169, 0.12);
+  }
+}
+
+/* RefundHound — "Harbor Teal", from RefundHound/Resources/Styles/Colors.xaml.
+   Primary #00696D already passes on white, so it is used directly. */
+:root[data-app='refundhound'] {
+  --accent:            #00696D;
+  --accent-strong:     #00696D;
+  --accent-container:  #9CF1F5;
+  --on-accent-container: #002021;
+  --accent-soft:       rgba(0, 105, 109, 0.10);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-app='refundhound'] {
+    --accent:            #80D4D9;
+    --accent-strong:     #80D4D9;
+    --accent-container:  #004F53;
+    --on-accent-container: #9CF1F5;
+    --accent-soft:       rgba(128, 212, 217, 0.12);
+  }
+}
+
+
+/* ==========================================================================
+   2. Neutral tokens
+   --------------------------------------------------------------------------
+   Studio ink/mist, shared by every app page. Kept deliberately close to
+   assets/css/styles.css so the marketing site and the support pages read as
+   one system.
+   ========================================================================== */
+
+:root {
+  --bg:          #FFFFFF;
+  --surface:     #FFFFFF;
+  --surface-alt: #EEF3F5;   /* brand Mist */
+
+  --text:        #12222F;
+  --text-strong: #0E1C2B;   /* brand Ink */
+  --text-muted:  #5A6B7B;   /* brand Slate */
+
+  --border:      #DBE4E9;
+  --border-strong: #C4D2DA;
+
+  /* Callout for the things a reader must not skim past. */
+  --notice-bg:     #FFE8C2;
+  --notice-text:   #6F4F00;
+  --notice-border: #E5C36C;
+
+  --font-sans: 'Inter Tight', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --step--1: 0.875rem;
+  --step-0:  1.0625rem;
+  --step-1:  1.1875rem;
+  --step-2:  1.375rem;
+  --step-3:  clamp(1.6rem, 1.35rem + 1.1vw, 2.1rem);
+  --step-4:  clamp(2rem, 1.55rem + 2.1vw, 2.9rem);
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+
+  --wrap: 46rem;
+  --wrap-pad: clamp(1.25rem, 1rem + 2vw, 2rem);
+
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur: 150ms;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:          #0B1622;
+    --surface:     #12222F;
+    --surface-alt: #0E1C2B;
+
+    --text:        #DCE7EE;
+    --text-strong: #FFFFFF;
+    --text-muted:  #92A7B8;
+
+    --border:      #23394C;
+    --border-strong: #315068;
+
+    --notice-bg:     #2B1C00;
+    --notice-text:   #FFDDA8;
+    --notice-border: #5D4200;
+  }
+}
+
+
+/* ==========================================================================
+   3. Base
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--space-5);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--step-0);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  color: var(--text-strong);
+  line-height: 1.2;
+  letter-spacing: -0.018em;
+  text-wrap: balance;
+}
+
+p { margin: 0 0 var(--space-4); }
+p:last-child { margin-bottom: 0; }
+
+ul, ol { margin: 0 0 var(--space-4); padding-left: 1.25rem; }
+li { margin: var(--space-2) 0; }
+
+strong { font-weight: 600; color: var(--text-strong); }
+
+a { color: var(--accent); text-underline-offset: 0.16em; }
+a:hover { color: var(--text-strong); }
+
+:where(a, button, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -100px;
+  z-index: 10;
+  padding: var(--space-3) var(--space-5);
+  background: var(--accent);
+  color: #FFFFFF;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: top var(--dur) var(--ease);
+}
+.skip-link:focus { top: var(--space-4); color: #FFFFFF; }
+
+
+/* ==========================================================================
+   4. Layout
+   ========================================================================== */
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: var(--wrap-pad);
+}
+
+/* --- Page header ----------------------------------------------------------
+   The one place the app's colour fills a surface: it is the recognition cue
+   for someone arriving straight from inside the app. */
+
+.page-header {
+  background: var(--accent-container);
+  color: var(--on-accent-container);
+  padding-block: var(--space-7) var(--space-6);
+  margin-bottom: var(--space-7);
+}
+
+/* Studio lockup above the app name — the link back that the pages previously
+   had no way of offering.
+
+   Uses the full eight-bit mark, not the compact one-stroke variant. The brand
+   sheet puts the compact file below ~24px, where the bits would merge; at that
+   size it reads as a generic blocky N and throws away the whole idea. So the
+   mark is set at 26px, just above that floor, where the byte is legible.
+
+   Colour is a single ink (currentColor for both stems and bits) — the brand
+   sheet's sanctioned MONO / ONE INK variant, which is what lets the same
+   markup sit on a green header, a dark footer, or paper. */
+.page-header__studio {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.8;
+  transition: opacity var(--dur) var(--ease);
+}
+.page-header__studio:hover { opacity: 1; color: inherit; }
+.page-header__mark { width: 26px; height: 26px; flex: none; }
+
+/* Two-tone the mark: stems solid, bits knocked back.
+   The eight bits are 5.5 units square on a 52-unit viewBox with only a 0.57
+   unit vertical gap, so at any UI size the gap is sub-pixel (0.29px at 26px)
+   and they merge into one diagonal. Rendered in a single ink that reads as a
+   crude solid N. Giving the bit group its own tone separates the diagonal
+   from the stems the way the two-colour lockup does, and because it is an
+   opacity on currentColor rather than a fixed hex, it works unchanged on the
+   light header, the dark footer, in dark mode and in print.
+   The second <g> in each mark is the bit group. */
+.page-header__mark g + g,
+.page-footer__mark g + g { opacity: 0.55; }
+
+/* Name + letterspaced descriptor, matching the studio site header exactly. */
+.page-header__wordmark { display: flex; align-items: baseline; gap: 0.4rem; }
+.page-header__name {
+  font-size: 1rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+.page-header__descriptor {
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+.page-header__title { font-size: var(--step-4); font-weight: 700; margin-bottom: var(--space-2); }
+.page-header__tagline { margin: 0; font-size: var(--step-1); opacity: 0.85; }
+
+.main { padding-bottom: var(--space-8); }
+
+h2 {
+  font-size: var(--step-3);
+  font-weight: 650;
+  margin: var(--space-8) 0 var(--space-4);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--border);
+}
+h2:first-of-type { border-top: 0; padding-top: 0; margin-top: 0; }
+
+h3 {
+  font-size: var(--step-1);
+  font-weight: 600;
+  margin: var(--space-6) 0 var(--space-3);
+}
+
+
+/* ==========================================================================
+   5. Components
+   ========================================================================== */
+
+/* --- Contact card --------------------------------------------------------- */
+
+.contact-card {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  margin-bottom: var(--space-5);
+}
+.contact-card p { margin: var(--space-2) 0; }
+
+.contact-card__email {
+  font-size: var(--step-2);
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.muted { color: var(--text-muted); font-size: var(--step--1); }
+
+/* --- Quick links ----------------------------------------------------------
+   A task-shaped index at the top. Someone lands on a support page because
+   something is wrong; this gets them to it without reading the explanations. */
+
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: var(--space-2);
+  padding: 0;
+  margin: 0 0 var(--space-5);
+}
+.quick-links li { margin: 0; list-style: none; }
+
+.quick-links a {
+  display: block;
+  padding: var(--space-3) var(--space-4);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: var(--step--1);
+  font-weight: 550;
+  text-decoration: none;
+  color: var(--text-strong);
+  transition: border-color var(--dur) var(--ease), background-color var(--dur) var(--ease);
+}
+.quick-links a:hover { border-color: var(--accent-strong); background: var(--accent-soft); }
+
+/* --- Progressive disclosure -----------------------------------------------
+   Native <details>: no JavaScript, keyboard accessible, and findable by the
+   browser's own in-page search in modern browsers. Used to keep the plain
+   answer on top and the mechanism one click away. */
+
+.detail {
+  margin: var(--space-4) 0 var(--space-5);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface-alt);
+  overflow: hidden;
+}
+
+.detail__summary {
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--step--1);
+  font-weight: 600;
+  color: var(--text-strong);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.detail__summary::-webkit-details-marker { display: none; }
+
+/* Chevron drawn in CSS so there is no icon font or SVG to load. */
+.detail__summary::before {
+  content: '';
+  width: 0.42em;
+  height: 0.42em;
+  flex: none;
+  border-right: 2px solid var(--accent-strong);
+  border-bottom: 2px solid var(--accent-strong);
+  transform: rotate(-45deg);
+  transition: transform var(--dur) var(--ease);
+}
+.detail[open] .detail__summary::before { transform: rotate(45deg); }
+
+.detail__body {
+  padding: 0 var(--space-4) var(--space-4);
+  font-size: var(--step--1);
+  color: var(--text-muted);
+}
+.detail__body > :first-child { margin-top: 0; }
+
+/* --- Notice callout -------------------------------------------------------- */
+
+.notice {
+  background: var(--notice-bg);
+  color: var(--notice-text);
+  border: 1px solid var(--notice-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  margin: var(--space-5) 0;
+}
+.notice p { margin: var(--space-2) 0; }
+.notice strong { color: inherit; }
+
+/* --- Summary box ----------------------------------------------------------
+   The 20-second version of a long document, before the long document. */
+
+.summary-box {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent-strong);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  margin-bottom: var(--space-6);
+}
+.summary-box h2 {
+  margin: 0 0 var(--space-3);
+  padding: 0;
+  border: 0;
+  font-size: var(--step-1);
+}
+.summary-box ul { margin-bottom: 0; }
+.summary-box li { font-size: var(--step--1); }
+/* The opening line is the whole point of the box — carry the emphasis the
+   original page had. */
+.summary-box > p:first-child { font-weight: 600; color: var(--text-strong); }
+
+/* --- Tables ---------------------------------------------------------------- */
+
+.table-scroll {
+  overflow-x: auto;
+  margin: var(--space-4) 0 var(--space-5);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+table { border-collapse: collapse; width: 100%; font-size: var(--step--1); }
+
+th, td {
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+tbody tr:last-child td { border-bottom: 0; }
+
+th {
+  font-weight: 600;
+  color: var(--text-strong);
+  background: var(--surface-alt);
+  white-space: nowrap;
+}
+
+/* --- Address block --------------------------------------------------------- */
+
+.address-block {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4) var(--space-5);
+  margin: var(--space-4) 0 var(--space-5);
+  font-style: normal;
+}
+.address-block p { margin: var(--space-1) 0; }
+
+/* --- Footer ----------------------------------------------------------------
+   Every app page ends by naming the studio and linking home. This is the bit
+   that makes hosting them on one domain actually worth something. */
+
+.page-footer {
+  margin-top: var(--space-8);
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--border);
+  font-size: var(--step--1);
+  color: var(--text-muted);
+}
+.page-footer a { color: var(--text-muted); }
+.page-footer a:hover { color: var(--text-strong); }
+
+.page-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  padding: 0;
+  margin: 0 0 var(--space-4);
+}
+.page-footer__links li { list-style: none; margin: 0; }
+
+.page-footer__studio { display: flex; align-items: center; gap: var(--space-3); }
+/* 26px for the same reason as the header — below ~24px the bits merge. */
+.page-footer__mark { width: 26px; height: 26px; flex: none; color: var(--text-strong); }
+.page-footer__studio p { margin: 0; }
+
+.updated {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+}
+
+
+/* ==========================================================================
+   6. Responsive & motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media print {
+  .page-header { background: none; color: #000; padding-block: 0 var(--space-4); }
+  .page-header__studio, .quick-links, .skip-link { display: none; }
+  body { background: #fff; color: #000; }
+  /* Nothing may hide behind a collapsed disclosure on paper. */
+  .detail { border: 0; background: none; }
+  .detail__body { display: block !important; }
+  a { text-decoration: underline; }
+}

@@ -1,0 +1,26 @@
+# GitHub Pages / Jekyll configuration.
+#
+# The site is plain hand-written HTML — Jekyll is not used to build anything.
+# This file exists for one reason: `exclude` keeps the listed paths OUT of the
+# published site entirely. That is real exclusion, not a robots.txt request:
+# excluded files are never copied to the server, so they cannot be fetched.
+#
+# `docs/` holds internal working notes (design specs, a store-submission
+# checklist, brand masters). Nothing secret, but not public-facing either.
+#
+# NOTE: do not add a `.nojekyll` file. That switches Jekyll off, and with it
+# this exclusion — `docs/` would become publicly reachable.
+
+exclude:
+  - docs
+  - README.md
+  - _config.yml
+  # Not ready to publish. These are the RefundHound pages in their original
+  # form, still served from the jnilsson89/refundhound-support repo while the
+  # app is in App Store review. Publishing them here too would put unlinked
+  # duplicate content at /refundhound-support/. When the app ships, rebuild
+  # them on the shared skeleton as /refundhound/ and delete this line.
+  - refundhound-support
+
+# Keep Jekyll from touching the HTML; there are no layouts, includes or posts.
+plugins: []
