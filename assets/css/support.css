@@ -1,11 +1,13 @@
 /* ==========================================================================
-   Nilbyte Studio — shared app support / privacy page styles
+   Nilbyte Studio — app support / privacy pages
    --------------------------------------------------------------------------
-   One skeleton, one accent knob.
+   One skeleton, one accent knob. Loaded after base.css, which supplies the
+   colour system, spacing and shape scales, the reset and the layout
+   primitives. Only what these pages need beyond that lives here.
 
-   Structure, type scale, spacing and components come from the studio design
-   language so every Nilbyte page feels like the same hand. Only the accent
-   colour changes per app, set by `data-app` on <html>.
+   Structure, type and components come from the studio design language so
+   every Nilbyte page feels like the same hand. Only the accent colour changes
+   per app, set by `data-app` on <html>.
 
    That split is the brand rule applied literally: the brand sheet says the
    signal colour "only ever appears as a thin accent. Everything else is Ink
@@ -19,11 +21,11 @@
 
    Sections
      1. Accent themes (per app)
-     2. Neutral tokens + dark mode
-     3. Base elements
+     2. Tokens specific to these pages
+     3. Typography
      4. Layout
      5. Components
-     6. Responsive & motion
+     6. Print
    ========================================================================== */
 
 
@@ -38,8 +40,8 @@
 /* ForeWind — Material 3 palette from ForeWind/Resources/Styles/Colors.xaml.
    Primary #3D9046 is only ~3.4:1 on white, so links use #2F7238. */
 :root[data-app='forewind'] {
-  --accent:            #2F7238;
-  --accent-strong:     #3D9046;
+  --accent:            #3D9046;   /* brand hue, for graphic accents */
+  --accent-strong:     #2F7238;   /* darkened — AA for link text on white */
   --accent-container:  #C2EDC4;
   --on-accent-container: #00210A;
   --accent-soft:       rgba(61, 144, 70, 0.10);
@@ -48,10 +50,16 @@
 @media (prefers-color-scheme: dark) {
   :root[data-app='forewind'] {
     --accent:            #A7D9A9;
-    --accent-strong:     #A7D9A9;
+    --accent-strong:     #A7D9A9;   /* already light-on-dark; one value serves both */
     --accent-container:  #1F3F23;
     --on-accent-container: #A7D9A9;
     --accent-soft:       rgba(167, 217, 169, 0.12);
+
+    /* Same two-sided constraint as RefundHound's dark block: the bits must
+       read against the #1F3F23 header AND against the pale #A7D9A9 stems that
+       bits 1 and 8 overlap. Aqua scores 6.18 on the header but 1.19 on the
+       stems. The darkened Signal balances at 2.31 / 3.17. */
+    --mark-bits:         #0C7A87;
   }
 }
 
@@ -79,29 +87,38 @@
     --accent-container:  #004F53;
     --on-accent-container: #9CF1F5;
     --accent-soft:       rgba(128, 212, 217, 0.12);
+
+    /* Must be repeated here. The light override above is
+       `:root[data-app='refundhound']` (0,2,0), which outranks the generic
+       dark `:root` rule (0,1,0) — so without this the dark pages would keep
+       the light #00696D and the bits would vanish into the #004F53 header.
+
+       Studio Signal, not the app's own #80D4D9. The bits have to stay legible
+       against two things at once: the dark header behind six of them, and the
+       pale #9CF1F5 stems that bits 1 and 8 sit on top of. #80D4D9 scores 5.5:1
+       on the header but only 1.32:1 on the stems, so the two overlapping bits
+       disappear. Signal balances at 3.15 and 2.31 — the weakest link is nearly
+       twice as strong. Signal is wrong for this app in light mode and right in
+       dark; the constraint is different in each. */
+    --mark-bits:         #12A5B4;
   }
 }
 
 
 /* ==========================================================================
-   2. Neutral tokens
+   2. Tokens specific to these pages
    --------------------------------------------------------------------------
-   Studio ink/mist, shared by every app page. Kept deliberately close to
-   assets/css/styles.css so the marketing site and the support pages read as
-   one system.
+   The colour system, spacing and shape scales come from base.css. What
+   differs here is a fixed reading type scale — these are documents, not a
+   marketing page, so the sizes do not need to grow with the viewport — a
+   narrower measure, and the callout colours only these pages use.
    ========================================================================== */
 
 :root {
-  --bg:          #FFFFFF;
-  --surface:     #FFFFFF;
-  --surface-alt: #EEF3F5;   /* brand Mist */
-
-  --text:        #12222F;
-  --text-strong: #0E1C2B;   /* brand Ink */
-  --text-muted:  #5A6B7B;   /* brand Slate */
-
-  --border:      #DBE4E9;
-  --border-strong: #C4D2DA;
+  /* Callout for the things a reader must not skim past. */
+  --notice-bg:     #FFE8C2;
+  --notice-text:   #6F4F00;
+  --notice-border: #E5C36C;
 
   /* Studio Signal — the colour of the eight bits in the mark. The default is
      the studio's own colour, not the app's, because this is the Nilbyte mark
@@ -110,14 +127,6 @@
      RefundHound block above. */
   --mark-bits:   #12A5B4;
 
-  /* Callout for the things a reader must not skim past. */
-  --notice-bg:     #FFE8C2;
-  --notice-text:   #6F4F00;
-  --notice-border: #E5C36C;
-
-  --font-sans: 'Inter Tight', Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-
   --step--1: 0.875rem;
   --step-0:  1.0625rem;
   --step-1:  1.1875rem;
@@ -125,122 +134,54 @@
   --step-3:  clamp(1.6rem, 1.35rem + 1.1vw, 2.1rem);
   --step-4:  clamp(2rem, 1.55rem + 2.1vw, 2.9rem);
 
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.5rem;
-  --space-6: 2rem;
-  --space-7: 3rem;
-  --space-8: 4rem;
-
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
-  --radius-pill: 999px;
-
-  --wrap: 46rem;
+  /* A reading measure, not the studio page's 1120px. */
+  --wrap-max: 46rem;
   --wrap-pad: clamp(1.25rem, 1rem + 2vw, 2rem);
-
-  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
-  --dur: 150ms;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg:          #0B1622;
-    --surface:     #12222F;
-    --surface-alt: #0E1C2B;
-
-    --text:        #DCE7EE;
-    --text-strong: #FFFFFF;
-    --text-muted:  #92A7B8;
-
-    --border:      #23394C;
-    --border-strong: #315068;
-
-    /* Aqua rather than Signal on dark surfaces — same role, enough lift. */
-    --mark-bits:   #3FD0C9;
-
     --notice-bg:     #2B1C00;
     --notice-text:   #FFDDA8;
     --notice-border: #5D4200;
+
+    /* Aqua rather than Signal on dark surfaces — same role, enough lift. */
+    --mark-bits:     #3FD0C9;
   }
 }
 
 
 /* ==========================================================================
-   3. Base
+   3. Typography for these pages
+   --------------------------------------------------------------------------
+   base.css already zeroes heading margins, sets their colour and balances
+   their wrapping. These pages are long-form documents, so unlike the studio
+   page they keep real list bullets and unmeasured paragraphs.
    ========================================================================== */
 
-*, *::before, *::after { box-sizing: border-box; }
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: var(--space-5);
-  -webkit-text-size-adjust: 100%;
-}
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font-sans);
-  font-size: var(--step-0);
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
-}
+html { scroll-padding-top: var(--space-5); }
 
 h1, h2, h3 {
-  margin: 0;
-  color: var(--text-strong);
   line-height: 1.2;
   letter-spacing: -0.018em;
-  text-wrap: balance;
 }
 
 p { margin: 0 0 var(--space-4); }
 p:last-child { margin-bottom: 0; }
 
+/* Prose lists keep their bullets; only the nav-like lists opt out. */
 ul, ol { margin: 0 0 var(--space-4); padding-left: 1.25rem; }
 li { margin: var(--space-2) 0; }
 
 strong { font-weight: 600; color: var(--text-strong); }
 
-a { color: var(--accent); text-underline-offset: 0.16em; }
+a { color: var(--accent-strong); text-underline-offset: 0.16em; }
 a:hover { color: var(--text-strong); }
-
-:where(a, button, summary, [tabindex]):focus-visible {
-  outline: 2px solid var(--accent-strong);
-  outline-offset: 3px;
-  border-radius: var(--radius-sm);
-}
-
-.skip-link {
-  position: absolute;
-  left: var(--space-4);
-  top: -100px;
-  z-index: 10;
-  padding: var(--space-3) var(--space-5);
-  background: var(--accent);
-  color: #FFFFFF;
-  border-radius: var(--radius-sm);
-  text-decoration: none;
-  transition: top var(--dur) var(--ease);
-}
-.skip-link:focus { top: var(--space-4); color: #FFFFFF; }
 
 
 /* ==========================================================================
    4. Layout
    ========================================================================== */
-
-.wrap {
-  width: 100%;
-  max-width: var(--wrap);
-  margin-inline: auto;
-  padding-inline: var(--wrap-pad);
-}
 
 /* --- Page header ----------------------------------------------------------
    The one place the app's colour fills a surface: it is the recognition cue
@@ -272,7 +213,7 @@ a:hover { color: var(--text-strong); }
   color: inherit;
   text-decoration: none;
   opacity: 0.8;
-  transition: opacity var(--dur) var(--ease);
+  transition: opacity var(--dur-fast) var(--ease);
 }
 .page-header__studio:hover { opacity: 1; color: inherit; }
 .page-header__mark { width: 26px; height: 26px; flex: none; }
@@ -338,7 +279,7 @@ h3 {
 /* --- Contact card --------------------------------------------------------- */
 
 .contact-card {
-  background: var(--surface-alt);
+  background: var(--bg-tint);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--space-5);
@@ -370,16 +311,16 @@ h3 {
 .quick-links a {
   display: block;
   padding: var(--space-3) var(--space-4);
-  background: var(--surface);
+  background: var(--bg-raised);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   font-size: var(--step--1);
   font-weight: 550;
   text-decoration: none;
   color: var(--text-strong);
-  transition: border-color var(--dur) var(--ease), background-color var(--dur) var(--ease);
+  transition: border-color var(--dur-fast) var(--ease), background-color var(--dur-fast) var(--ease);
 }
-.quick-links a:hover { border-color: var(--accent-strong); background: var(--accent-soft); }
+.quick-links a:hover { border-color: var(--accent); background: var(--accent-soft); }
 
 /* --- Progressive disclosure -----------------------------------------------
    Native <details>: no JavaScript, keyboard accessible, and findable by the
@@ -390,7 +331,7 @@ h3 {
   margin: var(--space-4) 0 var(--space-5);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
-  background: var(--surface-alt);
+  background: var(--bg-tint);
   overflow: hidden;
 }
 
@@ -413,10 +354,10 @@ h3 {
   width: 0.42em;
   height: 0.42em;
   flex: none;
-  border-right: 2px solid var(--accent-strong);
-  border-bottom: 2px solid var(--accent-strong);
+  border-right: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
   transform: rotate(-45deg);
-  transition: transform var(--dur) var(--ease);
+  transition: transform var(--dur-fast) var(--ease);
 }
 .detail[open] .detail__summary::before { transform: rotate(45deg); }
 
@@ -444,9 +385,9 @@ h3 {
    The 20-second version of a long document, before the long document. */
 
 .summary-box {
-  background: var(--surface-alt);
+  background: var(--bg-tint);
   border: 1px solid var(--border);
-  border-left: 3px solid var(--accent-strong);
+  border-left: 3px solid var(--accent);
   border-radius: var(--radius-md);
   padding: var(--space-5);
   margin-bottom: var(--space-6);
@@ -485,14 +426,14 @@ tbody tr:last-child td { border-bottom: 0; }
 th {
   font-weight: 600;
   color: var(--text-strong);
-  background: var(--surface-alt);
+  background: var(--bg-tint);
   white-space: nowrap;
 }
 
 /* --- Address block --------------------------------------------------------- */
 
 .address-block {
-  background: var(--surface-alt);
+  background: var(--bg-tint);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: var(--space-4) var(--space-5);
@@ -540,14 +481,6 @@ th {
 /* ==========================================================================
    6. Responsive & motion
    ========================================================================== */
-
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
-}
 
 @media print {
   .page-header { background: none; color: #000; padding-block: 0 var(--space-4); }

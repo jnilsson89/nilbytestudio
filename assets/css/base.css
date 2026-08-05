@@ -1,0 +1,248 @@
+/* ==========================================================================
+   Nilbyte Studio — base
+   --------------------------------------------------------------------------
+   Everything the studio site and the app support pages genuinely share:
+   the colour system, the spacing and shape scales, a minimal reset, and the
+   two layout primitives that appear on every page.
+
+   Load order is always:  fonts.css → base.css → styles.css | support.css
+   The context sheet comes last so its tokens win on equal specificity.
+
+   WHAT IS DELIBERATELY *NOT* HERE
+   Type scale, heading weights and list styling stay in the context sheets.
+   They look like duplication but are not: the studio page uses a fluid
+   clamp() scale and suppresses list bullets, while the support pages use a
+   fixed reading scale and rely on real bullets in the FAQ prose. Hoisting
+   either one here would silently change the other.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. Tokens
+   ========================================================================== */
+
+:root {
+  /* --- Brand palette (from the Nilbyte brand sheet) --------------------- */
+  --brand-ink:    #0E1C2B;
+  --brand-signal: #12A5B4;
+  --brand-aqua:   #3FD0C9;
+  --brand-slate:  #5A6B7B;
+  --brand-mist:   #EEF3F5;
+  --brand-line:   #DBE4E9;
+
+  /* --- Semantic colours (light is the default) --------------------------
+     --bg        page background
+     --bg-raised a surface sitting on the page (cards, form panels)
+     --bg-tint   a quiet band or inset (tinted sections, callouts)          */
+  --bg:            #FFFFFF;
+  --bg-raised:     #FFFFFF;
+  --bg-tint:       var(--brand-mist);
+  --bg-inverse:    var(--brand-ink);
+
+  --text:          #12222F;
+  --text-strong:   var(--brand-ink);
+  --text-muted:    var(--brand-slate);
+  --text-inverse:  #FFFFFF;
+  --text-on-inverse-muted: #9DB4C6;
+
+  /* Studio accent. App pages override these per app via [data-app].
+     Convention, shared by both context sheets:
+       --accent        the brand hue — graphic accents, borders, focus rings
+       --accent-strong higher contrast — link text, must clear 4.5:1 on --bg
+     Signal itself is only 2.97:1 on white, hence the darkened companion.
+     #0E8C99 was previously used here but measured 4.02:1, so it failed the
+     rule this token exists to satisfy; #0C7A87 is 5.06:1. */
+  --accent:        var(--brand-signal);
+  --accent-strong: #0C7A87;
+  --accent-soft:   rgba(18, 165, 180, 0.10);
+
+  --border:        var(--brand-line);
+  --border-strong: #C4D2DA;
+
+  --shadow-sm: 0 1px 2px rgba(14, 28, 43, 0.05);
+  --shadow-md: 0 6px 24px -12px rgba(14, 28, 43, 0.22);
+  --shadow-lg: 0 24px 60px -28px rgba(14, 28, 43, 0.35);
+
+  /* --- Typeface ---------------------------------------------------------
+     Inter Tight is self-hosted via fonts.css — no third-party fetch. The
+     mono stack is the system's; nothing is downloaded for it. */
+  --font-sans: 'Inter Tight', Inter, 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --leading-body: 1.65;
+
+  /* --- Spacing scale (4px base) ----------------------------------------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+
+  /* --- Shape ------------------------------------------------------------- */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+
+  /* --- Measure ----------------------------------------------------------
+     Support pages narrow --wrap-max to a reading measure; see support.css. */
+  --wrap-max: 1120px;
+  --wrap-pad: clamp(1.25rem, 1rem + 2vw, 2.5rem);
+
+  /* --- Motion ------------------------------------------------------------ */
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --dur-fast: 140ms;
+  --dur-slow: 420ms;
+}
+
+/* --- Dark theme -----------------------------------------------------------
+   Two selectors, one token block. The media query covers everyone following
+   their OS; the attribute selector lets the studio page's toggle override it.
+   App pages carry no data-theme, so `:not([data-theme='light'])` matches them
+   and they follow the OS — one rule serves both cases. */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg:            #0B1622;
+    --bg-raised:     #12222F;
+    --bg-tint:       #0E1C2B;
+    --bg-inverse:    #16283A;
+
+    --text:          #DCE7EE;
+    --text-strong:   #FFFFFF;
+    --text-muted:    #92A7B8;
+    --text-inverse:  #FFFFFF;
+
+    --accent:        var(--brand-aqua);
+    --accent-strong: #6FE0DA;
+    --accent-soft:   rgba(63, 208, 201, 0.12);
+
+    --border:        #23394C;
+    --border-strong: #315068;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 6px 24px -12px rgba(0, 0, 0, 0.6);
+    --shadow-lg: 0 24px 60px -28px rgba(0, 0, 0, 0.75);
+  }
+}
+
+:root[data-theme='dark'] {
+  --bg:            #0B1622;
+  --bg-raised:     #12222F;
+  --bg-tint:       #0E1C2B;
+  --bg-inverse:    #16283A;
+
+  --text:          #DCE7EE;
+  --text-strong:   #FFFFFF;
+  --text-muted:    #92A7B8;
+  --text-inverse:  #FFFFFF;
+
+  --accent:        var(--brand-aqua);
+  --accent-strong: #6FE0DA;
+  --accent-soft:   rgba(63, 208, 201, 0.12);
+
+  --border:        #23394C;
+  --border-strong: #315068;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 6px 24px -12px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 24px 60px -28px rgba(0, 0, 0, 0.75);
+}
+
+
+/* ==========================================================================
+   2. Reset
+   ========================================================================== */
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--step-0);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* Colours animate on theme switch instead of snapping. */
+  transition: background-color var(--dur-slow) var(--ease),
+              color var(--dur-slow) var(--ease);
+}
+
+/* Weight, leading and tracking are set per context — see the note at the top. */
+h1, h2, h3, h4 {
+  margin: 0;
+  color: var(--text-strong);
+  text-wrap: balance;
+}
+
+img, svg { display: block; max-width: 100%; }
+
+button, input, textarea { font: inherit; color: inherit; }
+
+/* One visible, consistent focus ring everywhere. `:focus-visible` keeps it
+   off mouse clicks but on for keyboard users. */
+:where(a, button, input, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+
+/* ==========================================================================
+   3. Layout primitives
+   ========================================================================== */
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap-max);
+  margin-inline: auto;
+  padding-inline: var(--wrap-pad);
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -100px;
+  z-index: 100;
+  padding: var(--space-3) var(--space-5);
+  background: var(--accent-strong);
+  color: #FFFFFF;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: top var(--dur-fast) var(--ease);
+}
+.skip-link:focus { top: var(--space-4); color: #FFFFFF; }
+
+
+/* ==========================================================================
+   4. Motion preference
+   --------------------------------------------------------------------------
+   Honour the OS setting: kill transforms and animations, keep opacity so
+   nothing disappears, and turn smooth scrolling off.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
