@@ -6,19 +6,18 @@
 
   <!-- ==========================================================================
        SEO / social
-       TODO: replace the canonical + og:url domain once the site is deployed.
        ========================================================================== -->
   <title>Nilbyte Studio — Small apps for iOS and Android</title>
   <meta name="description" content="Nilbyte Studio is a one-person app studio in Varberg, Sweden. I build the apps I wanted to exist — ForeWind and RefundHound — with no accounts, no subscriptions and no servers of my own.">
-  <link rel="canonical" href="https://nilbyte.studio/">
+  <link rel="canonical" href="https://nilbytestudio.com/">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Nilbyte Studio">
   <meta property="og:title" content="Nilbyte Studio — Small apps for iOS and Android">
   <meta property="og:description" content="I build the apps I wanted to exist. No accounts, no subscriptions, no servers of my own.">
-  <meta property="og:url" content="https://nilbyte.studio/">
+  <meta property="og:url" content="https://nilbytestudio.com/">
   <!-- TODO: create a 1200x630 PNG share image and drop it at assets/images/og-cover.png -->
-  <meta property="og:image" content="https://nilbyte.studio/assets/images/og-cover.png">
+  <meta property="og:image" content="https://nilbytestudio.com/assets/images/og-cover.png">
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- Theme colour follows the brand Ink; the media queries keep the browser
@@ -29,7 +28,8 @@
   <!-- Favicons: the full mark for modern browsers, the compact one-colour
        variant for tiny sizes where the eight bits would smear together. -->
   <link rel="icon" href="assets/images/nilbyte-mark.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="assets/images/nilbyte-appicon.svg">
+  <!-- TODO: apple-touch-icon must be a 180x180 PNG — iOS ignores SVG here.
+       Render one from docs/brand/nilbyte-appicon.svg and link it. -->
 
   <!-- Brand typeface, self-hosted. No Google Fonts, so the site makes zero
        third-party requests — which is the same standard the app privacy pages
@@ -57,8 +57,8 @@
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Nilbyte Studio",
-    "url": "https://nilbyte.studio/",
-    "logo": "https://nilbyte.studio/assets/images/nilbyte-mark.svg",
+    "url": "https://nilbytestudio.com/",
+    "logo": "https://nilbytestudio.com/assets/images/nilbyte-mark.svg",
     "founder": { "@type": "Person", "name": "Johan Nilsson" },
     "address": { "@type": "PostalAddress", "addressLocality": "Varberg", "addressCountry": "SE" },
     "email": "j.nilsson89@outlook.com",
@@ -327,6 +327,7 @@
               </ul>
             </article>
             <footer class="card__footer">
+              <a class="link-arrow" href="refundhound/">Support</a>
               <span class="card__status">In App&nbsp;Store review · finishing Google&nbsp;Play testing</span>
             </footer>
           </li>

@@ -1,0 +1,13 @@
+# Normalise line endings: LF in the repo, native in the working tree.
+# Without this, committing from Windows stores CRLF and every diff on another
+# machine shows the whole file as changed.
+* text=auto eol=lf
+
+# Binary — never touch these.
+*.woff2 binary
+*.png    binary
+*.jpg    binary
+*.ico    binary
+
+# SVG is text, but treat it as such explicitly so diffs stay readable.
+*.svg text eol=lf

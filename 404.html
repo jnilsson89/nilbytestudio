@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found — Nilbyte Studio</title>
+<meta name="description" content="That page doesn't exist. Links to the Nilbyte Studio site and to support for ForeWind and RefundHound.">
+<meta name="robots" content="noindex">
+
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B1622" media="(prefers-color-scheme: dark)">
+
+<link rel="icon" href="/assets/images/nilbyte-mark.svg" type="image/svg+xml">
+
+<!-- Root-relative paths: a 404 can be served for a URL at any depth, so
+     "../assets/…" would resolve differently depending on where the visitor
+     landed. Everything else on the site uses relative paths; this page is the
+     deliberate exception. -->
+<link rel="stylesheet" href="/assets/css/fonts.css">
+<link rel="stylesheet" href="/assets/css/support.css">
+
+<style>
+  /* Small enough to keep inline rather than add a fourth stylesheet. */
+  .notfound { text-align: center; padding-block: clamp(3rem, 8vw, 6rem); }
+  .notfound__code {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    margin: 0 0 var(--space-4);
+  }
+  .notfound__title { font-size: var(--step-4); margin-bottom: var(--space-4); }
+  .notfound__lede { color: var(--text-muted); font-size: var(--step-1); margin-bottom: var(--space-7); }
+  .notfound__mark { width: 44px; height: 44px; margin: 0 auto var(--space-6); display: block; }
+  .notfound__mark g + g { fill: #12A5B4; }
+</style>
+</head>
+<body>
+
+<main class="main wrap notfound" id="main">
+
+  <svg class="notfound__mark" viewBox="24 24 52 52" aria-hidden="true" focusable="false">
+    <g fill="currentColor">
+      <rect x="26" y="26" width="10" height="48" rx="2"/>
+      <rect x="64" y="26" width="10" height="48" rx="2"/>
+    </g>
+    <g>
+      <rect x="32.00" y="26.00" width="5.5" height="5.5" rx="1.2"/>
+      <rect x="36.36" y="32.07" width="5.5" height="5.5" rx="1.2"/>
+      <rect x="40.71" y="38.14" width="5.5" height="5.5" rx="1.2"/>
+      <rect x="45.07" y="44.21" width="5.5" height="5.5" rx="1.2"/>
+      <rect x="49.43" y="50.29" width="5.5" height="5.5" rx="1.2"/>
+      <rect x="53.79" y="56.36" width="5.5" height="5.5" rx="1.2"/>
+      <rect x="58.14" y="62.43" width="5.5" height="5.5" rx="1.2"/>
+      <rect x="62.50" y="68.50" width="5.5" height="5.5" rx="1.2"/>
+    </g>
+  </svg>
+
+  <p class="notfound__code">Error 404</p>
+  <h1 class="notfound__title">This page doesn't exist</h1>
+  <p class="notfound__lede">
+    It may have moved. Everything the site has is one of these:
+  </p>
+
+  <ul class="quick-links">
+    <li><a href="/">Nilbyte Studio</a></li>
+    <li><a href="/forewind/">ForeWind support</a></li>
+    <li><a href="/forewind/privacy/">ForeWind privacy</a></li>
+    <li><a href="/refundhound/">RefundHound support</a></li>
+    <li><a href="/refundhound/privacy/">RefundHound privacy</a></li>
+    <li><a href="mailto:j.nilsson89@outlook.com">Email me</a></li>
+  </ul>
+
+</main>
+
+</body>
+</html>
