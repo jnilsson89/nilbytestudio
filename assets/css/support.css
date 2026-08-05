@@ -63,6 +63,13 @@
   --accent-container:  #9CF1F5;
   --on-accent-container: #002021;
   --accent-soft:       rgba(0, 105, 109, 0.10);
+
+  /* Override the studio Signal for the mark's bits here. Signal (#12A5B4) is
+     only 3° of hue from this app's #9CF1F5 header — same colour family, 2.3:1
+     — so the diagonal would smudge into the background. RefundHound's own
+     darker primary is 5.03:1 against it and separates cleanly. On ForeWind
+     the gap is 63°, so Signal stays. */
+  --mark-bits:         #00696D;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -96,8 +103,11 @@
   --border:      #DBE4E9;
   --border-strong: #C4D2DA;
 
-  /* Studio Signal — the colour of the eight bits in the mark. Deliberately
-     not per-app: the mark is the studio's, not the app's. */
+  /* Studio Signal — the colour of the eight bits in the mark. The default is
+     the studio's own colour, not the app's, because this is the Nilbyte mark
+     linking back to the studio. An app overrides it only when Signal would be
+     too close in hue to that app's own header to stay legible — see the
+     RefundHound block above. */
   --mark-bits:   #12A5B4;
 
   /* Callout for the things a reader must not skim past. */

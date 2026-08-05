@@ -15,12 +15,6 @@ exclude:
   - docs
   - README.md
   - _config.yml
-  # Not ready to publish. These are the RefundHound pages in their original
-  # form, still served from the jnilsson89/refundhound-support repo while the
-  # app is in App Store review. Publishing them here too would put unlinked
-  # duplicate content at /refundhound-support/. When the app ships, rebuild
-  # them on the shared skeleton as /refundhound/ and delete this line.
-  - refundhound-support
 
 # Keep Jekyll from touching the HTML; there are no layouts, includes or posts.
 plugins: []
