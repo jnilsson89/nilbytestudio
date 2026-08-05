@@ -362,7 +362,7 @@
         .catch(function () {
           status.innerHTML =
             'Something went wrong. Please email ' +
-            '<a href="mailto:j.nilsson89@outlook.com">j.nilsson89@outlook.com</a> instead.';
+            '<a href="mailto:hello@nilbytestudio.com">hello@nilbytestudio.com</a> instead.';
           status.className = 'form__status is-error';
         })
         .then(function () {
