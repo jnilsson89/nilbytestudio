@@ -96,6 +96,10 @@
   --border:      #DBE4E9;
   --border-strong: #C4D2DA;
 
+  /* Studio Signal — the colour of the eight bits in the mark. Deliberately
+     not per-app: the mark is the studio's, not the app's. */
+  --mark-bits:   #12A5B4;
+
   /* Callout for the things a reader must not skim past. */
   --notice-bg:     #FFE8C2;
   --notice-text:   #6F4F00;
@@ -144,6 +148,9 @@
 
     --border:      #23394C;
     --border-strong: #315068;
+
+    /* Aqua rather than Signal on dark surfaces — same role, enough lift. */
+    --mark-bits:   #3FD0C9;
 
     --notice-bg:     #2B1C00;
     --notice-text:   #FFDDA8;
@@ -260,17 +267,23 @@ a:hover { color: var(--text-strong); }
 .page-header__studio:hover { opacity: 1; color: inherit; }
 .page-header__mark { width: 26px; height: 26px; flex: none; }
 
-/* Two-tone the mark: stems solid, bits knocked back.
-   The eight bits are 5.5 units square on a 52-unit viewBox with only a 0.57
-   unit vertical gap, so at any UI size the gap is sub-pixel (0.29px at 26px)
-   and they merge into one diagonal. Rendered in a single ink that reads as a
-   crude solid N. Giving the bit group its own tone separates the diagonal
-   from the stems the way the two-colour lockup does, and because it is an
-   opacity on currentColor rather than a fixed hex, it works unchanged on the
-   light header, the dark footer, in dark mode and in print.
-   The second <g> in each mark is the bit group. */
+/* The bits are OPAQUE and a different colour — never transparent.
+   Bit 1 overlaps the left stem (x 32-36) and bit 8 the right (x 64-68). The
+   whole read of the mark is that the byte falls *across* the two stems, so
+   those two bits must sit on top of them. Knocking the bits back with opacity
+   lets the stem show through underneath and they look sunken behind it, which
+   is wrong. Separation comes from hue, not transparency.
+
+   The bits keep the studio Signal colour rather than taking the app accent:
+   this is the Nilbyte Studio mark linking back to the studio, and it should
+   look like itself on every app's page. The app already owns the header
+   surface and the page accent.
+
+   Stems stay currentColor so they invert correctly — dark on the light
+   header, white on a dark footer. CSS `fill` overrides the presentation
+   attribute in the markup. */
 .page-header__mark g + g,
-.page-footer__mark g + g { opacity: 0.55; }
+.page-footer__mark g + g { fill: var(--mark-bits); }
 
 /* Name + letterspaced descriptor, matching the studio site header exactly. */
 .page-header__wordmark { display: flex; align-items: baseline; gap: 0.4rem; }
