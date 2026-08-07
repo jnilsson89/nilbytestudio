@@ -53,24 +53,6 @@ never loaded together (the studio page uses one, app pages the other), so this
 costs nothing at runtime, but a token change has to be made twice. Splitting a
 shared `base.css` out is the obvious fix if the pair drifts.
 
-## Legacy URLs — do not break
-
-The shipped apps have support URLs compiled in and open them from the About
-screen. They point at the old GitHub Pages repos, which must keep resolving
-until every old install is gone:
-
-| App | Compiled-in URL |
-|---|---|
-| ForeWind 1.0.18 | `jnilsson89.github.io/forewind-support/` |
-| RefundHound 1.0.0 | `jnilsson89.github.io/refundhound-support/` and `/privacy.html` |
-
-Those two repos stay alive. Once this site is on `nilbytestudio.com`, reduce
-them to redirect stubs — but **not while RefundHound is in App Store review**,
-since Apple fetches the privacy URL during review.
-
-Store Console URL fields can be repointed at any time without an app release;
-the in-app constants need a release.
-
 ## Local preview
 
 Any static server from the repo root, e.g.:
