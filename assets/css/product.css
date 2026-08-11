@@ -1,0 +1,474 @@
+/* ==========================================================================
+   Nilbyte Studio — app product pages
+   --------------------------------------------------------------------------
+   The third context sheet. Load order is always:
+
+     fonts.css → base.css → styles.css | support.css | product.css
+
+   base.css supplies the colour system, spacing and shape scales, the reset
+   and the layout primitives. This sheet adds what a product page needs beyond
+   that: a marketing type scale, the device-frame component, and the
+   alternating feature rows.
+
+   WHY NOT support.css
+   Support pages are documents: a 46rem reading measure, real list bullets, a
+   fixed type scale. A product page is the opposite on all three counts. The
+   two sheets are never loaded together.
+
+   ACCENT DUPLICATION, KNOWINGLY
+   The `[data-app]` accent block below is copied from support.css section 1
+   rather than hoisted into base.css. Hoisting is the better end state, but
+   the generic dark-theme rule in base.css (`:root:not([data-theme='light'])`)
+   and an app block (`:root[data-app='…']`) have identical specificity, so the
+   app blocks only win by being in a later sheet. Moving them into base.css
+   means ordering them against that rule by hand, and getting it wrong would
+   silently repaint the shipped support and privacy pages. One app has a
+   product page today, so this is one duplicated block, not a system. Revisit
+   when the second one lands.
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. Accent theme
+   ========================================================================== */
+
+/* RefundHound — "Harbor Teal", from RefundHound/Resources/Styles/Colors.xaml.
+   Primary #00696D already clears 4.5:1 on white, so it is used directly. */
+:root[data-app='refundhound'] {
+  --accent:              #00696D;
+  --accent-strong:       #00696D;
+  --accent-container:    #9CF1F5;
+  --on-accent-container: #002021;
+  --accent-soft:         rgba(0, 105, 109, 0.10);
+
+  /* Studio Signal is only 3° of hue from #9CF1F5 and would smudge into the
+     header; the app's own darker primary is 5.03:1 against it. Same reasoning
+     as support.css. */
+  --mark-bits:           #00696D;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-app='refundhound'] {
+    --accent:              #80D4D9;
+    --accent-strong:       #80D4D9;
+    --accent-container:    #004F53;
+    --on-accent-container: #9CF1F5;
+    --accent-soft:         rgba(128, 212, 217, 0.12);
+
+    /* Signal, not the app accent: the bits must stay legible against the dark
+       header AND the pale stems that bits 1 and 8 overlap. */
+    --mark-bits:           #12A5B4;
+  }
+}
+
+
+/* ==========================================================================
+   2. Tokens specific to these pages
+   --------------------------------------------------------------------------
+   The same fluid scale as the studio page — this is a marketing page and
+   should feel like one.
+   ========================================================================== */
+
+:root {
+  --step--1: clamp(0.82rem, 0.80rem + 0.10vw, 0.88rem);
+  --step-0:  clamp(1.00rem, 0.97rem + 0.14vw, 1.08rem);
+  --step-1:  clamp(1.15rem, 1.08rem + 0.34vw, 1.35rem);
+  --step-2:  clamp(1.45rem, 1.30rem + 0.75vw, 1.95rem);
+  --step-3:  clamp(1.85rem, 1.55rem + 1.50vw, 2.75rem);
+  --step-4:  clamp(2.35rem, 1.70rem + 3.20vw, 4.25rem);
+
+  --leading-tight: 1.12;
+  --tracking-tight: -0.022em;
+  --tracking-wide:  0.18em;
+
+  --section-y: clamp(3.5rem, 2rem + 7vw, 6.5rem);
+}
+
+
+/* ==========================================================================
+   3. Typography
+   ========================================================================== */
+
+html { scroll-padding-top: var(--space-6); }
+
+h1, h2, h3 {
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+p { margin: 0 0 var(--space-4); max-width: 60ch; }
+p:last-child { margin-bottom: 0; }
+
+/* Every list on this page is a layout container, never prose. */
+ul, ol { margin: 0; padding: 0; }
+li { list-style: none; }
+
+a {
+  color: var(--accent-strong);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition: color var(--dur-fast) var(--ease);
+}
+a:hover { color: var(--text-strong); }
+
+.eyebrow {
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.muted { color: var(--text-muted); font-size: var(--step--1); }
+
+
+/* ==========================================================================
+   4. Top bar
+   --------------------------------------------------------------------------
+   Not the studio site's sticky header — a product page is short and the nav
+   is two links. It scrolls away like any other content.
+   ========================================================================== */
+
+.topbar {
+  padding-block: var(--space-5);
+  border-bottom: 1px solid var(--border);
+}
+
+.topbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.topbar__studio {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--text-strong);
+  text-decoration: none;
+}
+.topbar__studio:hover { color: var(--text-strong); }
+
+/* 26px: below ~24px the eight bits merge and the mark reads as a blocky N. */
+.topbar__mark { width: 26px; height: 26px; flex: none; }
+.topbar__mark g + g { fill: var(--mark-bits); }
+
+.topbar__wordmark { display: flex; align-items: baseline; gap: 0.4rem; }
+.topbar__name { font-size: 1rem; font-weight: 650; letter-spacing: -0.02em; }
+.topbar__descriptor {
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  opacity: 0.72;
+}
+
+.topbar__nav { display: flex; gap: var(--space-5); }
+.topbar__nav a {
+  font-size: var(--step--1);
+  font-weight: 550;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+.topbar__nav a:hover { color: var(--text-strong); }
+
+
+/* ==========================================================================
+   5. Device frame
+   --------------------------------------------------------------------------
+   The frame is drawn here rather than baked into the PNGs. The exported
+   screenshots are the live screen only, cropped inside the bezel and with the
+   Android system nav bar trimmed off, so the frame stays theme-aware, sharp at
+   any DPI, and platform-neutral on a page that says "iOS and Android".
+
+   The crop is rectangular but the real screen has ~2.2%-of-width rounded
+   corners, so a slice of dark bezel survives in each corner of the PNG. The
+   screen radius below is deliberately larger than that, which clips the
+   leftovers. Everything scales off --shot-w so one number resizes the phone.
+   ========================================================================== */
+
+.shot {
+  --shot-w: clamp(200px, 44vw, 272px);
+  width: var(--shot-w);
+  flex: none;
+  padding: calc(var(--shot-w) * 0.017);
+  background: linear-gradient(155deg, #33465A 0%, #16283A 45%, #0B1622 100%);
+  border-radius: calc(var(--shot-w) * 0.068);
+  box-shadow: var(--shadow-lg);
+}
+
+.shot__screen {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 720 / 1484;
+  border-radius: calc(var(--shot-w) * 0.045);
+  background: var(--bg-tint);
+}
+
+
+/* ==========================================================================
+   6. Hero
+   ========================================================================== */
+
+.hero {
+  background: var(--accent-container);
+  color: var(--on-accent-container);
+  padding-block: var(--section-y);
+}
+
+.hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-7);
+}
+
+.hero__title {
+  font-size: var(--step-4);
+  color: inherit;
+  margin-bottom: var(--space-4);
+}
+
+.hero__lede {
+  font-size: var(--step-1);
+  max-width: 34ch;
+  opacity: 0.85;
+}
+
+.hero .eyebrow { color: inherit; opacity: 0.7; }
+
+/* --- Store links ----------------------------------------------------------
+   Deliberately typographic, with no store logos. Apple's and Google's identity
+   guidelines both say to use their supplied badge artwork rather than a
+   recreation, and this site ships no icon assets but its own mark. Swapping in
+   the official badges later is a drop-in change; text is unambiguously fine in
+   the meantime. */
+
+.store-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.store-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-5);
+  background: var(--brand-ink);
+  color: #FFFFFF;
+  border-radius: var(--radius-pill);
+  font-size: var(--step-0);
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform var(--dur-fast) var(--ease),
+              box-shadow var(--dur-fast) var(--ease);
+}
+.store-button:hover {
+  color: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.store-button__label { display: flex; flex-direction: column; line-height: 1.15; }
+.store-button__label small {
+  font-size: 0.68em;
+  font-weight: 500;
+  opacity: 0.72;
+}
+
+/* On the dark hero surface the ink button loses contrast against the
+   container, so it inverts. */
+@media (prefers-color-scheme: dark) {
+  .store-button { background: #FFFFFF; color: var(--brand-ink); }
+  .store-button:hover { color: var(--brand-ink); }
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+  font-size: var(--step--1);
+  font-weight: 550;
+  opacity: 0.85;
+}
+
+.status__dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  flex: none;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.hero__shot { align-self: center; }
+
+@media (min-width: 48rem) {
+  .hero__inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-8);
+  }
+  .hero__copy { flex: 1 1 auto; }
+  .hero__shot { align-self: auto; }
+}
+
+@media (prefers-color-scheme: dark) {
+  .status { background: rgba(255, 255, 255, 0.10); }
+}
+
+
+/* ==========================================================================
+   7. Sections & feature rows
+   ========================================================================== */
+
+.section { padding-block: var(--section-y); }
+
+.section--tint {
+  background: var(--bg-tint);
+  border-block: 1px solid var(--border);
+}
+
+.section__head { margin-bottom: var(--space-7); max-width: 46ch; }
+.section__title { font-size: var(--step-3); margin-bottom: var(--space-3); }
+.section__lede { color: var(--text-muted); font-size: var(--step-1); }
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--section-y);
+}
+
+.feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.feature__copy { max-width: 46ch; }
+.feature__title { font-size: var(--step-2); margin-bottom: var(--space-3); }
+.feature__text { color: var(--text-muted); }
+
+@media (min-width: 48rem) {
+  .feature {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-9);
+  }
+  /* Alternate which side the phone sits on so the page has a rhythm. */
+  .feature:nth-child(even) { flex-direction: row-reverse; }
+  .feature__copy { flex: 0 1 32rem; }
+}
+
+
+/* ==========================================================================
+   8. Facts grid
+   ========================================================================== */
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.fact {
+  padding: var(--space-5);
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.fact__title {
+  font-size: var(--step-0);
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+}
+
+.fact__text { color: var(--text-muted); font-size: var(--step--1); }
+
+
+/* ==========================================================================
+   9. Privacy panel
+   --------------------------------------------------------------------------
+   The strongest thing this app has to say, so it gets a surface of its own
+   rather than a bullet in a list.
+   ========================================================================== */
+
+.promise {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-6);
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-lg);
+}
+
+.promise__title { font-size: var(--step-2); margin-bottom: var(--space-3); }
+
+.link-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 550;
+  text-decoration: none;
+}
+.link-arrow::after {
+  content: '→';
+  transition: transform var(--dur-fast) var(--ease);
+}
+.link-arrow:hover::after { transform: translateX(3px); }
+
+
+/* ==========================================================================
+   10. Footer
+   --------------------------------------------------------------------------
+   Matches the support pages: every app page ends by naming the studio and
+   linking home.
+   ========================================================================== */
+
+.page-footer {
+  padding-block: var(--space-6);
+  border-top: 1px solid var(--border);
+  font-size: var(--step--1);
+  color: var(--text-muted);
+}
+.page-footer a { color: var(--text-muted); }
+.page-footer a:hover { color: var(--text-strong); }
+
+.page-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.page-footer__studio { display: flex; align-items: center; gap: var(--space-3); }
+.page-footer__mark { width: 26px; height: 26px; flex: none; color: var(--text-strong); }
+.page-footer__mark g + g { fill: var(--mark-bits); }
+.page-footer__studio p { margin: 0; }
+
+
+/* ==========================================================================
+   11. Print
+   ========================================================================== */
+
+@media print {
+  .hero { background: none; color: #000; }
+  .topbar__nav, .skip-link, .shot { display: none; }
+  body { background: #fff; color: #000; }
+  a { text-decoration: underline; }
+}

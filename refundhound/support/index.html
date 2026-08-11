@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" data-app="refundhound">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RefundHound — Support</title>
+<meta name="description" content="Help and frequently asked questions for RefundHound, the refund tracker that chases merchants so you don't have to.">
+<link rel="canonical" href="https://nilbytestudio.com/refundhound/support/">
+
+<meta name="theme-color" content="#9CF1F5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B1622" media="(prefers-color-scheme: dark)">
+
+<link rel="icon" href="../../assets/images/nilbyte-mark.svg" type="image/svg+xml">
+
+<!-- Self-hosted Inter Tight + the shared studio support skeleton. Two
+     same-origin requests and no third party: this page must not hand a
+     visitor's IP to anyone, because the privacy policy it links to says
+     nothing about them leaves their phone. -->
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/support.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="page-header">
+  <div class="wrap">
+    <a class="page-header__studio" href="../../">
+      <svg class="page-header__mark" viewBox="24 24 52 52" aria-hidden="true" focusable="false">
+        <g fill="currentColor">
+          <rect x="26" y="26" width="10" height="48" rx="2"/>
+          <rect x="64" y="26" width="10" height="48" rx="2"/>
+        </g>
+        <g fill="currentColor">
+          <rect x="32.00" y="26.00" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="36.36" y="32.07" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="40.71" y="38.14" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="45.07" y="44.21" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="49.43" y="50.29" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="53.79" y="56.36" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="58.14" y="62.43" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="62.50" y="68.50" width="5.5" height="5.5" rx="1.2"/>
+        </g>
+      </svg>
+      <span class="page-header__wordmark">
+        <span class="page-header__name">Nilbyte</span>
+        <span class="page-header__descriptor">Studio</span>
+      </span>
+    </a>
+    <h1 class="page-header__title">RefundHound</h1>
+    <p class="page-header__tagline">Support &amp; frequently asked questions</p>
+  </div>
+</header>
+
+<main class="main wrap" id="main">
+
+  <h2 id="get-in-touch">Get in touch</h2>
+
+  <div class="contact-card">
+    <p class="contact-card__email"><a href="mailto:refundhound@nilbytestudio.com">refundhound@nilbytestudio.com</a></p>
+    <p class="muted">
+      One person reads this mailbox, so please allow a couple of days for a reply.
+      Telling me your device, OS version and what you expected to happen gets a useful
+      answer far faster than a bug report that says the app is broken.
+    </p>
+  </div>
+
+  <p class="muted">
+    RefundHound has no account system and no server, which means I cannot look up your
+    data, reset anything remotely, or see what went wrong on your device. Everything
+    below is something you can check or fix yourself.
+  </p>
+
+  <!-- Task-shaped index. Most people arrive because something is broken, so the
+       fixes are listed first and the explanations come after. -->
+  <ul class="quick-links">
+    <li><a href="#no-notifications">I'm not getting notifications</a></li>
+    <li><a href="#new-phone">I got a new phone</a></li>
+    <li><a href="#paid-still-limited">I paid, but still see the limit</a></li>
+    <li><a href="#delete-everything">How do I delete everything?</a></li>
+    <li><a href="#how-chasing-works">How does the chasing work?</a></li>
+    <li><a href="../privacy/">Privacy policy</a></li>
+  </ul>
+
+  <h2 id="reminders">Reminders</h2>
+
+  <h3 id="no-notifications">I'm not getting any notifications</h3>
+  <p>Almost always one of these, in order of likelihood:</p>
+  <ul>
+    <li>
+      <strong>Notification permission was declined.</strong> RefundHound only asks once
+      you have an active refund, and on modern Android and iOS a declined prompt cannot
+      be shown again from inside an app. Re-enable it in your system Settings under
+      RefundHound &rsaquo; Notifications.
+    </li>
+    <li>
+      <strong>Battery optimisation is stopping the app</strong> (Android). Some
+      manufacturers — Samsung, Xiaomi, OnePlus and Huawei are the usual ones — suspend
+      background apps aggressively by default. Excluding RefundHound from battery
+      optimisation fixes it.
+    </li>
+    <li>
+      <strong>The refund isn't due yet.</strong> The first reminder lands on the promised
+      date, not before.
+    </li>
+  </ul>
+  <p>
+    Opening the app repairs any reminder schedule the system dropped — after a reboot,
+    for instance — so if in doubt, open it once.
+  </p>
+
+  <h3 id="how-chasing-works">How does the chasing actually work?</h3>
+  <p>
+    You log a refund with the date the merchant promised. On that date RefundHound asks
+    whether the money arrived. If you say not yet, it keeps reminding you every three
+    days — and the advice gets more assertive as the refund ages. Reminders stop after
+    six. The app chases the merchant, not you.
+  </p>
+
+  <details class="detail">
+    <summary class="detail__summary">What the reminders actually say, in order</summary>
+    <div class="detail__body">
+      <p>
+        Check your account first, in case it arrived quietly. Then contact the merchant's
+        support, with a ready-made message the app writes for you. Then how card disputes
+        work, if support goes nowhere. Finally a prompt to decide: keep waiting, or write
+        it off and stop thinking about it.
+      </p>
+    </div>
+  </details>
+
+  <h2 id="your-data">Your data</h2>
+
+  <h3 id="new-phone">I got a new phone. Where are my refunds?</h3>
+  <p>
+    They stayed on the old one — and you have to move them across deliberately, before you
+    wipe it.
+  </p>
+  <p>
+    <strong>On the old phone:</strong> open the Stats screen, tap <em>Export data (CSV)</em>
+    and save the file somewhere you'll still have it — email it to yourself, drop it in
+    cloud storage, or move it with a cable. <strong>On the new phone:</strong> import that
+    file. Everything comes across except receipt photos, which stay on the original device.
+  </p>
+  <p class="muted">
+    Exporting is free for everyone, and it's worth doing occasionally regardless — it is
+    the only copy of your data that exists anywhere but your phone.
+  </p>
+
+  <details class="detail">
+    <summary class="detail__summary">Why it doesn't just restore itself</summary>
+    <div class="detail__body">
+      <p>
+        RefundHound deliberately excludes itself from cloud and device backups, because
+        receipt photos are personal and the app promises the data never leaves your phone.
+        That promise and automatic restore-to-a-new-device are mutually exclusive, and I
+        chose the promise.
+      </p>
+    </div>
+  </details>
+
+  <h3 id="delete-everything">How do I delete everything?</h3>
+  <p>
+    Delete individual refunds in the app, or uninstall it. Uninstalling removes the
+    database and every receipt photo. There is no server copy to request the deletion of,
+    because there is no server.
+  </p>
+
+  <h3>Can I get my data out in a normal format?</h3>
+  <p>
+    Yes — the CSV export opens in any spreadsheet app. Amounts are written in a plain
+    machine-readable form so you can total them, filter them, or feed them somewhere else.
+  </p>
+
+  <h2 id="unlock">The unlock purchase</h2>
+
+  <h3 id="paid-still-limited">I paid, but the app still shows the limit</h3>
+  <p>
+    Open the Stats screen and tap <em>Restore purchase</em>. That re-checks your Apple or
+    Google account and restores the unlock — it's also how you get it back after
+    reinstalling or moving to a new device, at no additional cost. Make sure you're signed
+    in with the same store account you bought it on.
+  </p>
+  <p>
+    If a purchase was charged but never unlocked, email me with the store receipt and
+    I'll sort it out.
+  </p>
+
+  <h3>What's free, and what isn't?</h3>
+  <p>
+    Everything is free except the number of refunds you can chase at once. The free
+    version tracks three active refunds at a time. Completed history, statistics, receipt
+    photos, the support-message templates and CSV export are free for everyone, forever.
+  </p>
+  <p>
+    <strong>RefundHound Unlimited</strong> removes the three-refund cap. It is a one-time
+    purchase, not a subscription, and there is nothing else to buy.
+  </p>
+
+  <h3>Refunds on the purchase itself</h3>
+  <p>
+    Purchases are handled entirely by Apple and Google, so refunds go through them, not
+    me — Apple via <a href="https://reportaproblem.apple.com/">reportaproblem.apple.com</a>,
+    Google via your Play order history. I never see your payment details and cannot issue a
+    refund directly.
+  </p>
+
+  <h2 id="everything-else">Everything else</h2>
+
+  <h3>Why is there no account or cloud sync?</h3>
+  <p>
+    Because a refund tracker knows what you bought, what it cost and where you shop, and
+    the safest place for that is a database on your own phone. No account means nothing to
+    breach, nothing to subscribe to, and nothing that stops working when I do.
+  </p>
+
+  <h3>Which currencies work?</h3>
+  <p>
+    All of them, mixed freely across refunds — including the ones that don't divide into
+    hundredths, like Japanese yen and Kuwaiti dinar.
+  </p>
+
+  <h3>Does it work in my language?</h3>
+  <p>
+    RefundHound follows your device language and formats dates and amounts to your
+    region. It ships in English today; if you'd like it in your language, email me — it
+    is genuinely quick to add.
+  </p>
+
+  <h3>Something is wrong that isn't listed here</h3>
+  <p>
+    Email <a href="mailto:refundhound@nilbytestudio.com">refundhound@nilbytestudio.com</a>. Bug reports
+    with a screenshot get fixed fastest.
+  </p>
+
+  <footer class="page-footer">
+    <ul class="page-footer__links">
+      <li><a href="../privacy/">Privacy policy</a></li>
+      <li><a href="../">About RefundHound</a></li>
+      <li><a href="../../">Nilbyte Studio</a></li>
+      <li><a href="mailto:refundhound@nilbytestudio.com">Email support</a></li>
+    </ul>
+    <div class="page-footer__studio">
+      <svg class="page-footer__mark" viewBox="24 24 52 52" aria-hidden="true" focusable="false">
+        <g fill="currentColor">
+          <rect x="26" y="26" width="10" height="48" rx="2"/>
+          <rect x="64" y="26" width="10" height="48" rx="2"/>
+        </g>
+        <g fill="currentColor">
+          <rect x="32.00" y="26.00" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="36.36" y="32.07" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="40.71" y="38.14" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="45.07" y="44.21" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="49.43" y="50.29" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="53.79" y="56.36" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="58.14" y="62.43" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="62.50" y="68.50" width="5.5" height="5.5" rx="1.2"/>
+        </g>
+      </svg>
+      <p>RefundHound is made by <a href="../../">Nilbyte Studio</a> in Varberg, Sweden.</p>
+    </div>
+  </footer>
+
+</main>
+
+</body>
+</html>
