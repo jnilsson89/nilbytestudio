@@ -48,7 +48,7 @@
       </span>
     </a>
     <h1 class="page-header__title">Privacy Policy</h1>
-    <p class="page-header__tagline">ForeWind &middot; <span class="updated">last updated 5 August 2026</span></p>
+    <p class="page-header__tagline">ForeWind &middot; <span class="updated">last updated 29 August 2026</span></p>
   </div>
 </header>
 
@@ -77,13 +77,21 @@
   <p>Everything ForeWind keeps is stored locally on your phone:</p>
   <ul>
     <li>
-      <strong>A weather cache</strong> — a small database of recent readings (wind, temperature,
-      pressure, elevation) with the coordinates they were fetched for, rounded to two decimal
-      places. Entries expire after 5–10 minutes and are cleaned up automatically.
+      <strong>A weather cache</strong> — a small database of recent readings (wind speed and
+      direction, gusts, temperature, pressure, humidity, elevation) together with the coordinates
+      they were fetched for. Each row holds both the position as reported by the operating system
+      and a copy rounded to about a kilometre, which is what the cache is filed under so that
+      nearby holes reuse one reading. Entries expire after 5–10 minutes and are cleaned up
+      automatically.
     </li>
     <li>
-      <strong>Your preferences</strong> — distance unit, wind speed unit, theme, and a flag
-      recording whether you have bought Remove Ads.
+      <strong>Your preferences</strong> — distance unit, wind speed unit, theme, whether you have
+      dismissed the one-time compass hint, and a flag recording whether you have bought Remove Ads.
+    </li>
+    <li>
+      <strong>A crash note, on Android only</strong> — if the app dies unexpectedly it writes the
+      error text to a single file in its own private storage, overwritten each time. It exists so a
+      crash can be diagnosed from the device itself. It is never uploaded, and I never receive it.
     </li>
   </ul>
 
@@ -185,8 +193,14 @@
   <ul>
     <li>
       <strong>In the EEA, the UK and Switzerland</strong>, ForeWind shows Google's consent form
-      the first time it runs. Your choices there govern whether personalised ads are served and
-      can be changed later from the same form.
+      before the first ad is requested. Your choices there govern whether personalised ads are
+      served.
+      <br>
+      <em>A limitation worth stating:</em> the app does not currently offer a way to reopen that
+      form, so a choice made once cannot be changed from inside ForeWind. Until it does, the
+      controls below — the iOS tracking setting, the Android advertising-ID controls, and Remove
+      Ads — are the levers available to you, and you can also email me and I will explain how to
+      reset it. I would rather record this gap than describe a control that isn't there.
     </li>
     <li>
       <strong>On iOS 14 and later</strong>, the system asks for your permission before any app
@@ -262,7 +276,8 @@
   <h2 id="contacting-support">Contacting support</h2>
 
   <p>
-    The <em>Contact</em> button on the About screen opens your own mail app with a draft that
+    The <em>Contact support</em> row in Settings, under <em>About &amp; Support</em>, opens your own
+    mail app with a draft that
     pre-fills the app version, your device model and your OS version, because those are what make
     a bug report diagnosable. You can see and edit all of it before sending, and nothing is sent
     unless you send it. If you email me, I have your address and whatever you wrote, kept only as
@@ -404,9 +419,11 @@
   </p>
   <p>
     For advertising data, the practical levers are the ones described under
-    <a href="#advertising">Advertising</a>: the consent form, the iOS tracking setting, the
-    Android advertising-ID controls, and Remove Ads. Access and erasure requests for data Google
-    holds are best directed to Google, which is the only party able to act on them.
+    <a href="#advertising">Advertising</a>: your answer to the consent form when it is first
+    shown, the iOS tracking setting, the Android advertising-ID controls, and Remove Ads. Note the
+    limitation recorded there — the consent form cannot currently be reopened from inside the app.
+    Access and erasure requests for data Google holds are best directed to Google, which is the
+    only party able to act on them.
   </p>
   <p>
     <strong>You also have the right to complain to a data protection authority.</strong> Nilbyte

@@ -60,9 +60,9 @@
     <p class="contact-card__email"><a href="mailto:forewind@nilbytestudio.com">forewind@nilbytestudio.com</a></p>
     <p class="muted">
       One person reads this mailbox, so please allow a couple of days for a reply. The
-      <em>Contact</em> button on the About screen writes the draft for you and fills in your
-      app version, device model and OS version — those three details are what turn a vague
-      report into a fixable one.
+      <em>Contact support</em> row in Settings, under <em>About &amp; Support</em>, writes the
+      draft for you and fills in your app version, device model and OS version — those three
+      details are what turn a vague report into a fixable one.
     </p>
   </div>
 
@@ -107,9 +107,9 @@
   <p>
     To know what the wind is doing where you are standing. ForeWind sends your coordinates to
     <a href="https://api.met.no/">MET Norway</a>'s public forecast service and gets back the wind
-    speed, direction, temperature, pressure and elevation for that point. There is no course
-    database and no manual location entry, so without the permission there is nothing to
-    calculate from.
+    speed and direction, gusts, temperature, pressure, humidity and elevation for that point.
+    There is no course database and no manual location entry, so without the permission there is
+    nothing to calculate from.
   </p>
   <p>
     The permission is "while using the app" only. ForeWind never asks for background location and
@@ -240,20 +240,21 @@
   <div class="table-scroll">
     <table>
       <thead>
-        <tr><th scope="col">Category</th><th scope="col">Speed</th></tr>
+        <tr><th scope="col">Category</th><th scope="col">m/s</th><th scope="col">mph</th></tr>
       </thead>
       <tbody>
-        <tr><td>Calm</td><td>0–5 km/h</td></tr>
-        <tr><td>Light</td><td>6–15 km/h</td></tr>
-        <tr><td>Moderate</td><td>16–25 km/h</td></tr>
-        <tr><td>Strong</td><td>26–35 km/h</td></tr>
-        <tr><td>Very strong</td><td>36+ km/h</td></tr>
+        <tr><td>Calm</td><td>up to 1.4</td><td>up to 3</td></tr>
+        <tr><td>Light</td><td>1.4 – 4.2</td><td>3 – 9</td></tr>
+        <tr><td>Moderate</td><td>4.2 – 6.9</td><td>9 – 15</td></tr>
+        <tr><td>Strong</td><td>6.9 – 9.7</td><td>15 – 22</td></tr>
+        <tr><td>Very strong</td><td>above 9.7</td><td>above 22</td></tr>
       </tbody>
     </table>
   </div>
   <p class="muted">
-    The labels describe the wind. The adjustment itself is calculated from the actual speed and
-    angle, not from the category.
+    Shown in both units the app offers, so the table matches whichever you have selected in
+    Settings. The labels describe the wind; the adjustment itself is calculated from the actual
+    speed and angle, not from the category.
   </p>
 
   <h3>Another app gives me a different number</h3>
@@ -332,13 +333,14 @@
   <p>
     <a href="https://api.met.no/">MET Norway</a>'s Locationforecast 2.0 service, used under
     <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. It is a free public
-    service with genuinely good global coverage, and it is credited on the About screen.
+    service with genuinely good global coverage, and it is credited at the foot of the current
+    conditions card on the main screen, next to a link to the licence.
   </p>
 
   <h3>Something is wrong that isn't listed here</h3>
   <p>
-    Email <a href="mailto:forewind@nilbytestudio.com">forewind@nilbytestudio.com</a>, ideally from the
-    <em>Contact</em> button on the About screen so the version and device details come along.
+    Email <a href="mailto:forewind@nilbytestudio.com">forewind@nilbytestudio.com</a>, ideally from
+    <em>Contact support</em> in Settings so the version and device details come along.
     Bug reports with a screenshot get fixed fastest.
   </p>
 
