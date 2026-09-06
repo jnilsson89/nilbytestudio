@@ -48,7 +48,7 @@
       </span>
     </a>
     <h1 class="page-header__title">Privacy Policy</h1>
-    <p class="page-header__tagline">ForeWind &middot; <span class="updated">last updated 29 August 2026</span></p>
+    <p class="page-header__tagline">ForeWind &middot; <span class="updated">last updated 6 September 2026</span></p>
   </div>
 </header>
 
@@ -78,10 +78,11 @@
   <ul>
     <li>
       <strong>A weather cache</strong> — a small database of recent readings (wind speed and
-      direction, gusts, temperature, pressure, humidity, elevation) together with the coordinates
-      they were fetched for. Each row holds both the position as reported by the operating system
-      and a copy rounded to about a kilometre, which is what the cache is filed under so that
-      nearby holes reuse one reading. Entries expire after 5–10 minutes and are cleaned up
+      direction, gusts, temperature, pressure, humidity, chance of rain, elevation) together with
+      the coordinates they were fetched for. Each row holds both the position as reported by the
+      operating system and a copy rounded to about a kilometre, which is what the cache is filed
+      under so that nearby holes reuse one reading. A row lasts until the weather service says its
+      data expires, or 5–10 minutes when the service does not say, and stale rows are cleaned up
       automatically.
     </li>
     <li>
@@ -98,7 +99,9 @@
   <p>
     That is the complete list. There are no accounts, no shot history, no saved rounds, no notes
     and no photos, because the app has no feature that would create them. None of this data is
-    transmitted, uploaded or synced by ForeWind, and all of it is removed when you uninstall.
+    transmitted, uploaded or synced by ForeWind, and all of it is removed when you uninstall. On
+    Android the app also opts out of the system backup service, so none of it is copied to your
+    Google account either.
   </p>
 
   <h2 id="what-forewind-does-not-do">What ForeWind does not do</h2>
@@ -196,11 +199,10 @@
       before the first ad is requested. Your choices there govern whether personalised ads are
       served.
       <br>
-      <em>A limitation worth stating:</em> the app does not currently offer a way to reopen that
-      form, so a choice made once cannot be changed from inside ForeWind. Until it does, the
-      controls below — the iOS tracking setting, the Android advertising-ID controls, and Remove
-      Ads — are the levers available to you, and you can also email me and I will explain how to
-      reset it. I would rather record this gap than describe a control that isn't there.
+      <em>You can change your mind:</em> open Settings &rsaquo; Privacy Options inside ForeWind to
+      bring that form back up whenever you like. The row is shown while consent applies to you and
+      hidden when it does not. The controls below — the iOS tracking setting, the Android
+      advertising-ID controls, and Remove Ads — are the other levers available to you.
     </li>
     <li>
       <strong>On iOS 14 and later</strong>, the system asks for your permission before any app
@@ -395,7 +397,8 @@
   <p>
     The weather cache and your preferences live on your device for as long as you keep the app.
     Cached readings expire within minutes; uninstalling removes everything, including the record
-    of your purchase — which you can restore at any time from the store.
+    of your purchase — which you can restore at any time from the store. Nothing is carried into
+    an Android system backup, because the app opts out of that service.
   </p>
   <p>
     I hold no copy of anything, so there is no retention period on my side and no deletion
@@ -418,9 +421,9 @@
   </p>
   <p>
     For advertising data, the practical levers are the ones described under
-    <a href="#advertising">Advertising</a>: your answer to the consent form when it is first
-    shown, the iOS tracking setting, the Android advertising-ID controls, and Remove Ads. Note the
-    limitation recorded there — the consent form cannot currently be reopened from inside the app.
+    <a href="#advertising">Advertising</a>: your answer to the consent form, which you can reopen
+    at any time from Settings &rsaquo; Privacy Options, the iOS tracking setting, the Android
+    advertising-ID controls, and Remove Ads.
     Access and erasure requests for data Google holds are best directed to Google, which is the
     only party able to act on them.
   </p>

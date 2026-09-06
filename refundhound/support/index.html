@@ -68,8 +68,8 @@
 
   <p class="muted">
     RefundHound has no account system and no server, which means I cannot look up your
-    data, reset anything remotely, or see what went wrong on your device. Everything
-    below is something you can check or fix yourself.
+    data, reset anything remotely, or see what went wrong on your device unless you tell
+    me. Everything below is something you can check or fix yourself.
   </p>
 
   <!-- Task-shaped index. Most people arrive because something is broken, so the
@@ -101,21 +101,22 @@
       optimisation fixes it.
     </li>
     <li>
-      <strong>The refund isn't due yet.</strong> The first reminder lands on the promised
-      date, not before.
+      <strong>The refund isn't due yet.</strong> The first reminder lands at 9am on the
+      promised date, not before.
     </li>
   </ul>
   <p>
-    Opening the app repairs any reminder schedule the system dropped — after a reboot,
-    for instance — so if in doubt, open it once.
+    Opening the app to the Refunds tab repairs any reminder schedule the system dropped —
+    after a reboot, for instance — so if in doubt, open it once.
   </p>
 
   <h3 id="how-chasing-works">How does the chasing actually work?</h3>
   <p>
-    You log a refund with the date the merchant promised. On that date RefundHound asks
-    whether the money arrived. If you say not yet, it keeps reminding you every three
-    days — and the advice gets more assertive as the refund ages. Reminders stop after
-    six. The app chases the merchant, not you.
+    You log a refund with the date the merchant promised. At 9am on that date RefundHound
+    asks whether the money arrived — the notification itself carries <em>Got it</em> and
+    <em>Not yet</em>, so you can answer without opening the app. If you say not yet, it
+    follows up every three days, and the advice gets more assertive as the
+    refund ages. It stops after six follow-ups. The app chases the merchant, not you.
   </p>
 
   <details class="detail">
@@ -140,8 +141,16 @@
   <p>
     <strong>On the old phone:</strong> open the Stats screen, tap <em>Export data (CSV)</em>
     and save the file somewhere you'll still have it — email it to yourself, drop it in
-    cloud storage, or move it with a cable. <strong>On the new phone:</strong> import that
-    file. Everything comes across except receipt photos, which stay on the original device.
+    cloud storage, or move it with a cable. <strong>On the new phone:</strong> open Stats and
+    tap <em>Import data (CSV)</em>, then pick that file. Imported rows are added alongside
+    anything already there — nothing is overwritten or removed.
+  </p>
+  <p>
+    Merchants, amounts, currencies, methods, dates, notes and whether a refund was received
+    or written off all come across. Two things don't: <strong>receipt photos</strong>, which
+    stay on the original device, and <strong>how far a reminder had escalated</strong> —
+    anything still outstanding restarts its reminder schedule from the date you'd expected
+    the money, rather than resuming mid-ladder.
   </p>
   <p class="muted">
     Exporting is free for everyone, and it's worth doing occasionally regardless — it is
@@ -177,10 +186,15 @@
 
   <h3 id="paid-still-limited">I paid, but the app still shows the limit</h3>
   <p>
-    Open the Stats screen and tap <em>Restore purchase</em>. That re-checks your Apple or
-    Google account and restores the unlock — it's also how you get it back after
-    reinstalling or moving to a new device, at no additional cost. Make sure you're signed
-    in with the same store account you bought it on.
+    Tap <em>Restore purchase</em>. It's on the Stats screen, on the unlock card, and also on
+    the About screen — which is the one to use if the unlock card has already disappeared.
+    Either re-checks your Apple or Google account and restores the unlock; it's also how you
+    get it back after reinstalling or moving to a new device, at no additional cost. Make
+    sure you're signed in with the same store account you bought it on.
+  </p>
+  <p class="muted">
+    The app also re-checks on every launch, so in many cases simply closing it fully and
+    reopening is enough.
   </p>
   <p>
     If a purchase was charged but never unlocked, email me with the store receipt and
@@ -191,7 +205,9 @@
   <p>
     Everything is free except the number of refunds you can chase at once. The free
     version tracks three active refunds at a time. Completed history, statistics, receipt
-    photos, the support-message templates and CSV export are free for everyone, forever.
+    photos, the support-message templates and CSV export and import are free for everyone,
+    forever. Writing a refund off or marking it received frees up a slot, and closed refunds
+    never count against the three.
   </p>
   <p>
     <strong>RefundHound Unlimited</strong> removes the three-refund cap. It is a one-time
@@ -232,6 +248,15 @@
   <p>
     Email <a href="mailto:refundhound@nilbytestudio.com">refundhound@nilbytestudio.com</a>. Bug reports
     with a screenshot get fixed fastest.
+  </p>
+  <p>
+    Better still, use <em>Contact support</em> on the app's About screen. It opens your own
+    mail app with the version, your device model and your OS version already filled in, and
+    if the app has logged an error it offers to attach a recent extract — which is the
+    difference between me guessing and me knowing. It asks every time and you can send
+    without it; nothing is attached, or sent, unless you choose to. What that extract does
+    and doesn't contain is set out in the
+    <a href="../privacy/">privacy policy</a>.
   </p>
 
   <footer class="page-footer">

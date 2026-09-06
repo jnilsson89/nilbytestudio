@@ -107,9 +107,9 @@
   <p>
     To know what the wind is doing where you are standing. ForeWind sends your coordinates to
     <a href="https://api.met.no/">MET Norway</a>'s public forecast service and gets back the wind
-    speed and direction, gusts, temperature, pressure, humidity and elevation for that point.
-    There is no course database and no manual location entry, so without the permission there is
-    nothing to calculate from.
+    speed and direction, gusts, temperature, pressure, humidity, chance of rain and elevation for
+    that point. There is no course database and no manual location entry, so without the
+    permission there is nothing to calculate from.
   </p>
   <p>
     The permission is "while using the app" only. ForeWind never asks for background location and
@@ -119,19 +119,20 @@
   <h3 id="weather-stale">The weather looks out of date</h3>
   <p>
     Pull down on the main screen to refresh. If nothing changes, the reading you already have is
-    still considered current — ForeWind keeps each one for 5–10 minutes rather than asking the
-    API for something it already knows. Wait out that window and pull again for genuinely new
-    data.
+    still considered current — ForeWind holds on to each one rather than asking the API for
+    something it already knows. That is usually 5–10 minutes, or longer when MET Norway says its
+    own data is good for longer. Wait out that window and pull again for genuinely new data.
   </p>
 
   <details class="detail">
     <summary class="detail__summary">Why it holds on to a reading</summary>
     <div class="detail__body">
       <p>
-        ForeWind caches each reading for 5–10 minutes so a round doesn't hammer the API, and it
-        files that cache against your position rounded to about a kilometre, so nearby holes
-        reuse the same reading. On a course that is usually what you want; the wind does not
-        change meaningfully between the 4th tee and the 5th.
+        ForeWind caches each reading so a round doesn't hammer the API — until MET Norway's own
+        expiry time, or 5–10 minutes when it does not give one — and files that cache against
+        your position rounded to about a kilometre, so nearby holes reuse the same reading. On a
+        course that is usually what you want; the wind does not change meaningfully between the
+        4th tee and the 5th.
       </p>
       <p>
         Forecasts are also only forecasts. MET Norway publishes on its own schedule, so at times
@@ -212,6 +213,29 @@
       <p>
         Treating head and tail as mirror images would over-club you downwind, which is why they
         are weighted differently. At 90° the distance adjustment falls to zero.
+      </p>
+    </div>
+  </details>
+
+  <h3>What about uphill and downhill?</h3>
+  <p>
+    Under the distance there is a row of five slope settings: steep downhill, slight downhill,
+    flat, slight uphill, steep uphill. Flat is the default, so if you never touch it nothing is
+    added. The two uphill settings make the shot play longer and the two downhill ones make it
+    play shorter, on top of whatever the wind is doing.
+  </p>
+  <details class="detail">
+    <summary class="detail__summary">How much it adds</summary>
+    <div class="detail__body">
+      <p>
+        The slight settings assume about 5° and the steep ones about 10°, which the app turns
+        into a height difference using the distance you entered. Uphill adds that full height to
+        the shot. Downhill only gives you back half of it, because a ball dropping into a green
+        does not run out the way the geometry alone suggests.
+      </p>
+      <p>
+        It is a judgement aid, not a survey. If you know the real elevation change to the green,
+        trust that over the five-step picker.
       </p>
     </div>
   </details>
@@ -308,6 +332,14 @@
     <a href="privacy/">privacy policy</a> explains what that does and does not mean.
   </p>
 
+  <h3>Changing my ad consent choices</h3>
+  <p>
+    Settings &rsaquo; <em>Privacy Options</em> reopens Google's consent form, so a choice you made
+    the first time you opened the app is not final. The row only appears where consent applies to
+    you — in the EEA, the UK and Switzerland — so if you do not see it, there is no consent for it
+    to change.
+  </p>
+
   <h3>Refunds on the purchase itself</h3>
   <p>
     Payment is handled entirely by Apple and Google, so refunds go through them, not me — Apple
@@ -319,8 +351,9 @@
 
   <h3>Which devices are supported?</h3>
   <p>
-    Android 6.0 and later, and iPhone on iOS 15 and later. The layout is portrait-only and iPhone
-    only for now — it runs on iPad in compatibility mode, but there is no iPad layout yet.
+    Android 6.0 and later, and iPhone on iOS 15 and later. On Android the app rotates and adapts
+    to tablets; on iPhone it is portrait-only. There is no iPad layout yet — it runs on iPad in
+    compatibility mode.
   </p>
 
   <h3>Does it work in my language?</h3>

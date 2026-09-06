@@ -24,7 +24,7 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="page-header">
-  <main class="main wrap" id="main">
+  <div class="wrap">
     <a class="page-header__studio" href="../../">
       <svg class="page-header__mark" viewBox="24 24 52 52" aria-hidden="true" focusable="false">
         <g fill="currentColor">
@@ -48,18 +48,18 @@
       </span>
     </a>
     <h1 class="page-header__title">Privacy Policy</h1>
-    <p class="page-header__tagline">RefundHound &middot; <span class="updated">last updated 5 August 2026</span></p>
+    <p class="page-header__tagline">RefundHound &middot; <span class="updated">last updated 6 September 2026</span></p>
   </div>
 </header>
 
-<div class="wrap">
+<main class="main wrap" id="main">
 
   <div class="summary-box">
     <p>The short version: RefundHound collects nothing.</p>
     <p>
       There is no account, no server and no analytics. Every refund, note and receipt
       photo you enter stays in a database on your own device. I have no way to see it,
-      and nothing is transmitted anywhere.
+      and the app transmits none of it anywhere.
     </p>
   </div>
 
@@ -97,13 +97,28 @@
     <li>No location, contacts, calendar or microphone access</li>
   </ul>
 
-  <h2>Crash logs</h2>
+  <h2>Error logs</h2>
 
   <p>
-    If the app crashes, it appends the technical error to a small local file so a problem
-    can be diagnosed if you choose to report it. That file records exceptions only — never
-    merchant names, amounts, notes or photos — it is capped in size, it stays on your
-    device, and it is never transmitted. It is deleted with the app.
+    If something goes wrong, the app appends the technical error to a small local file,
+    capped in size, so a problem can be diagnosed if you choose to report it. It records
+    errors only — never merchant names, amounts, notes or photos. It is not sent anywhere
+    on its own, there is no remote crash reporting, and it is deleted with the app.
+  </p>
+  <p>
+    <strong>The one way it can leave your device is if you send it.</strong> When you use
+    <em>Contact support</em> on the About screen and there is something logged, the app asks
+    whether to attach a recent extract to the email — every time, never remembered, and
+    <em>Send without it</em> is always an option. If you agree, the extract is pasted into
+    the draft in your own mail app, where you can read it, edit it or delete it before
+    sending, and the log is cleared so an old error doesn't ride along on later mail.
+  </p>
+  <p class="muted">
+    One honest caveat: an error message describes what failed, so it can contain a file path
+    from your device, and the technical trace can name internal parts of the app. Neither
+    carries your refund data, but "errors only" is not the same as "no personal information
+    whatsoever" — which is exactly why attaching it is your decision, shown to you first, and
+    asked fresh each time.
   </p>
 
   <h2>Backups</h2>
@@ -132,12 +147,23 @@
       The app reads the single image you pick; it does not browse or index your library.
     </li>
     <li>
-      <strong>Notifications</strong> — to deliver refund reminders. You are only asked
-      once you have an active refund, and declining is respected permanently.
+      <strong>Notifications</strong> — to deliver refund reminders. You are only asked once
+      you have an active refund, and declining is respected permanently: the app will not
+      ask a second time. If you change your mind, turn notifications on for RefundHound in
+      your system Settings.
     </li>
   </ul>
 
   <p>All three are optional. The app works without any of them, with the obvious features missing.</p>
+
+  <p>
+    Two further permissions appear on the Android listing and are worth explaining, because
+    neither does what its name suggests here. <strong>Network access</strong> is required by
+    Google Play Billing to sell and verify the one-time unlock; the app itself makes no
+    network calls, and your refund data is never sent over it. <strong>Run at startup</strong>
+    lets the app re-register your pending reminders after a reboot, which would otherwise
+    silently clear them.
+  </p>
 
   <h2>Where other companies are unavoidably involved</h2>
 
@@ -157,10 +183,12 @@
     </li>
     <li>
       <strong>Emailing support.</strong> If you use the contact button, the app opens your
-      own mail app with a draft that pre-fills the app version, your device model and your
-      OS version — this helps diagnose problems. You can see and edit all of it before
-      sending, and nothing is sent unless you send it. If you email me, I have your email
-      address and whatever you wrote, kept only as long as needed to answer you.
+      own mail app with a draft that pre-fills the app version and build, your device make
+      and model, and your OS version — this helps diagnose problems. If anything has been
+      logged, it also offers to attach a recent error extract, and you can decline. You can
+      see and edit all of it before sending, and nothing is sent unless you send it. If you
+      email me, I have your email address and whatever you wrote, kept only as long as
+      needed to answer you.
     </li>
     <li>
       <strong>Opening a link.</strong> Tapping the privacy policy, or rating the app, hands
