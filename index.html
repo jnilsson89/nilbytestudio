@@ -8,13 +8,13 @@
        SEO / social
        ========================================================================== -->
   <title>Nilbyte Studio — Small apps for iOS and Android</title>
-  <meta name="description" content="Nilbyte Studio is a one-person app studio in Varberg, Sweden. I build small mobile apps for fun — ForeWind and RefundHound — with no accounts, no subscriptions and no servers of my own.">
+  <meta name="description" content="Nilbyte Studio is a one-person app studio in Varberg, Sweden. I build small mobile apps for iOS and Android, start to finish — ForeWind for golf, RefundHound for the refunds you are owed. Neither needs an account or a subscription.">
   <link rel="canonical" href="https://nilbytestudio.com/">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Nilbyte Studio">
   <meta property="og:title" content="Nilbyte Studio — Small apps for iOS and Android">
-  <meta property="og:description" content="Small apps, built for fun. No accounts, no subscriptions, no servers of my own.">
+  <meta property="og:description" content="Small apps, built properly. ForeWind and RefundHound, for iOS and Android — built start to finish by one developer.">
   <meta property="og:url" content="https://nilbytestudio.com/">
   <meta property="og:image" content="https://nilbytestudio.com/assets/images/og-cover.png">
   <meta property="og:image:width" content="1200">
@@ -202,10 +202,10 @@
             built <span class="text-gradient">properly</span>.
           </h1>
           <p class="hero__lede">
-            Nilbyte Studio is one person building small, fast mobile apps for fun,
-            alongside a day job as a software developer. Some started because I hit
-            the problem myself; others just seemed worth building well. Either way,
-            nothing here asks for a sign-up or a monthly fee.
+            Nilbyte Studio is one person building small, fast mobile apps alongside a
+            day job as a software developer. Each one is a chance to find out how far I
+            can carry an idea on my own — design, code, store release and the support
+            mail afterwards.
           </p>
           <div class="hero__actions">
             <a class="button button--primary" href="#work">See the apps</a>
@@ -215,10 +215,10 @@
           <!-- Credibility strip. Every number here has to survive someone checking
                it against the store listings — no claims about tracking or ads,
                because ForeWind serves AdMob banners until you buy the removal.
-               TODO: bump "Apps built" as you ship. -->
+               TODO: bump "Apps shipped" as you ship. -->
           <dl class="stats" aria-label="Studio at a glance">
             <div class="stats__item">
-              <dt class="stats__label">Apps built</dt>
+              <dt class="stats__label">Apps shipped</dt>
               <dd class="stats__value">2</dd>
             </div>
             <div class="stats__item">
@@ -278,11 +278,13 @@
                 A golf shot calculator that tells you how far the ball will actually
                 go. Point the phone down your target line, and it combines the live
                 wind from your exact position with the shot direction to give you a
-                real playing distance instead of a guess.
+                real playing distance instead of a guess. It has been on Google Play
+                since April and is a long way from the app that launched — most of
+                what changed came from playing rounds with it in my hand.
               </p>
               <ul class="feature-list" role="list">
                 <li class="feature-list__item">Live weather from MET Norway, cached so it works on a patchy course signal</li>
-                <li class="feature-list__item">Cosine-interpolated wind model — no crude headwind/tailwind buckets</li>
+                <li class="feature-list__item">Adjusts by the true wind angle — smooth from head to cross, and downwind gives back less than a headwind takes</li>
                 <li class="feature-list__item">Built-in compass with calibration; metres or yards, m/s or mph</li>
                 <li class="feature-list__item">Free with a banner ad; one-time purchase removes it for good</li>
               </ul>
@@ -314,7 +316,7 @@
               <p class="card__text">
                 Track the refunds you are owed, and get nagged until the money
                 actually lands. Merchants promise "5–10 business days" and count on
-                you forgetting. Log a refund in fifteen seconds and the app remembers
+                you forgetting. Log a refund in ten seconds and the app remembers
                 for you.
               </p>
               <ul class="feature-list" role="list">
@@ -349,40 +351,32 @@
       <div class="wrap about">
         <div class="about__copy">
           <p class="eyebrow">About</p>
-          <h2 class="section__title" id="about-title">Apps built for fun, on the side</h2>
+          <h2 class="section__title" id="about-title">Built by one person, start to finish</h2>
           <p>
             I'm Johan, a software developer on the Swedish west coast. Nilbyte Studio
-            is where I build apps for fun, outside my day job. ForeWind started the
-            way most of mine do: I ran into something annoying on the golf course,
-            looked for an app that fixed it, and found only things that wanted an
-            account, a subscription and an analytics SDK first. RefundHound came from
-            a different place — an idea that seemed worth building — and I built it
-            because I thought it could be genuinely useful, not because I needed it
-            myself.
+            is where I build apps outside my day job, and I do the whole of it myself:
+            architecture, design, pricing, store releases and the unglamorous
+            maintenance afterwards. That's the appeal — every decision is mine, and
+            there's nowhere to hide when one of them is wrong.
           </p>
           <p>
-            So the subject matter can be anything — wind on a golf course, refunds
-            that never arrive, whatever comes next. The common thread isn't a market
-            or an industry, it's building the thing properly instead of
-            half-finished.
-          </p>
-          <p>
-            This isn't a business I'm trying to grow — it's something I build for
-            fun, outside my day-to-day work as a software developer. That keeps the
-            roadmap short and means I only answer to the people using the apps.
-          </p>
-          <p>
-            I do everything myself: design, code, store releases and the unglamorous
-            maintenance afterwards. Both apps keep what you put into them on your own
-            device — I run no server and have no copy of your data.
+            ForeWind came from the golf course. I play, I wanted a real read on the
+            wind instead of a guess, and what I found was either expensive or on a
+            monthly subscription. RefundHound was the
+            opposite: two deliberate weeks to get more time in .NET MAUI, then the
+            fourteen days of closed testing Google Play requires before release —
+            fourteen days I spent on real feedback rather than waiting out the clock.
+            It was my first go at notifications, too.
           </p>
           <p>
             Being straight about the money: ForeWind is free and shows a banner ad,
-            with a one-time purchase to remove it. RefundHound is free for three
-            refunds, with a one-time unlock for the rest. Those ads come from Google's
-            SDK and it does its own tracking, which is exactly why buying the removal
-            takes it out of the app entirely. Neither app has a subscription, and I
-            add no analytics of my own.
+            with a one-time purchase to remove it — golf is expensive enough already.
+            RefundHound is free for three refunds, with a one-time unlock for the rest.
+            Those ads come from Google's SDK and it does its own tracking, which is
+            exactly why buying the removal takes it out of the app entirely. Neither
+            app has a subscription, and I add no analytics of my own. Both keep what
+            you put into them on your own device — I run no server and have no copy of
+            your data.
           </p>
           <a class="link-arrow link-arrow--lg" href="#work">See what I've built</a>
         </div>
@@ -390,8 +384,8 @@
         <!-- Principles — cheap to scan, does a lot of positioning work. -->
         <ul class="principles" role="list">
           <li class="principle">
-            <h3 class="principle__title">Built with care</h3>
-            <p class="principle__text">Whether it scratches my own itch or just seemed worth building, every app gets made properly.</p>
+            <h3 class="principle__title">Finished, not just shipped</h3>
+            <p class="principle__text">An app goes out when it's genuinely done, not when I've run out of patience. Same standard whatever it does.</p>
           </li>
           <li class="principle">
             <h3 class="principle__title">Your phone, your data</h3>
@@ -399,7 +393,7 @@
           </li>
           <li class="principle">
             <h3 class="principle__title">Pay once, or not at all</h3>
-            <p class="principle__text">One-time purchases only. No subscriptions, no upsell treadmill.</p>
+            <p class="principle__text">Both apps are free to start. What you can buy is a one-time unlock, not a monthly bill.</p>
           </li>
           <li class="principle">
             <h3 class="principle__title">Built to still work</h3>
@@ -483,10 +477,9 @@
             days.
           </p>
           <p>
-            I'm open to hearing app ideas, but this isn't contract work — I'm not
-            available to build custom apps for pay. If you use one of the apps and
-            something is broken or missing, that goes straight to the top of the
-            list.
+            I'm glad to hear app ideas, but this isn't contract work — I'm not taking
+            on custom builds for pay. If you use one of the apps and something is
+            broken or missing, that goes straight to the top of the list.
           </p>
 
           <ul class="contact__links" role="list">
