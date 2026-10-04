@@ -123,10 +123,15 @@ on Windows it has to be renamed through a temporary name, and `git ls-files` mus
       `[contact email — Johan to fill]` in the game repo's `docs/store/`).
 - [x] **Landing page** at `fuseday/index.html`, with its sitemap entry, README layout line
       and an *About Fuseday* footer link on both pages.
-- [ ] **Johan to decide:** whether Fuseday goes on the studio home page (`index.html`'s app
-      cards, structured data and meta description) and in the 404 page's link list, now or
-      at public launch.
-- [ ] **At public launch:** store badges and `downloadUrl` on the landing page.
+- [x] **Studio home page:** a *Coming soon* card in Work (dashed `badge--wip`, Android,
+      links to the landing and support pages, no store links), the meta description, the
+      Work lede, an About paragraph and the money paragraph, and the two principles that
+      said "both apps". The Stack section is unchanged: it names ForeWind and RefundHound's
+      stack, which is still accurate.
+- [ ] **Johan to decide:** whether Fuseday goes in the 404 page's link list.
+- [ ] **At public launch:** store badges and `downloadUrl` on the landing page; on the home
+      page, badge to *Live*, a Google Play link, a `makesOffer` entry in the structured
+      data, and "Apps shipped" to 3 (the comment on the card lists these).
 - [ ] **Publish before the Play Data safety form** — `play-forms.md` needs
       `/fuseday/privacy` live before it is submitted.
 - [ ] Re-check both pages whenever `docs/store/support.md` or `privacy.md` changes, and

@@ -8,7 +8,7 @@
        SEO / social
        ========================================================================== -->
   <title>Nilbyte Studio — Small apps for iOS and Android</title>
-  <meta name="description" content="Nilbyte Studio is a one-person app studio in Varberg, Sweden. I build small mobile apps for iOS and Android, start to finish — ForeWind for golf, RefundHound for the refunds you are owed. Neither needs an account or a subscription.">
+  <meta name="description" content="Nilbyte Studio is a one-person app studio in Varberg, Sweden. I build small mobile apps for iOS and Android, start to finish — ForeWind for golf, RefundHound for the refunds you are owed, and Fuseday, a daily puzzle game, coming soon. None of them needs an account or a subscription.">
   <link rel="canonical" href="https://nilbytestudio.com/">
 
   <meta property="og:type" content="website">
@@ -256,9 +256,9 @@
           <p class="eyebrow">Work</p>
           <h2 class="section__title" id="work-title">The apps</h2>
           <p class="section__lede">
-            Two so far. Both keep your data on your own device, both are a one-time
-            purchase at most, and neither one asks you to make an account or pay
-            monthly.
+            Two out, and a game on the way. Each one keeps your data on your own
+            device, costs a one-time purchase at most, and never asks you to make an
+            account or pay monthly.
           </p>
         </header>
 
@@ -340,6 +340,45 @@
             </footer>
           </li>
 
+          <!-- ---------- Fuseday ----------
+               In closed beta, so "Coming soon" and no store links: a closed-test
+               Play listing only opens for invited testers. When it goes public,
+               switch the badge to Live, add the Google Play link, add it to the
+               structured data above, and bump "Apps shipped". -->
+          <li class="card">
+            <article class="card__body">
+              <div class="card__top">
+                <span class="badge badge--wip">Coming soon</span>
+                <span class="card__platform">Android</span>
+              </div>
+              <h3 class="card__title">
+                <a class="card__link" href="fuseday/">Fuseday</a>
+              </h3>
+              <p class="card__text">
+                A daily puzzle game, and the studio's first. Everyone gets the same
+                8×8 board each day: place your charges, commit once, and watch a
+                single chain reaction play out. Your score is measured against par —
+                the best result that board allows, found by trying every possible
+                placement before it ships.
+              </p>
+              <ul class="feature-list" role="list">
+                <li class="feature-list__item">One board a day, the same for everyone, new at midnight in your own time zone</li>
+                <li class="feature-list__item">Par is the proven maximum, not an estimate — the boards are solved offline and shipped as data</li>
+                <li class="feature-list__item">Free, with no ads, no analytics and no account — it doesn't even ask for network access</li>
+              </ul>
+              <ul class="tags" role="list">
+                <li class="tag">Unity&nbsp;6</li>
+                <li class="tag">C#</li>
+                <li class="tag">.NET&nbsp;Standard</li>
+                <li class="tag">xUnit</li>
+              </ul>
+            </article>
+            <footer class="card__footer">
+              <a class="link-arrow" href="fuseday/">Learn&nbsp;more</a>
+              <a class="link-arrow" href="fuseday/support/">Support</a>
+            </footer>
+          </li>
+
         </ul>
       </div>
     </section>
@@ -369,14 +408,19 @@
             It was my first go at notifications, too.
           </p>
           <p>
+            Fuseday is the first game, and a step out of .NET MAUI into Unity. Every
+            board is solved offline before it ships, with every possible placement
+            tried, so the par you play against is the real maximum.
+          </p>
+          <p>
             Being straight about the money: ForeWind is free and shows a banner ad,
             with a one-time purchase to remove it — golf is expensive enough already.
             RefundHound is free for three refunds, with a one-time unlock for the rest.
-            Those ads come from Google's SDK and it does its own tracking, which is
-            exactly why buying the removal takes it out of the app entirely. Neither
-            app has a subscription, and I add no analytics of my own. Both keep what
-            you put into them on your own device — I run no server and have no copy of
-            your data.
+            Fuseday is free, with no ads. ForeWind's ads come from Google's SDK and it
+            does its own tracking, which is exactly why buying the removal takes it out
+            of the app entirely. None of the apps has a subscription, and I add no
+            analytics of my own. All of them keep what you put into them on your own
+            device — I run no server and have no copy of your data.
           </p>
           <a class="link-arrow link-arrow--lg" href="#work">See what I've built</a>
         </div>
@@ -389,11 +433,11 @@
           </li>
           <li class="principle">
             <h3 class="principle__title">Your phone, your data</h3>
-            <p class="principle__text">Your shots, refunds and settings stay on the device. No account, no server of mine to leak.</p>
+            <p class="principle__text">Your shots, refunds, streaks and settings stay on the device. No account, no server of mine to leak.</p>
           </li>
           <li class="principle">
             <h3 class="principle__title">Pay once, or not at all</h3>
-            <p class="principle__text">Both apps are free to start. What you can buy is a one-time unlock, not a monthly bill.</p>
+            <p class="principle__text">Every app is free to start. What you can buy is a one-time unlock, not a monthly bill.</p>
           </li>
           <li class="principle">
             <h3 class="principle__title">Built to still work</h3>
