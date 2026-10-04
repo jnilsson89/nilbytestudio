@@ -14,6 +14,9 @@ forewind/privacy/index.html      privacy policy      /forewind/privacy/
 refundhound/index.html           product page        /refundhound/
 refundhound/support/index.html   support + FAQ       /refundhound/support/
 refundhound/privacy/index.html   privacy policy      /refundhound/privacy/
+fuseday/index.html               product page        /fuseday/
+fuseday/support/index.html       support + FAQ       /fuseday/support/
+fuseday/privacy/index.html       privacy policy      /fuseday/privacy/
 
 CNAME  robots.txt  sitemap.xml  _config.yml  .gitattributes
 
@@ -21,7 +24,8 @@ assets/
   css/    fonts.css · base.css (shared) · styles.css (studio)
           support.css (docs) · product.css (product pages)
   fonts/  InterTight-latin.woff2 (variable, 100–900)
-  images/ nilbyte-mark.svg (favicon) · refundhound/ (product screenshots)
+  images/ nilbyte-mark.svg (favicon) · refundhound/ · fuseday/
+          (product screenshots and share cards)
   js/     main.js (studio site only)
 
 docs/     internal notes, brand masters and screenshot originals —
@@ -31,6 +35,11 @@ docs/     internal notes, brand masters and screenshot originals —
 **ForeWind has no product page yet**, so `/forewind/` is still its support
 page. If one is added, it takes `/forewind/` and support moves to
 `/forewind/support/`, matching RefundHound.
+
+**Fuseday's product page is also the address on every shared result**: the
+game's share text links to `nilbytestudio.com/fuseday`. It has no store badges
+while the game is in closed beta, because a closed-test Play listing only opens
+for invited testers.
 
 **URLs have no file extension.** Each page is `<name>/index.html`, so it serves
 as `/forewind/privacy/` rather than `/forewind/privacy.html`. That keeps the
@@ -72,15 +81,20 @@ bezel survives in each corner of the PNG; `.shot__screen` uses a slightly larger
 radius to clip it. Re-exporting at a different device size means re-measuring
 the crop — the numbers are recorded in the `product.css` comment.
 
-**Known duplication.** The `[data-app='refundhound']` accent block exists twice:
-once in `support.css`, once in `product.css`. Hoisting it into `base.css` is the
+Fuseday's are simpler: Unity draws edge to edge, so the S22 captures have no
+status bar, nav bar or bezel to crop. They are scaled from 1080×2340 to
+720×1560 (~380 KB for four, small enough unquantised), and the app block sets
+`--shot-ratio` to match. Originals are in `docs/fuseday/screenshots-original/`.
+
+**Known duplication.** The `[data-app='refundhound']` and `[data-app='fuseday']`
+accent blocks each exist twice: once in `support.css`, once in `product.css`. Hoisting it into `base.css` is the
 better end state, but the generic dark-theme rule there
 (`:root:not([data-theme='light'])`) and an app block (`:root[data-app='…']`)
 have identical specificity, so the app blocks only win by living in a later
 sheet. Moving them means ordering them against that rule by hand, and getting it
-wrong would silently repaint the shipped support and privacy pages. One app has
-a product page today, so this is one duplicated block. Revisit when the second
-one lands.
+wrong would silently repaint the shipped support and privacy pages. Two apps
+have product pages, so this is two duplicated blocks; still cheaper than the
+risk. Revisit with the third.
 
 ## Local preview
 

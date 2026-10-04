@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" data-app="fuseday">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fuseday — Support</title>
+<meta name="description" content="Help and frequently asked questions for Fuseday, the daily puzzle where you place your charges, commit once and watch the chain.">
+<link rel="canonical" href="https://nilbytestudio.com/fuseday/support/">
+
+<meta name="theme-color" content="#141418" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B1622" media="(prefers-color-scheme: dark)">
+
+<link rel="icon" href="../../assets/images/nilbyte-mark.svg" type="image/svg+xml">
+
+<!-- Self-hosted Inter Tight + the shared studio support skeleton. Two
+     same-origin requests and no third party: this page must not hand a
+     visitor's IP to anyone, because the privacy policy it links to says
+     the game makes no network connections at all. -->
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/support.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="page-header">
+  <div class="wrap">
+    <a class="page-header__studio" href="../../">
+      <svg class="page-header__mark" viewBox="24 24 52 52" aria-hidden="true" focusable="false">
+        <g fill="currentColor">
+          <rect x="26" y="26" width="10" height="48" rx="2"/>
+          <rect x="64" y="26" width="10" height="48" rx="2"/>
+        </g>
+        <g fill="currentColor">
+          <rect x="32.00" y="26.00" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="36.36" y="32.07" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="40.71" y="38.14" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="45.07" y="44.21" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="49.43" y="50.29" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="53.79" y="56.36" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="58.14" y="62.43" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="62.50" y="68.50" width="5.5" height="5.5" rx="1.2"/>
+        </g>
+      </svg>
+      <span class="page-header__wordmark">
+        <span class="page-header__name">Nilbyte</span>
+        <span class="page-header__descriptor">Studio</span>
+      </span>
+    </a>
+    <h1 class="page-header__title">Fuseday</h1>
+    <p class="page-header__tagline">Support &amp; frequently asked questions</p>
+  </div>
+</header>
+
+<main class="main wrap" id="main">
+
+  <h2 id="get-in-touch">Get in touch</h2>
+
+  <div class="contact-card">
+    <p class="contact-card__email"><a href="mailto:fuseday@nilbytestudio.com">fuseday@nilbytestudio.com</a></p>
+    <p class="muted">
+      One person reads this mailbox, so please allow a couple of days for a reply.
+      Telling me which phone you use and what happened gets a useful answer far faster
+      than a bug report that says the game is broken.
+    </p>
+  </div>
+
+  <p class="muted">
+    Fuseday has no account system and makes no network connections, which means I cannot
+    see your results, restore a streak, or see what went wrong on your phone unless you
+    tell me. Everything below is something you can check or fix yourself.
+  </p>
+
+  <!-- Task-shaped index. Most people arrive with one question, so the answers
+       are listed first and the rules follow. -->
+  <ul class="quick-links">
+    <li><a href="#how-to-play">How do I play?</a></li>
+    <li><a href="#par">What does par mean?</a></li>
+    <li><a href="#five-links">What do the five links mean?</a></li>
+    <li><a href="#lost-streak">I lost my streak</a></li>
+    <li><a href="#midnight">When does the new board arrive?</a></li>
+    <li><a href="../privacy/">Privacy policy</a></li>
+  </ul>
+
+  <h2 id="how-to-play">How to play</h2>
+
+  <p>Every day there is one board of coloured blocks, the same for everyone.</p>
+
+  <ol>
+    <li>
+      <strong>Place your charges.</strong> Tap cells to place them. Each board tells you how
+      many charges you have, between two and four. Tap a charge again to remove it. An
+      outline shows the blocks each charge hits directly.
+    </li>
+    <li>
+      <strong>Commit.</strong> When you are happy, tap <em>COMMIT</em>. You get one commit
+      per day, and it cannot be undone.
+    </li>
+    <li>
+      <strong>Watch the chain.</strong> The charges go off one at a time, in reading order:
+      left to right, top row first.
+    </li>
+  </ol>
+
+  <h3 id="what-a-charge-does">What a charge does</h3>
+  <ul>
+    <li>It destroys the block on its cell, if there is one. A charge can also go on an empty cell.</li>
+    <li>It pushes each of its four neighbours (up, right, down, left) one cell away from it.</li>
+  </ul>
+
+  <h3 id="pushed-blocks">What happens to a pushed block</h3>
+  <p>It depends on where it is pushed:</p>
+  <ul>
+    <li><strong>Into an empty cell:</strong> it moves there.</li>
+    <li>
+      <strong>Into a block of the same colour:</strong> both blocks pop. The pop pushes their
+      neighbours in turn, and that is how chains grow.
+    </li>
+    <li><strong>Into a block of a different colour:</strong> it stays where it is.</li>
+    <li><strong>Off the edge of the board:</strong> it is destroyed.</li>
+  </ul>
+
+  <p>
+    Your score is the number of blocks destroyed. Every block counts one point, however it
+    was destroyed.
+  </p>
+  <p>
+    The outline shows only the direct hits, never the chain. Working out the chain is the
+    puzzle.
+  </p>
+
+  <h2 id="scoring">Scoring</h2>
+
+  <h3 id="par">What does par mean?</h3>
+  <p>
+    Par is the highest score possible on that board. You are playing against the real
+    maximum, not a guess.
+  </p>
+
+  <details class="detail">
+    <summary class="detail__summary">How par is found</summary>
+    <div class="detail__body">
+      <p>
+        Before a board ships, every possible placement of its charges is tried, and par is
+        the best result. Nothing is estimated: if par says 39, there is a placement that
+        scores 39, and none that scores more.
+      </p>
+    </div>
+  </details>
+
+  <h3 id="five-links">What do the five links mean?</h3>
+  <p>
+    Your result shows five links. The closer your score is to par, the more of them are
+    filled:
+  </p>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Links</th><th>Score</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>5</td><td>Exactly par</td></tr>
+        <tr><td>4</td><td>At least 90% of par</td></tr>
+        <tr><td>3</td><td>At least 75% of par</td></tr>
+        <tr><td>2</td><td>At least 55% of par</td></tr>
+        <tr><td>1</td><td>At least 30% of par</td></tr>
+        <tr><td>0</td><td>Below 30% of par</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="muted">
+    Five links always means par exactly. The other thresholds may be adjusted during the
+    beta.
+  </p>
+
+  <h2 id="the-daily-board">The daily board</h2>
+
+  <h3 id="midnight">When does the new board arrive?</h3>
+  <p>
+    A new Fuseday starts at midnight on your phone, in your local time. Everyone gets the
+    same numbered board, each at the start of their own day, so nobody gets their board in
+    the middle of the afternoon because they live in a different time zone.
+  </p>
+
+  <details class="detail">
+    <summary class="detail__summary">If you travel across time zones</summary>
+    <div class="detail__body">
+      <p>
+        The day follows your phone's date. If you travel across time zones, a new board can
+        arrive a little earlier or later than usual.
+      </p>
+    </div>
+  </details>
+
+  <h3 id="streaks">How do streaks work?</h3>
+  <ul>
+    <li>Your streak is the number of days in a row on which you committed the daily board.</li>
+    <li>
+      A day counts when you commit, not when you open the board. Opening the board and
+      leaving is fine; it is still there when you come back that day.
+    </li>
+    <li>Missing a day resets your streak to zero. There are no freezes and no repairs.</li>
+    <li>Practice boards never count towards your streak.</li>
+  </ul>
+
+  <h3 id="practice">Practice</h3>
+  <p>
+    Practice boards are available from the menu at any time. You can replay a board or move
+    on to the next one. Practice shows your score, but practice results are never saved or
+    shared, and they do not affect your streak.
+  </p>
+
+  <h2 id="everything-else">Everything else</h2>
+
+  <h3 id="lost-streak">I lost my streak after reinstalling</h3>
+  <p>
+    Your results are stored on your phone, and uninstalling deletes them. If Android's
+    device backup was on, a reinstall may bring them back.
+  </p>
+
+  <h3>The game says &ldquo;Fuseday starts on&nbsp;&hellip;&rdquo;</h3>
+  <p>
+    The first board has not arrived yet. Practice is available in the meantime.
+  </p>
+
+  <h3>The game says &ldquo;New boards are on their way&rdquo;</h3>
+  <p>
+    The calendar has run past the last board in this version. New boards are on their way
+    in an update. Practice is available in the meantime.
+  </p>
+
+  <h3>Can I turn off sound or vibration?</h3>
+  <p>Yes. Open the menu and go to Settings.</p>
+
+  <h3>Does Fuseday collect my data?</h3>
+  <p>
+    No. It has no ads, no analytics and no accounts, and it makes no network connections.
+    The <a href="../privacy/">privacy policy</a> sets out exactly what is stored on your
+    phone and where it can go.
+  </p>
+
+  <h3>Which devices are supported?</h3>
+  <p>
+    Fuseday is for Android phones, and is in a closed beta on Google Play. There is no
+    iPhone version yet.
+  </p>
+
+  <h3>Something is wrong that isn't listed here</h3>
+  <p>
+    Email <a href="mailto:fuseday@nilbytestudio.com">fuseday@nilbytestudio.com</a>. Please
+    say which phone you use and what happened; a screenshot helps too.
+  </p>
+
+  <footer class="page-footer">
+    <ul class="page-footer__links">
+      <li><a href="../privacy/">Privacy policy</a></li>
+      <li><a href="../">About Fuseday</a></li>
+      <li><a href="../../">Nilbyte Studio</a></li>
+      <li><a href="mailto:fuseday@nilbytestudio.com">Email support</a></li>
+    </ul>
+    <div class="page-footer__studio">
+      <svg class="page-footer__mark" viewBox="24 24 52 52" aria-hidden="true" focusable="false">
+        <g fill="currentColor">
+          <rect x="26" y="26" width="10" height="48" rx="2"/>
+          <rect x="64" y="26" width="10" height="48" rx="2"/>
+        </g>
+        <g fill="currentColor">
+          <rect x="32.00" y="26.00" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="36.36" y="32.07" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="40.71" y="38.14" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="45.07" y="44.21" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="49.43" y="50.29" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="53.79" y="56.36" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="58.14" y="62.43" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="62.50" y="68.50" width="5.5" height="5.5" rx="1.2"/>
+        </g>
+      </svg>
+      <p>Fuseday is made by <a href="../../">Nilbyte Studio</a> in Varberg, Sweden.</p>
+    </div>
+  </footer>
+
+</main>
+
+</body>
+</html>
