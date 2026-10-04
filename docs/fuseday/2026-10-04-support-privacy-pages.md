@@ -13,7 +13,7 @@
 
 The landing page is RefundHound's product page with the content swapped: same top bar,
 hero, alternating feature rows, facts grid, privacy panel, help section and footer. Its
-text comes from `docs/store/listing.md` and `support.md` in the game repo. Differences:
+text comes from `docs/store/play-listing/play-listing.md` and `support.md` in the game repo. Differences:
 
 - **No store badges** while the game is in closed beta: a closed-test Play listing only
   opens for invited testers, so a badge would be a dead end for anyone the share text
@@ -23,7 +23,7 @@ text comes from `docs/store/listing.md` and `support.md` in the game repo. Diffe
 - **No "What it costs" section**: there is nothing to buy in this build. Revisit if the
   archive ever ships.
 - **Screenshots** are the S22 captures from the game repo's
-  `docs/store/screenshots/original/`, scaled to 720×1560, in `assets/images/fuseday/`.
+  `docs/store/play-listing/appstore-screenshot-N-original.png`, scaled to 720×1560, in `assets/images/fuseday/`.
   Originals are copied to `docs/fuseday/screenshots-original/`. The hero is the placement
   screen, because it shows the outline; the how-to card is left out because most of it is
   empty screen.
@@ -44,7 +44,7 @@ The text comes from the game repository (`UntitledUnityProject`), not from here:
 
 - `docs/store/support.md` — how to play, par, the five links, midnight, streaks, practice, FAQ
 - `docs/store/privacy.md` — the policy
-- `docs/store/listing.md` and `docs/store/play-forms.md` — facts the pages must agree with
+- `docs/store/play-listing/play-listing.md` and `docs/store/play-forms.md` — facts the pages must agree with
   (permissions, no internet permission, no AD_ID, Auto Backup)
 
 If either page changes, change the game repo's source first, or record why they differ.
