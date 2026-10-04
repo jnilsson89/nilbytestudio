@@ -40,28 +40,50 @@ Differences today, all deliberate:
 **Never mention the tap-to-speed-up skip** on any Fuseday page. The beta survey asks whether
 players found it on their own.
 
-## Accent
+## Accent — the game's own colours
 
-Fuseday's Glow line cyan `#4DBEF0` (`UiTheme.Cyan` in the game). It is a light-on-dark
-colour, so:
+Like ForeWind and RefundHound, every colour comes from the app. Fuseday is a Unity game, so
+the source is `UntitledUnityProject/unity/Assets/Scripts/UI/UiTheme.cs` (and
+`unity/Assets/Scripts/View/BlockPalette.cs` for the mark), not a Colors.xaml. The game is
+dark-only, so by Johan's choice the header is **the game's dark screen in both modes**.
 
-| Token | Light | Dark |
-|---|---|---|
-| `--accent` (graphics, focus ring) | `#108FC8` — 3.63 white / 3.25 tint | `#4DBEF0` — 8.63 bg |
-| `--accent-strong` (link text) | `#0D709C` — 5.50 white / 4.92 tint | `#4DBEF0` |
-| `--accent-container` (header) | `#D2EFFC` | `#003C55` |
-| `--on-accent-container` | `#00202D` — 14.06 | `#D2EFFC` — 9.84 |
-| `--mark-bits` | `#0D709C` — 4.59 header / 3.07 stems | `#108FC8` — 3.25 header / 3.02 stems |
+| Token | Game source | Light | Dark |
+|---|---|---|---|
+| `--accent-container` (header) | `UiTheme.Background` | `#141418` | `#141418` |
+| `--on-accent-container` | `UiTheme.Text` | `#EDEDF2` — 15.75 (tagline 11.48) | same |
+| `--accent` (graphics, focus ring) | `UiTheme.Cyan`, darkened in light | `#108FC8` — 3.63 white / 3.25 tint | `#4DBEF0` — 8.63 bg |
+| `--accent-strong` (link text) | `UiTheme.Cyan`, darkened in light | `#0D709C` — 5.50 white / 4.92 tint | `#4DBEF0` |
+| `--accent-soft` | derived from the cyan | `rgba(16,143,200,.10)` | `rgba(77,190,240,.12)` |
+| `--mark-bits` | `BlockPalette` blue (0.20, 0.45, 0.80) | `#3373CC` — 3.91 header / 4.03 stems | same |
 
-`#4DBEF0` itself is 2.11:1 on white and 1.89:1 on `--bg-tint`, failing both 4.5:1 and 3:1,
-so light mode uses the same hue darkened — the ForeWind pattern. The brand colour is used
-unchanged in dark mode, which is the game's own context.
+`#4DBEF0` is 2.11:1 on white and 1.89:1 on `--bg-tint`, failing both 4.5:1 and 3:1, so light
+mode's body links and graphics use the same hue darkened — the ForeWind precedent
+(`#3D9046` → `#2F7238`).
 
-Known, shared with every app page (not Fuseday-specific): the `.updated` date sits inside
-the 0.85-opacity tagline, so it lands at about 3.5:1 (light) / 3.9:1 (dark) on the header —
-RefundHound's is 3.3:1. And in dark mode the skip link puts white text on a light
-`--accent-strong` (Fuseday 2.11:1, RefundHound 1.70, ForeWind 1.60). Fix both in
-`support.css` / `base.css` for all apps at once if at all.
+Mark-bit candidates, all game colours (vs `#141418` header / vs `#EDEDF2` stems): cyan
+`#4DBEF0` 8.70 / 1.81, link yellow `#FFD040` 12.55 / 1.25, block red `#D95E1C` 4.87 / 3.23,
+block green `#59B35C` 7.02 / 2.24, **block blue `#3373CC` 3.91 / 4.03**, block yellow
+`#F2D940` 12.93 / 1.22. Blue is the best balanced.
+
+Because the header stays dark on a light page, `:root[data-app='fuseday'] .page-header`
+re-scopes three light-mode tokens inside it:
+
+- `--accent: #4DBEF0` — the studio link's focus ring gets the real cyan (8.70:1), not the
+  darkened one;
+- `--text-strong: #EDEDF2` — the `<h1>` title is coloured by `--text-strong`, which is ink
+  `#0E1C2B` in light mode: 1.07:1 on the header, i.e. invisible;
+- `--text-muted: #92A7B8` — the privacy page's "last updated" date. Light slate `#5A6B7B`
+  would be 2.76:1 inside the 0.85-opacity tagline; `#92A7B8` (the site's dark-mode muted,
+  so dark mode is unchanged) is 5.65. The game's Muted `#8A8A99` would be 4.23, under AA.
+
+Light `theme-color` is `#141418` (the header, as RefundHound uses its header colour); dark
+stays the site's `#0B1622`.
+
+Known: in dark mode the `#141418` header sits on the `#0B1622` page at 1.01:1 — it separates
+by hue only, unlike the other apps' coloured dark headers. Not a WCAG requirement for a
+background surface, but it is flatter. The dark-mode skip link (white on a light
+`--accent-strong`: Fuseday 2.11, RefundHound 1.70, ForeWind 1.60) is a site-wide issue for
+`base.css`.
 
 ## Why the folder is lowercase
 
