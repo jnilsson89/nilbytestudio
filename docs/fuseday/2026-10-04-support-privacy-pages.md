@@ -17,7 +17,7 @@ text comes from `docs/store/listing.md` and `support.md` in the game repo. Diffe
 
 - **No store badges** while the game is in closed beta: a closed-test Play listing only
   opens for invited testers, so a badge would be a dead end for anyone the share text
-  reaches. The status line says "In closed beta on Android" instead, and the structured
+  reaches. The status line says "Coming soon to Android" instead, and the structured
   data has no `downloadUrl`. Add both when the game is public (the comment in the hero
   says where).
 - **No "What it costs" section**: there is nothing to buy in this build. Revisit if the
