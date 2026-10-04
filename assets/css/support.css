@@ -104,6 +104,50 @@
   }
 }
 
+/* Fuseday — the "Glow line" cyan #4DBEF0, from UiTheme.Cyan in the game's
+   unity/Assets/Scripts/UI/UiTheme.cs (a Unity game, so there is no
+   Colors.xaml; the game itself is dark-only, on #141418).
+
+   #4DBEF0 is a light-on-dark colour. On these pages it is 8.63:1 on the dark
+   --bg, so dark mode uses it as is. On white it is only 2.11:1 (1.89 on
+   --bg-tint), failing even the 3:1 graphic threshold, so light mode uses the
+   same hue (198°, same saturation) darkened twice:
+     #108FC8  3.63 white / 3.25 tint — graphic accents and focus ring (3:1)
+     #0D709C  5.50 white / 4.92 tint — link text (4.5:1); white on it 5.50
+   The header container #D2EFFC is the same hue again, pale. */
+:root[data-app='fuseday'] {
+  --accent:            #108FC8;   /* brand hue darkened — 3:1 for graphics on white */
+  --accent-strong:     #0D709C;   /* darkened further — AA for link text on white */
+  --accent-container:  #D2EFFC;
+  --on-accent-container: #00202D; /* 14.06:1 on the header */
+  --accent-soft:       rgba(16, 143, 200, 0.10);
+
+  /* Same reason as RefundHound's light override: Signal (#12A5B4, 186°) is
+     only 13° of hue from this #D2EFFC header and 2.48:1 against it, so the
+     diagonal smudges. The darkened Fuseday cyan is 4.59:1 on the header and
+     3.07:1 on the #00202D stems. */
+  --mark-bits:         #0D709C;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-app='fuseday'] {
+    --accent:            #4DBEF0;   /* the game's own cyan: 8.63 on --bg, 8.15 tint, 7.67 raised */
+    --accent-strong:     #4DBEF0;
+    --accent-container:  #003C55;
+    --on-accent-container: #D2EFFC; /* 9.84:1 on the header */
+    --accent-soft:       rgba(77, 190, 240, 0.12);
+
+    /* Must be repeated here, as for RefundHound, or the light #0D709C wins on
+       specificity and sinks into the #003C55 header.
+
+       The two-sided constraint again: the bits sit on the dark header and
+       bits 1 and 8 overlap the pale #D2EFFC stems. #4DBEF0 is 5.59 on the
+       header but 1.76 on the stems; Signal is 3.98 / 2.48. The light-mode
+       graphic accent #108FC8 balances at 3.25 / 3.02. */
+    --mark-bits:         #108FC8;
+  }
+}
+
 
 /* ==========================================================================
    2. Tokens specific to these pages

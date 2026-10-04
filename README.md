@@ -14,6 +14,8 @@ forewind/privacy/index.html      privacy policy      /forewind/privacy/
 refundhound/index.html           product page        /refundhound/
 refundhound/support/index.html   support + FAQ       /refundhound/support/
 refundhound/privacy/index.html   privacy policy      /refundhound/privacy/
+fuseday/support/index.html       support + FAQ       /fuseday/support/
+fuseday/privacy/index.html       privacy policy      /fuseday/privacy/
 
 CNAME  robots.txt  sitemap.xml  _config.yml  .gitattributes
 
@@ -31,6 +33,11 @@ docs/     internal notes, brand masters and screenshot originals —
 **ForeWind has no product page yet**, so `/forewind/` is still its support
 page. If one is added, it takes `/forewind/` and support moves to
 `/forewind/support/`, matching RefundHound.
+
+**Fuseday has no product page yet**, but unlike ForeWind its support page
+already lives at `/fuseday/support/`: `/fuseday/` is reserved for the landing
+page, because the game's share card links there. Until it exists, `/fuseday/`
+returns the 404 page.
 
 **URLs have no file extension.** Each page is `<name>/index.html`, so it serves
 as `/forewind/privacy/` rather than `/forewind/privacy.html`. That keeps the
