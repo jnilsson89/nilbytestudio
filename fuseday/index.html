@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" data-app="fuseday">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Fuseday — One board a day, one chain reaction</title>
+<meta name="description" content="A daily puzzle. Everyone gets the same 8×8 board: place your charges, commit once and watch a single chain reaction. No ads, no tracking, no account.">
+<link rel="canonical" href="https://nilbytestudio.com/fuseday/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nilbyte Studio">
+<meta property="og:title" content="Fuseday — One board a day, one chain reaction">
+<meta property="og:description" content="One board a day, the same for everyone. Place your charges, commit once, and see how close you get to par.">
+<meta property="og:url" content="https://nilbytestudio.com/fuseday/">
+<meta property="og:image" content="https://nilbytestudio.com/assets/images/fuseday/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Fuseday — one board a day, one chain reaction. A daily puzzle for Android, in closed beta.">
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="theme-color" content="#141418" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B1622" media="(prefers-color-scheme: dark)">
+
+<link rel="icon" href="../assets/images/nilbyte-mark.svg" type="image/svg+xml">
+
+<!-- Self-hosted Inter Tight + the studio base. No third-party requests on this
+     page either: the privacy policy it links to says the game makes no
+     network connections at all, and a font CDN on its own page would undercut
+     that. This is also the page every shared result links to. -->
+<link rel="stylesheet" href="../assets/css/fonts.css">
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/product.css">
+
+<!-- Game structured data. No downloadUrl yet: during the closed beta the Play
+     listing only opens for invited testers. Add it, and the store badges
+     below, when the game is public. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Fuseday",
+  "description": "A daily puzzle. Everyone gets the same 8×8 board: place your charges, commit once and watch a single chain reaction. No ads, no tracking, no account.",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Android",
+  "url": "https://nilbytestudio.com/fuseday/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Nilbyte Studio",
+    "url": "https://nilbytestudio.com/"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <a class="topbar__studio" href="../">
+      <svg class="topbar__mark" viewBox="24 24 52 52" aria-hidden="true" focusable="false">
+        <g fill="currentColor">
+          <rect x="26" y="26" width="10" height="48" rx="2"/>
+          <rect x="64" y="26" width="10" height="48" rx="2"/>
+        </g>
+        <g fill="currentColor">
+          <rect x="32.00" y="26.00" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="36.36" y="32.07" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="40.71" y="38.14" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="45.07" y="44.21" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="49.43" y="50.29" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="53.79" y="56.36" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="58.14" y="62.43" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="62.50" y="68.50" width="5.5" height="5.5" rx="1.2"/>
+        </g>
+      </svg>
+      <span class="topbar__wordmark">
+        <span class="topbar__name">Nilbyte</span>
+        <span class="topbar__descriptor">Studio</span>
+      </span>
+    </a>
+
+    <nav class="topbar__nav" aria-label="Fuseday">
+      <a href="support/">Support</a>
+      <a href="privacy/">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ======================================================================
+       HERO
+       ====================================================================== -->
+  <section class="hero">
+    <div class="wrap hero__inner">
+      <div class="hero__copy">
+        <p class="eyebrow">Fuseday · A daily puzzle</p>
+        <!-- One sentence per line: left to wrap, the title broke mid-phrase
+             ("One board. One / commit. One / chain reaction."). -->
+        <h1 class="hero__title">One board.<br> One commit.<br> One chain reaction.</h1>
+        <p class="hero__lede">
+          Every day, everyone gets the same 8×8 board of coloured blocks.
+          Place your charges, commit once, and watch a single cascade decide
+          your score.
+        </p>
+
+        <!-- Store badges go here when the game is public — the same markup as
+             refundhound/index.html, with the Play id
+             com.nilbytestudio.fuseday. A closed-test listing only opens for
+             invited testers, so a badge now would be a dead end for everyone
+             else. -->
+
+        <p class="status">
+          <span class="status__dot" aria-hidden="true"></span>
+          In closed beta on Android · free, no ads
+        </p>
+      </div>
+
+      <div class="shot hero__shot">
+        <img class="shot__screen"
+             src="../assets/images/fuseday/placement.png"
+             width="720" height="1560" decoding="async"
+             alt="Fuseday #2, par 27: two charges placed on an 8×8 board of red, yellow, green and blue blocks, each with a white outline around the blocks it will hit directly, and a COMMIT button at the bottom.">
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       THE PUZZLE
+       The rules in one paragraph. The full version is on the support page.
+       ====================================================================== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">The puzzle</p>
+        <h2 class="section__title">You see the first hit. The chain is yours to work out.</h2>
+        <p class="section__lede">
+          A charge destroys the block beneath it and pushes its four neighbours
+          one cell away. A block pushed into one of its own colour pops them
+          both, and that pop pushes its neighbours in turn. The outline shows
+          only what each charge hits directly — never the chain.
+        </p>
+      </div>
+      <p>
+        <a class="link-arrow" href="support/#how-to-play">The full rules</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       FEATURES
+       Alternating rows; the phone swaps sides on wide screens.
+       ====================================================================== -->
+  <section class="section section--tint">
+    <div class="wrap">
+      <ul class="features">
+
+        <li class="feature">
+          <div class="feature__copy">
+            <h2 class="feature__title">Commit once</h2>
+            <p class="feature__text">
+              Move your charges around as much as you like. When you're happy,
+              commit: the charges go off one at a time and the chain plays out
+              on its own. You get one commit a day, and it can't be undone.
+            </p>
+          </div>
+          <div class="shot">
+            <img class="shot__screen"
+                 src="../assets/images/fuseday/cascade.png"
+                 width="720" height="1560" loading="lazy" decoding="async"
+                 alt="The board mid-cascade: most of the top rows already cleared, a white ring where a charge has just gone off, and the COMMIT button dimmed.">
+          </div>
+        </li>
+
+        <li class="feature">
+          <div class="feature__copy">
+            <h2 class="feature__title">Measured against par</h2>
+            <p class="feature__text">
+              Every board has a par: the highest score possible on it. It was
+              found by trying every possible placement of the charges before
+              the board shipped, so it isn't a guess — it's the actual best.
+              Your result earns up to five links, and all five means you matched
+              par exactly.
+            </p>
+          </div>
+          <div class="shot">
+            <img class="shot__screen"
+                 src="../assets/images/fuseday/result.png"
+                 width="720" height="1560" loading="lazy" decoding="async"
+                 alt="The result card over the board: a score of 10 against par 27, a streak of 1, 8:52 until the next Fuseday, one of five links filled, and Practice and Share buttons.">
+          </div>
+        </li>
+
+        <li class="feature">
+          <div class="feature__copy">
+            <h2 class="feature__title">Practice whenever you like</h2>
+            <p class="feature__text">
+              One board a day is the point, but practice boards are there when
+              you want more. Replay one or move on to the next. Practice results
+              are never saved or shared, and they never touch your streak.
+            </p>
+          </div>
+          <div class="shot">
+            <img class="shot__screen"
+                 src="../assets/images/fuseday/practice.png"
+                 width="720" height="1560" loading="lazy" decoding="async"
+                 alt="Practice board 2, par 30, with two charges left to place on a full 8×8 board of red, yellow, green and blue blocks.">
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       THE DAILY RITUAL
+       Keep in step with the support page's Midnight and Streaks sections.
+       ====================================================================== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">The daily ritual</p>
+        <h2 class="section__title">A new board every midnight. The same one for everyone.</h2>
+      </div>
+
+      <ul class="facts">
+        <li class="fact">
+          <h3 class="fact__title">Midnight, your time</h3>
+          <p class="fact__text">
+            A new Fuseday starts at midnight on your phone, in your local time.
+            Everyone plays the same numbered board, each at the start of their
+            own day.
+          </p>
+        </li>
+        <li class="fact">
+          <h3 class="fact__title">It counts when you commit</h3>
+          <p class="fact__text">
+            Open the board, think, come back later. A day only counts once you
+            commit, so there is no clock running while you look.
+          </p>
+        </li>
+        <li class="fact">
+          <h3 class="fact__title">A streak with no safety net</h3>
+          <p class="fact__text">
+            Commit on consecutive days to build a streak. Miss one and it starts
+            again from zero — no freezes, no repairs.
+          </p>
+        </li>
+        <li class="fact">
+          <h3 class="fact__title">Share without spoilers</h3>
+          <p class="fact__text">
+            Share your result as a few lines of text: score, par, links and
+            streak. It never gives the board away.
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       PRIVACY
+       ====================================================================== -->
+  <section class="section section--tint">
+    <div class="wrap">
+      <div class="promise">
+        <div>
+          <h2 class="promise__title">No ads. No tracking. No account.</h2>
+          <p>
+            Fuseday makes no network connections at all — it doesn't even ask
+            for permission to. No analytics, no sign-in, and no server of mine
+            holding a copy of your results. They live on your phone, and in
+            Android's own backup if you use it.
+          </p>
+          <p class="muted">
+            Which also means there is nothing I can restore for you. Uninstall
+            without a backup and your streak goes with it.
+          </p>
+        </div>
+        <p><a class="link-arrow" href="privacy/">Read the privacy policy</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       HELP
+       ====================================================================== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">Help</p>
+        <h2 class="section__title">Something not working?</h2>
+        <p class="section__lede">
+          The support page covers the rules, what par and the links mean,
+          streaks and practice. If none of it helps, one person reads the
+          mailbox.
+        </p>
+      </div>
+      <p>
+        <a class="link-arrow" href="support/">Support &amp; FAQ</a>
+      </p>
+      <p class="muted" style="margin-top: var(--space-4)">
+        Or email <a href="mailto:fuseday@nilbytestudio.com">fuseday@nilbytestudio.com</a>.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="page-footer">
+  <div class="wrap">
+    <ul class="page-footer__links">
+      <li><a href="support/">Support</a></li>
+      <li><a href="privacy/">Privacy policy</a></li>
+      <li><a href="../">Nilbyte Studio</a></li>
+      <li><a href="mailto:fuseday@nilbytestudio.com">Email support</a></li>
+    </ul>
+    <div class="page-footer__studio">
+      <svg class="page-footer__mark" viewBox="24 24 52 52" aria-hidden="true" focusable="false">
+        <g fill="currentColor">
+          <rect x="26" y="26" width="10" height="48" rx="2"/>
+          <rect x="64" y="26" width="10" height="48" rx="2"/>
+        </g>
+        <g fill="currentColor">
+          <rect x="32.00" y="26.00" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="36.36" y="32.07" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="40.71" y="38.14" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="45.07" y="44.21" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="49.43" y="50.29" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="53.79" y="56.36" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="58.14" y="62.43" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="62.50" y="68.50" width="5.5" height="5.5" rx="1.2"/>
+        </g>
+      </svg>
+      <p>Fuseday is made by <a href="../">Nilbyte Studio</a> in Varberg, Sweden.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -22,9 +22,9 @@
    and an app block (`:root[data-app='…']`) have identical specificity, so the
    app blocks only win by being in a later sheet. Moving them into base.css
    means ordering them against that rule by hand, and getting it wrong would
-   silently repaint the shipped support and privacy pages. One app has a
-   product page today, so this is one duplicated block, not a system. Revisit
-   when the second one lands.
+   silently repaint the shipped support and privacy pages. Two apps have
+   product pages now (RefundHound, Fuseday), so this is two duplicated
+   blocks. Still cheaper than the risk; revisit with the third.
    ========================================================================== */
 
 
@@ -58,6 +58,39 @@
     /* Signal, not the app accent: the bits must stay legible against the dark
        header AND the pale stems that bits 1 and 8 overlap. */
     --mark-bits:           #12A5B4;
+  }
+}
+
+/* Fuseday — the game's own colours, from the game repo's
+   unity/Assets/Scripts/UI/UiTheme.cs and View/BlockPalette.cs. Copied from
+   support.css section 1, where the contrast workings are. The game is
+   dark-only, so the hero is the game's screen in both modes. */
+:root[data-app='fuseday'] {
+  --accent:              #108FC8;   /* cyan darkened — 3:1 for graphics on white */
+  --accent-strong:       #0D709C;   /* darkened further — AA for link text on white */
+  --accent-container:    #141418;   /* UiTheme.Background */
+  --on-accent-container: #EDEDF2;   /* UiTheme.Text */
+  --accent-soft:         rgba(16, 143, 200, 0.10);
+  --mark-bits:           #3373CC;   /* BlockPalette blue */
+
+  /* Galaxy S22 captures, 1080x2340 scaled to 720x1560. Unity draws edge to
+     edge, so there is no status or nav bar to crop, and no bezel sliver. */
+  --shot-ratio:          720 / 1560;
+}
+
+/* The hero is the dark game screen even on a light page, so anything that
+   takes the accent inside it gets the real cyan (8.70:1 on #141418) rather
+   than the darkened light-mode one (3.63). */
+:root[data-app='fuseday'] .hero {
+  --accent:              #4DBEF0;
+  --accent-strong:       #4DBEF0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-app='fuseday'] {
+    --accent:              #4DBEF0;   /* UiTheme.Cyan */
+    --accent-strong:       #4DBEF0;
+    --accent-soft:         rgba(77, 190, 240, 0.12);
   }
 }
 
@@ -206,7 +239,7 @@ a:hover { color: var(--text-strong); }
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 720 / 1484;
+  aspect-ratio: var(--shot-ratio, 720 / 1484);
   border-radius: calc(var(--shot-w) * 0.045);
   background: var(--bg-tint);
 }

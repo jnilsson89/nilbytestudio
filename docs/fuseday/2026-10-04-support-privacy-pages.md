@@ -1,15 +1,37 @@
 # Fuseday support & privacy pages — notes and checklist
 
 **Date:** 2026-10-04
-**Status:** Implemented — support and privacy pages live in this repo; landing page pending
+**Status:** Implemented — support, privacy and landing pages live in this repo
 
 ## Pages
 
 | File | URL |
 |---|---|
+| `fuseday/index.html` | `/fuseday/` — landing page, and the link on every shared result |
 | `fuseday/support/index.html` | `/fuseday/support/` |
 | `fuseday/privacy/index.html` | `/fuseday/privacy/` |
-| *(not yet)* `fuseday/index.html` | `/fuseday/` — landing page |
+
+The landing page is RefundHound's product page with the content swapped: same top bar,
+hero, alternating feature rows, facts grid, privacy panel, help section and footer. Its
+text comes from `docs/store/listing.md` and `support.md` in the game repo. Differences:
+
+- **No store badges** while the game is in closed beta: a closed-test Play listing only
+  opens for invited testers, so a badge would be a dead end for anyone the share text
+  reaches. The status line says "In closed beta on Android" instead, and the structured
+  data has no `downloadUrl`. Add both when the game is public (the comment in the hero
+  says where).
+- **No "What it costs" section**: there is nothing to buy in this build. Revisit if the
+  archive ever ships.
+- **Screenshots** are the S22 captures from the game repo's
+  `docs/store/screenshots/original/`, scaled to 720×1560, in `assets/images/fuseday/`.
+  Originals are copied to `docs/fuseday/screenshots-original/`. The hero is the placement
+  screen, because it shows the outline; the how-to card is left out because most of it is
+  empty screen.
+- **Share card** `assets/images/fuseday/og-cover.png` (1200×630): the game's dark
+  background, the Nilbyte mark with the game-blue bits, the name, "One board a day.
+  Commit once, watch the chain.", and the placement screen in the CSS phone frame. It was
+  rendered from HTML with headless Edge in real Inter Tight (the woff2 embedded), not
+  composited in GDI+ like RefundHound's.
 
 Both pages are RefundHound's support and privacy pages with the content swapped and
 `data-app="fuseday"`: same head, same header lockup and footer, same components
@@ -99,11 +121,12 @@ on Windows it has to be renamed through a temporary name, and `git ls-files` mus
       live. Every contact link on both pages points at it, and the Play Console contact
       email, IARC email and listing should use the same address (they are still
       `[contact email — Johan to fill]` in the game repo's `docs/store/`).
-- [ ] **Landing page** at `fuseday/index.html`, once the screenshots exist. Until then
-      `/fuseday/` — the URL on every shared result — is a 404. When it lands: add it to
-      `sitemap.xml`, the README layout, an *About Fuseday* footer link on both pages
-      (RefundHound's pattern), and decide whether Fuseday goes on the studio home page and
-      in the 404 page's link list.
+- [x] **Landing page** at `fuseday/index.html`, with its sitemap entry, README layout line
+      and an *About Fuseday* footer link on both pages.
+- [ ] **Johan to decide:** whether Fuseday goes on the studio home page (`index.html`'s app
+      cards, structured data and meta description) and in the 404 page's link list, now or
+      at public launch.
+- [ ] **At public launch:** store badges and `downloadUrl` on the landing page.
 - [ ] **Publish before the Play Data safety form** — `play-forms.md` needs
       `/fuseday/privacy` live before it is submitted.
 - [ ] Re-check both pages whenever `docs/store/support.md` or `privacy.md` changes, and
