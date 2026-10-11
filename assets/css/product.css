@@ -22,9 +22,11 @@
    and an app block (`:root[data-app='…']`) have identical specificity, so the
    app blocks only win by being in a later sheet. Moving them into base.css
    means ordering them against that rule by hand, and getting it wrong would
-   silently repaint the shipped support and privacy pages. Two apps have
-   product pages now (RefundHound, Fuseday), so this is two duplicated
-   blocks. Still cheaper than the risk; revisit with the third.
+   silently repaint the shipped support and privacy pages. All three apps
+   have product pages now (ForeWind, RefundHound, Fuseday), so this is three
+   duplicated blocks. Each is small and changes only when an app's palette
+   does; hoisting is still the right move, but as its own change with every
+   page checked in both themes, not folded into adding a page.
    ========================================================================== */
 
 
@@ -58,6 +60,37 @@
     /* Signal, not the app accent: the bits must stay legible against the dark
        header AND the pale stems that bits 1 and 8 overlap. */
     --mark-bits:           #12A5B4;
+  }
+}
+
+/* ForeWind — Material 3 palette from ForeWind/Resources/Styles/Colors.xaml.
+   Copied from support.css section 1, where the contrast workings are.
+   Primary #3D9046 is only ~3.4:1 on white, so link text uses #2F7238.
+   No --mark-bits override in light mode: Signal is 63° of hue from the
+   #C2EDC4 header and separates cleanly. */
+:root[data-app='forewind'] {
+  --accent:              #3D9046;   /* brand hue, for graphic accents */
+  --accent-strong:       #2F7238;   /* darkened — AA for link text on white */
+  --accent-container:    #C2EDC4;
+  --on-accent-container: #00210A;
+  --accent-soft:         rgba(61, 144, 70, 0.10);
+
+  /* 6.7" iPhone captures, 1290x2796 scaled to 720x1560. iOS exports
+     the screen alone, with no bezel or nav bar to crop. */
+  --shot-ratio:          720 / 1560;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-app='forewind'] {
+    --accent:              #A7D9A9;
+    --accent-strong:       #A7D9A9;
+    --accent-container:    #1F3F23;
+    --on-accent-container: #A7D9A9;
+    --accent-soft:         rgba(167, 217, 169, 0.12);
+
+    /* Darkened Signal: legible against the #1F3F23 header AND the pale stems
+       that bits 1 and 8 overlap. Same as support.css. */
+    --mark-bits:           #0C7A87;
   }
 }
 

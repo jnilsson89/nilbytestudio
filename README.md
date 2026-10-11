@@ -9,7 +9,8 @@ third-party requests.
 ```
 index.html                       studio site         /
 404.html                         not-found page
-forewind/index.html              support + FAQ       /forewind/
+forewind/index.html              product page        /forewind/
+forewind/support/index.html      support + FAQ       /forewind/support/
 forewind/privacy/index.html      privacy policy      /forewind/privacy/
 refundhound/index.html           product page        /refundhound/
 refundhound/support/index.html   support + FAQ       /refundhound/support/
@@ -24,7 +25,7 @@ assets/
   css/    fonts.css · base.css (shared) · styles.css (studio)
           support.css (docs) · product.css (product pages)
   fonts/  InterTight-latin.woff2 (variable, 100–900)
-  images/ nilbyte-mark.svg (favicon) · refundhound/ · fuseday/
+  images/ nilbyte-mark.svg (favicon) · forewind/ · refundhound/ · fuseday/
           (product screenshots and share cards)
   js/     main.js (studio site only)
 
@@ -32,9 +33,13 @@ docs/     internal notes, brand masters and screenshot originals —
           excluded from the published site
 ```
 
-**ForeWind has no product page yet**, so `/forewind/` is still its support
-page. If one is added, it takes `/forewind/` and support moves to
-`/forewind/support/`, matching RefundHound.
+**ForeWind's support page moved** from `/forewind/` to `/forewind/support/`
+in October 2026, when the product page took the address. Old deep links such
+as `/forewind/#compass-wrong` are forwarded by a small inline script in
+`forewind/index.html`; keep its id list in step with the support page. The
+bare `/forewind/` is still `AppConfiguration.Links.Website` in the app and the
+Support URL in both store consoles. It now lands on the product page, which
+links to support and shows the email address.
 
 **Fuseday's product page is also the address on every shared result**: the
 game's share text links to `nilbytestudio.com/fuseday`. It has no store badges
@@ -86,15 +91,14 @@ status bar, nav bar or bezel to crop. They are scaled from 1080×2340 to
 720×1560 (~380 KB for four, small enough unquantised), and the app block sets
 `--shot-ratio` to match. Originals are in `docs/fuseday/screenshots-original/`.
 
-**Known duplication.** The `[data-app='refundhound']` and `[data-app='fuseday']`
-accent blocks each exist twice: once in `support.css`, once in `product.css`. Hoisting it into `base.css` is the
+**Known duplication.** Each app's `[data-app='…']` accent block exists twice: once in `support.css`, once in `product.css`. Hoisting it into `base.css` is the
 better end state, but the generic dark-theme rule there
 (`:root:not([data-theme='light'])`) and an app block (`:root[data-app='…']`)
 have identical specificity, so the app blocks only win by living in a later
 sheet. Moving them means ordering them against that rule by hand, and getting it
-wrong would silently repaint the shipped support and privacy pages. Two apps
-have product pages, so this is two duplicated blocks; still cheaper than the
-risk. Revisit with the third.
+wrong would silently repaint the shipped support and privacy pages. All three
+apps have product pages now, so hoisting is worth doing — as its own change,
+with every page checked in both themes.
 
 ## Local preview
 
