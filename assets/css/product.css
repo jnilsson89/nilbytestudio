@@ -75,9 +75,10 @@
   --on-accent-container: #00210A;
   --accent-soft:         rgba(61, 144, 70, 0.10);
 
-  /* 6.7" iPhone captures, 1290x2796 scaled to 720x1560. iOS exports
-     the screen alone, with no bezel or nav bar to crop. */
-  --shot-ratio:          720 / 1560;
+  /* Android captures, 598x1296, with the 80px system nav bar cropped off
+     to 598x1216 and kept at native size (the frame is at most 272 CSS px,
+     so 598 covers 2x screens). Raw screenshots: no bezel sliver to clip. */
+  --shot-ratio:          598 / 1216;
 }
 
 @media (prefers-color-scheme: dark) {

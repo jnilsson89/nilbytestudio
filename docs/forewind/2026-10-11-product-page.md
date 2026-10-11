@@ -20,12 +20,16 @@
 
 ## Assets
 
-- **Screenshots** are the English 6.7" iPhone captures from the ForeWind repo's
-  `docs/store/appstore-listing/appstore-screenshot-N-original-en.png` (1290×2796), scaled
-  to 720×1560 in `assets/images/forewind/` as `calculator.png`, `weather.png` and
-  `settings.png`. Originals are copied to `docs/forewind/screenshots-original/`. iOS
-  exports the screen alone, so there is nothing to crop. The iPhone set was chosen over
-  the Play captures because those are 598 px wide and would have to be upscaled.
+- **Screenshots** are the English Android captures from the ForeWind repo's
+  `docs/store/play-listing/appstore-screenshot-N-original-en.png` (598×1296), with the
+  80 px system nav bar cropped off to 598×1216, as RefundHound's are. They are kept at
+  native size rather than upscaled: the frame is at most 272 CSS px, so 598 covers 2×
+  screens. Saved in `assets/images/forewind/` as `compass.png`, `plays-as.png`,
+  `weather.png` and `settings.png`, with originals in `docs/forewind/screenshots-original/`.
+  Android rather than iPhone shots because the CSS frame reads as an Android phone, and an
+  iOS UI inside it looked wrong.
+- **Known flaw:** the English Settings capture shows Swedish unit names ("Meter per
+  sekund (m/s)"). Swap `settings.png` when there is a clean re-capture.
 - **Share card** `assets/images/forewind/og-cover.png` (1200×630) is rendered from
   `docs/forewind/og-cover.html` with headless Edge:
 
@@ -39,8 +43,9 @@
 
 Every claim is from the ForeWind repo's `docs/store/play-listing/play-listing.md`
 ("Claims verified against the codebase") or from the support page, which is itself
-sourced from the code. The "150 m plays like 185 m into 10 m/s" example is read off
-the hero screenshot. The privacy panel names both things that leave the phone (the
+sourced from the code. The "150 m plays like 180 m into 10 m/s" example is read off
+the hero screenshot; the iPhone capture says 185 m, so re-check it if the shots change.
+The privacy panel names both things that leave the phone (the
 position sent to MET Norway, and the Google-served banner). It does not claim "no
 tracking", because the privacy policy's Remove Ads caveat says the Google SDK still
 starts after the purchase.
