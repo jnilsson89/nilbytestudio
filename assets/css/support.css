@@ -170,6 +170,53 @@
   }
 }
 
+/* Jingle Drop — the game's own colours, from the game repo's
+   Assets/NilbyteStudio/SantaRun/Resources/SantaUiTheme.asset (UiTheme). The
+   game is a night sky in every scene, so, as for Fuseday, the header is the
+   game's panel navy in BOTH modes:
+     PanelColor  #142142 (0.08, 0.13, 0.26) → --accent-container
+     TextColor   #FFFFFF                    → --on-accent-container  15.8:1
+     AccentColor #FFD66B (1, 0.84, 0.42)    → --accent in dark mode, 13.1:1 on --bg
+
+   Light mode: the gold is 1.39:1 on white, useless for text, so links and
+   graphics take the game's other brand colour, the button red PrimaryColor
+   #C7333D (0.78, 0.2, 0.24): 5.29:1 on white, 4.9 on --bg-tint — AA as it is,
+   no darkening needed.
+
+   Mark bits, the usual two-sided constraint (header #142142 / white stems):
+     Gold #FFD66B   11.4 / 1.39 — vanishes into the stems
+     Red  #C7333D    2.99 / 5.29 — just under 3:1 on the header
+     Red  #D9434A    3.66 / 4.33 — PrimaryColor lightened a step: both sides clear 3:1
+   #D9434A is used in both modes, because the header does not change. */
+:root[data-app='jingledrop'] {
+  --accent:            #C7333D;   /* UiTheme.PrimaryColor — 5.29:1 on white */
+  --accent-strong:     #C7333D;
+  --accent-container:  #142142;   /* UiTheme.PanelColor */
+  --on-accent-container: #FFFFFF; /* UiTheme.TextColor */
+  --accent-soft:       rgba(199, 51, 61, 0.10);
+  --mark-bits:         #D9434A;   /* PrimaryColor, lightened for 3:1 on the header */
+}
+
+/* Things that sit ON the header, which is the game's navy even on a light page
+   (the same three tokens as Fuseday, for the same reasons):
+   - the focus ring on the studio link gets the gold (11.4:1 on #142142);
+   - the <h1> takes white instead of ink --text-strong (which would be ~1.1:1);
+   - "last updated" takes the site's dark-mode muted #92A7B8: 6.37:1 on
+     #142142, about 5.2 inside the 0.85-opacity tagline. */
+:root[data-app='jingledrop'] .page-header {
+  --accent:            #FFD66B;
+  --text-strong:       #FFFFFF;
+  --text-muted:        #92A7B8;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-app='jingledrop'] {
+    --accent:            #FFD66B;   /* UiTheme.AccentColor: 13.1 on --bg */
+    --accent-strong:     #FFD66B;
+    --accent-soft:       rgba(255, 214, 107, 0.12);
+  }
+}
+
 
 /* ==========================================================================
    2. Tokens specific to these pages

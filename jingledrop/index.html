@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" data-app="jingledrop">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Jingle Drop — A cosy Christmas game for ages 3 to 99</title>
+<meta name="description" content="Fly Santa's sleigh over a snowy village, drop gifts down the chimneys and dodge the shooting stars. A cosy Christmas game for ages 3 to 99. No ads, no internet, no account.">
+<link rel="canonical" href="https://nilbytestudio.com/jingledrop/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Nilbyte Studio">
+<meta property="og:title" content="Jingle Drop — A cosy Christmas game for ages 3 to 99">
+<meta property="og:description" content="Fly Santa's sleigh, drop gifts down the chimneys and dodge the shooting stars. No ads, no internet, no account.">
+<meta property="og:url" content="https://nilbytestudio.com/jingledrop/">
+<meta property="og:image" content="https://nilbytestudio.com/assets/images/jingledrop/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Jingle Drop: Santa's sleigh and two reindeer flying over a snowy village under the title. A cosy Christmas game, coming soon to Android.">
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="theme-color" content="#142142" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B1622" media="(prefers-color-scheme: dark)">
+
+<link rel="icon" href="../assets/images/nilbyte-mark.svg" type="image/svg+xml">
+
+<!-- Self-hosted Inter Tight + the studio base. No third-party requests on this
+     page either: the privacy policy it links to says the game makes no
+     network connections at all, and a font CDN on its own page would undercut
+     that. -->
+<link rel="stylesheet" href="../assets/css/fonts.css">
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/product.css">
+
+<!-- Game structured data. No downloadUrl yet: during the closed test the Play
+     listing only opens for invited testers. Add it, and the store badges
+     below, when the game is public. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Jingle Drop",
+  "description": "Fly Santa's sleigh over a snowy village, drop gifts down the chimneys and dodge the shooting stars. A cosy Christmas game for ages 3 to 99. No ads, no internet, no account.",
+  "applicationCategory": "GameApplication",
+  "operatingSystem": "Android",
+  "url": "https://nilbytestudio.com/jingledrop/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Nilbyte Studio",
+    "url": "https://nilbytestudio.com/"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <a class="topbar__studio" href="../">
+      <svg class="topbar__mark" viewBox="24 24 52 52" aria-hidden="true" focusable="false">
+        <g fill="currentColor">
+          <rect x="26" y="26" width="10" height="48" rx="2"/>
+          <rect x="64" y="26" width="10" height="48" rx="2"/>
+        </g>
+        <g fill="currentColor">
+          <rect x="32.00" y="26.00" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="36.36" y="32.07" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="40.71" y="38.14" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="45.07" y="44.21" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="49.43" y="50.29" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="53.79" y="56.36" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="58.14" y="62.43" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="62.50" y="68.50" width="5.5" height="5.5" rx="1.2"/>
+        </g>
+      </svg>
+      <span class="topbar__wordmark">
+        <span class="topbar__name">Nilbyte</span>
+        <span class="topbar__descriptor">Studio</span>
+      </span>
+    </a>
+
+    <nav class="topbar__nav" aria-label="Jingle Drop">
+      <a href="support/">Support</a>
+      <a href="privacy/">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ======================================================================
+       HERO
+       The game is landscape, so the phone lies on its side and the hero
+       stacks until there is room for both (product.css, --landscape).
+       ====================================================================== -->
+  <section class="hero">
+    <div class="wrap hero__inner hero__inner--landscape">
+      <div class="hero__copy">
+        <p class="eyebrow">Jingle Drop · A Christmas game</p>
+        <h1 class="hero__title">Every chimney<br> is waiting.</h1>
+        <p class="hero__lede">
+          Fly Santa's sleigh over a snowy village, drop gifts down the
+          chimneys and dodge the shooting stars. Made for everyone from 3 to 99.
+        </p>
+
+        <!-- Store badges go here when the game is public — the same markup as
+             refundhound/index.html, with the Play id
+             com.nilbytestudio.jingledrop. A closed-test listing only opens for
+             invited testers, so a badge now would be a dead end for everyone
+             else. -->
+
+        <p class="status">
+          <span class="status__dot" aria-hidden="true"></span>
+          Coming soon to Android · free, no ads
+        </p>
+      </div>
+
+      <div class="shot shot--landscape hero__shot">
+        <img class="shot__screen"
+             src="../assets/images/jingledrop/glow.png"
+             width="1170" height="540" decoding="async"
+             alt="Santa's sleigh and two reindeer flying over a snowy village at night. A chimney just ahead glows, showing that a gift dropped now will land in it.">
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       HOW TO PLAY
+       The controls in one paragraph. The full version is on the support page.
+       ====================================================================== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">How to play</p>
+        <h2 class="section__title">One thumb flies. The other drops.</h2>
+        <p class="section__lede">
+          Drag on the left side of the screen to fly up and down, and tap the
+          right side to drop a gift. When a chimney glows, a gift dropped right
+          now lands in it, so even the youngest players know when to tap.
+        </p>
+      </div>
+      <p>
+        <a class="link-arrow" href="support/#how-to-play">The full how-to</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       FEATURES
+       Alternating rows; the phone swaps sides on wide screens.
+       ====================================================================== -->
+  <section class="section section--tint">
+    <div class="wrap">
+      <ul class="features">
+
+        <li class="feature feature--landscape">
+          <div class="feature__copy">
+            <h2 class="feature__title">Build a streak</h2>
+            <p class="feature__text">
+              Every gift down a chimney scores. Land them in a row and your
+              multiplier climbs, up to ×5. Miss, and the gift just bounces off
+              the roof: the streak starts again and nothing else is lost.
+            </p>
+          </div>
+          <div class="shot shot--landscape">
+            <img class="shot__screen"
+                 src="../assets/images/jingledrop/streak.png"
+                 width="1170" height="540" loading="lazy" decoding="async"
+                 alt="A gift lands in a chimney with a sparkle and a points popup, and the streak badge at the top of the screen shows the multiplier.">
+          </div>
+        </li>
+
+        <li class="feature feature--landscape">
+          <div class="feature__copy">
+            <h2 class="feature__title">Watch out for shooting stars</h2>
+            <p class="feature__text">
+              A twinkle at the edge of the screen warns you before each star
+              flies in. Santa has three lanterns, and after a bump the team
+              blinks safely for a moment. The first seconds of every run are
+              star-free, and the village speeds up gently the longer you fly.
+            </p>
+          </div>
+          <div class="shot shot--landscape">
+            <img class="shot__screen"
+                 src="../assets/images/jingledrop/stars.png"
+                 width="1170" height="540" loading="lazy" decoding="async"
+                 alt="A shooting star crosses the night sky toward the sleigh, with three lit lanterns at the top of the screen.">
+          </div>
+        </li>
+
+        <li class="feature feature--landscape">
+          <div class="feature__copy">
+            <h2 class="feature__title">Beat your best</h2>
+            <p class="feature__text">
+              Your ten best runs are kept on your phone, with the gifts you
+              delivered and your best streak. Make the top ten and the game
+              tells you which place you took.
+            </p>
+          </div>
+          <div class="shot shot--landscape">
+            <img class="shot__screen"
+                 src="../assets/images/jingledrop/best.png"
+                 width="1170" height="540" loading="lazy" decoding="async"
+                 alt="The game-over panel: a rank badge for a new top-ten place, the score, the best score, the gifts delivered and the best streak, with Retry and Menu buttons.">
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       FOR EVERYONE
+       Keep in step with the store listing's "Made for little hands too".
+       ====================================================================== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">For everyone</p>
+        <h2 class="section__title">Made for little hands too.</h2>
+      </div>
+
+      <ul class="facts">
+        <li class="fact">
+          <h3 class="fact__title">A glow tells you when</h3>
+          <p class="fact__text">
+            The chimney a gift would land in glows just before the right moment,
+            so aiming is "it shines, tap!" rather than guesswork.
+          </p>
+        </li>
+        <li class="fact">
+          <h3 class="fact__title">Gentle when you miss</h3>
+          <p class="fact__text">
+            A missed gift bounces off the roof without a sound. No buzzers, no
+            scary moments: calm Christmas piano plays throughout.
+          </p>
+        </li>
+        <li class="fact">
+          <h3 class="fact__title">Never lost by accident</h3>
+          <p class="fact__text">
+            The back button pauses the game, and so does a phone call or
+            switching apps. Tap Resume and carry on.
+          </p>
+        </li>
+        <li class="fact">
+          <h3 class="fact__title">Plays anywhere</h3>
+          <p class="fact__text">
+            In the car, on a plane, with or without Wi-Fi: the game never needs
+            the internet.
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       PRIVACY
+       ====================================================================== -->
+  <section class="section section--tint">
+    <div class="wrap">
+      <div class="promise">
+        <div>
+          <h2 class="promise__title">No ads. No internet. No account.</h2>
+          <p>
+            Jingle Drop makes no network connections at all — it doesn't even
+            ask for permission to. No analytics, no sign-in, no in-app
+            purchases, and nothing to hand over: it collects no data from
+            anyone, children included. Your high scores live on your phone.
+          </p>
+          <p class="muted">
+            Which also means there is nothing I can restore for you. Uninstall
+            without a backup and your high scores go with it.
+          </p>
+        </div>
+        <p><a class="link-arrow" href="privacy/">Read the privacy policy</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       HELP
+       ====================================================================== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">Help</p>
+        <h2 class="section__title">Something not working?</h2>
+        <p class="section__lede">
+          The support page covers the controls, scoring, streaks, lives and high
+          scores. If none of it helps, one person reads the mailbox.
+        </p>
+      </div>
+      <p>
+        <a class="link-arrow" href="support/">Support &amp; FAQ</a>
+      </p>
+      <p class="muted" style="margin-top: var(--space-4)">
+        Or email <a href="mailto:jingledrop@nilbytestudio.com">jingledrop@nilbytestudio.com</a>.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="page-footer">
+  <div class="wrap">
+    <ul class="page-footer__links">
+      <li><a href="support/">Support</a></li>
+      <li><a href="privacy/">Privacy policy</a></li>
+      <li><a href="../">Nilbyte Studio</a></li>
+      <li><a href="mailto:jingledrop@nilbytestudio.com">Email support</a></li>
+    </ul>
+    <div class="page-footer__studio">
+      <svg class="page-footer__mark" viewBox="24 24 52 52" aria-hidden="true" focusable="false">
+        <g fill="currentColor">
+          <rect x="26" y="26" width="10" height="48" rx="2"/>
+          <rect x="64" y="26" width="10" height="48" rx="2"/>
+        </g>
+        <g fill="currentColor">
+          <rect x="32.00" y="26.00" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="36.36" y="32.07" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="40.71" y="38.14" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="45.07" y="44.21" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="49.43" y="50.29" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="53.79" y="56.36" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="58.14" y="62.43" width="5.5" height="5.5" rx="1.2"/>
+          <rect x="62.50" y="68.50" width="5.5" height="5.5" rx="1.2"/>
+        </g>
+      </svg>
+      <p>Jingle Drop is made by <a href="../">Nilbyte Studio</a> in Varberg, Sweden.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

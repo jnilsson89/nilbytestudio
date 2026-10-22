@@ -18,6 +18,9 @@ refundhound/privacy/index.html   privacy policy      /refundhound/privacy/
 fuseday/index.html               product page        /fuseday/
 fuseday/support/index.html       support + FAQ       /fuseday/support/
 fuseday/privacy/index.html       privacy policy      /fuseday/privacy/
+jingledrop/index.html            product page        /jingledrop/
+jingledrop/support/index.html    support + FAQ       /jingledrop/support/
+jingledrop/privacy/index.html    privacy policy      /jingledrop/privacy/
 
 CNAME  robots.txt  sitemap.xml  _config.yml  .gitattributes
 
@@ -25,7 +28,8 @@ assets/
   css/    fonts.css · base.css (shared) · styles.css (studio)
           support.css (docs) · product.css (product pages)
   fonts/  InterTight-latin.woff2 (variable, 100–900)
-  images/ nilbyte-mark.svg (favicon) · forewind/ · refundhound/ · fuseday/
+  images/ nilbyte-mark.svg (favicon) · forewind/ · refundhound/ · fuseday/ ·
+          jingledrop/
           (product screenshots and share cards)
   js/     main.js (studio site only)
 
@@ -90,6 +94,12 @@ Fuseday's are simpler: Unity draws edge to edge, so the S22 captures have no
 status bar, nav bar or bezel to crop. They are scaled from 1080×2340 to
 720×1560 (~380 KB for four, small enough unquantised), and the app block sets
 `--shot-ratio` to match. Originals are in `docs/fuseday/screenshots-original/`.
+
+Jingle Drop is the first landscape game. Its S22 captures are 2340×1080, scaled to an
+exact half (1170×540), and its pages use `.shot--landscape`, a phone on its side whose
+padding and corners scale off the short side. Feature rows and the hero with a landscape
+phone stack until 64rem (`.feature--landscape`, `.hero__inner--landscape`), because a
+sideways phone needs twice the room. Originals are in `docs/jingledrop/screenshots-original/`.
 
 **Known duplication.** Each app's `[data-app='…']` accent block exists twice: once in `support.css`, once in `product.css`. Hoisting it into `base.css` is the
 better end state, but the generic dark-theme rule there
