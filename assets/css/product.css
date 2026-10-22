@@ -22,9 +22,9 @@
    and an app block (`:root[data-app='…']`) have identical specificity, so the
    app blocks only win by being in a later sheet. Moving them into base.css
    means ordering them against that rule by hand, and getting it wrong would
-   silently repaint the shipped support and privacy pages. All three apps
-   have product pages now (ForeWind, RefundHound, Fuseday), so this is three
-   duplicated blocks. Each is small and changes only when an app's palette
+   silently repaint the shipped support and privacy pages. All four apps
+   have product pages now (ForeWind, RefundHound, Fuseday, Jingle Drop), so
+   this is four duplicated blocks. Each is small and changes only when an app's palette
    does; hoisting is still the right move, but as its own change with every
    page checked in both themes, not folded into adding a page.
    ========================================================================== */
@@ -125,6 +125,38 @@
     --accent:              #4DBEF0;   /* UiTheme.Cyan */
     --accent-strong:       #4DBEF0;
     --accent-soft:         rgba(77, 190, 240, 0.12);
+  }
+}
+
+/* Jingle Drop — the game's own colours, from the game repo's SantaUiTheme
+   asset (UiTheme). Copied from support.css section 1, where the contrast
+   workings are. The game is a night sky in every scene, so the hero is the
+   game's panel navy in both modes. */
+:root[data-app='jingledrop'] {
+  --accent:              #C7333D;   /* UiTheme.PrimaryColor — 5.29:1 on white */
+  --accent-strong:       #C7333D;
+  --accent-container:    #142142;   /* UiTheme.PanelColor */
+  --on-accent-container: #FFFFFF;   /* UiTheme.TextColor */
+  --accent-soft:         rgba(199, 51, 61, 0.10);
+  --mark-bits:           #D9434A;   /* PrimaryColor, lightened for 3:1 on the header */
+
+  /* Galaxy S22 captures, 2340x1080 landscape, scaled to 1170x540 (an exact
+     half). Unity draws edge to edge: no status or nav bar, no bezel sliver. */
+  --shot-ratio:          1170 / 540;
+}
+
+/* The hero is the navy game screen even on a light page, so anything that
+   takes the accent inside it gets the gold (11.4:1 on #142142). */
+:root[data-app='jingledrop'] .hero {
+  --accent:              #FFD66B;
+  --accent-strong:       #FFD66B;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-app='jingledrop'] {
+    --accent:              #FFD66B;   /* UiTheme.AccentColor */
+    --accent-strong:       #FFD66B;
+    --accent-soft:         rgba(255, 214, 107, 0.12);
   }
 }
 
@@ -278,6 +310,18 @@ a:hover { color: var(--text-strong); }
   background: var(--bg-tint);
 }
 
+/* A phone held sideways, for landscape games (Jingle Drop). The portrait frame
+   scales its padding and corners off its width, which is the phone's short
+   side; here the short side is the height, so the same factors apply to
+   --shot-short instead. 0.4615 is 1080 / 2340, the S22's aspect. */
+.shot--landscape {
+  --shot-w: clamp(260px, 88vw, 540px);
+  --shot-short: calc(var(--shot-w) * 0.4615);
+  padding: calc(var(--shot-short) * 0.017);
+  border-radius: calc(var(--shot-short) * 0.068);
+}
+.shot--landscape .shot__screen { border-radius: calc(var(--shot-short) * 0.045); }
+
 
 /* ==========================================================================
    6. Hero
@@ -419,6 +463,15 @@ a:hover { color: var(--text-strong); }
   /* Alternate which side the phone sits on so the page has a rhythm. */
   .feature:nth-child(even) { flex-direction: row-reverse; }
   .feature__copy { flex: 0 1 32rem; }
+}
+
+/* A sideways phone is twice as wide, so it only sits beside the copy once
+   there is room for both (64rem); below that, rows and the hero stack. */
+@media (min-width: 48rem) and (max-width: 63.99rem) {
+  .feature--landscape,
+  .feature--landscape:nth-child(even) { flex-direction: column; }
+  .hero__inner--landscape { flex-direction: column; align-items: flex-start; }
+  .hero__inner--landscape .hero__shot { align-self: center; }
 }
 
 
