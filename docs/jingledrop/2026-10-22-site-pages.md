@@ -83,4 +83,4 @@ The halved PNGs are about 1 MB each. That's fine for now, but quantise them (as 
 - [ ] **At public launch:**
   - on the product page: the store badges and `downloadUrl`;
   - on the home page: the badge to *Live*, a Google Play link, a `makesOffer` entry, and "Apps shipped".
-- [ ] **When ads arrive:** the privacy page, the "no ads" claims on the product page, the home-page card and the money paragraph in About all change.
+- [x] **When ads arrive:** the privacy page, the "no ads" claims on the product page, the support FAQ, the home-page card and the money paragraph in About (branch `jingledrop/ads`, 2026-10-26). Merge on the day the ads build (1.1.0) leaves internal testing, before the Play forms are submitted.

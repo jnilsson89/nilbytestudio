@@ -13,9 +13,8 @@
 <link rel="icon" href="../../assets/images/nilbyte-mark.svg" type="image/svg+xml">
 
 <!-- Self-hosted Inter Tight + the shared studio support skeleton. Two
-     same-origin requests and no third party: this page must not hand a
-     visitor's IP to anyone, because the privacy policy it links to says
-     the game makes no network connections at all. -->
+     same-origin requests and no third party: this page itself hands a
+     visitor's IP to nobody. -->
 <link rel="stylesheet" href="../../assets/css/fonts.css">
 <link rel="stylesheet" href="../../assets/css/base.css">
 <link rel="stylesheet" href="../../assets/css/support.css">
@@ -67,9 +66,8 @@
   </div>
 
   <p class="muted">
-    Jingle Drop has no account system and makes no network connections, which means I
-    cannot see your high scores, restore them, or see what went wrong on your phone unless
-    you tell me. Everything below is something you can check or fix yourself.
+    Jingle Drop has no account system and sends me nothing, which means I cannot see your
+    high scores, restore them, or see what went wrong on your phone unless you tell me. Everything below is something you can check or fix yourself.
   </p>
 
   <!-- Task-shaped index. Most people arrive with one question, so the answers
@@ -78,6 +76,8 @@
     <li><a href="#how-to-play">How do I play?</a></li>
     <li><a href="#streaks">How do streaks work?</a></li>
     <li><a href="#lives">What are the lanterns?</a></li>
+    <li><a href="#ads">Ads and Remove ads</a></li>
+    <li><a href="#restore">Restore Remove ads on iPhone</a></li>
     <li><a href="#scores-gone">My high scores are gone</a></li>
     <li><a href="#paused">The game paused by itself</a></li>
     <li><a href="../privacy/">Privacy policy</a></li>
@@ -147,7 +147,12 @@
     the sleigh or a reindeer costs one lantern. The team then blinks for a moment, and no
     star can hurt it while it blinks.
   </p>
-  <p>When the last lantern goes out, the sleigh tips and the run is over.</p>
+  <p>
+    When the last lantern goes out, the sleigh tips. Once per run, the game may then ask
+    <strong>"Keep flying?"</strong>: watch a short video and Santa carries on from the same
+    spot with one lantern, keeping your score and streak. Tap <em>No thanks</em> to end the
+    run. With Remove ads, the extra lantern is free and there is no video.
+  </p>
 
   <h3 id="high-scores">High scores</h3>
   <p>
@@ -160,14 +165,17 @@
 
   <h3 id="scores-gone">My high scores are gone after reinstalling</h3>
   <p>
-    Your scores are stored on your phone, and uninstalling deletes them. If Android's
-    device backup was on, a reinstall may bring them back.
+    Your scores are stored on your phone, and uninstalling deletes them. On Android, if
+    Android's device backup was on, a reinstall may bring them back. On iPhone, they come
+    back when you set up an iPhone from an iCloud or computer backup made while the game was
+    installed; deleting the app and installing it again on the same iPhone does not bring
+    them back.
   </p>
 
   <h3 id="paused">The game paused by itself</h3>
   <p>
-    Jingle Drop pauses whenever you switch to another app, get a call, or press the back
-    button, so a run is never lost by accident. Tap <em>Resume</em> to carry on.
+    Jingle Drop pauses whenever you switch to another app, get a call, or press Android's
+    back button, so a run is never lost by accident. Tap <em>Resume</em> to carry on.
   </p>
 
   <h3>Can I turn the sound off?</h3>
@@ -179,19 +187,55 @@
   </p>
 
   <h3>Does Jingle Drop need the internet?</h3>
-  <p>No. It makes no network connections at all, so it plays anywhere.</p>
+  <p>
+    No. The whole game plays offline. Without a connection there are simply no ads, and a
+    bought Remove ads keeps working.
+  </p>
+
+  <h3 id="ads">Are there ads?</h3>
+  <p>
+    Yes, gentle ones from Google, set for children: now and then a short ad between runs,
+    never during play, and the optional "Keep flying?" video.
+  </p>
+  <p>
+    <strong>Remove ads</strong> is a one-time purchase on the main menu, behind a grown-up
+    check. It removes the ads between runs and makes the extra lantern free. If you
+    reinstall the game, or get a new phone with the same Google account or Apple Account, it
+    comes back by itself. Refunds and receipts are handled by Google Play on Android and by
+    Apple on iPhone.
+  </p>
+
+  <h3 id="restore">Restoring Remove ads on iPhone</h3>
+  <p>
+    If Remove ads doesn't come back by itself on iPhone, for example after reinstalling or on a
+    new iPhone, you can restore it:
+  </p>
+  <ol>
+    <li>On the main menu, tap <em>No ads</em>.</li>
+    <li>Answer the grown-up check, a times-table question.</li>
+    <li>
+      Tap <em>Restore purchase</em>. The App Store may ask you to sign in with the Apple
+      Account that bought it.
+    </li>
+  </ol>
+  <p>
+    Restoring is free. If the App Store finds no earlier purchase on that Apple Account, the
+    game says so and nothing is charged. On Android there is no button to press: Google Play
+    restores the purchase by itself.
+  </p>
 
   <h3>Does Jingle Drop collect my data, or my child's?</h3>
   <p>
-    No. It has no ads, no analytics, no accounts and no purchases, and it makes no network
-    connections. The <a href="../privacy/">privacy policy</a> sets out exactly what is
-    stored on your phone and where it can go.
+    I collect none. To show ads, Google receives some technical data from the phone, such as
+    the IP address, and every request is set for children. The game does not use the
+    advertising ID, never asks to track you on iPhone, and has no analytics and no accounts. The
+    <a href="../privacy/">privacy policy</a> explains it in full.
   </p>
 
   <h3>Which devices are supported?</h3>
   <p>
-    Jingle Drop is for Android phones running Android 8.0 or newer, and is in a closed test
-    on Google Play. There is no iPhone version yet.
+    Jingle Drop is for Android phones running Android 8.0 or newer, from Google Play, and
+    for iPhone running iOS 15 or newer, from the App Store.
   </p>
 
   <h3>Something is wrong that isn't listed here</h3>
